@@ -20,6 +20,8 @@ public class Main extends Application {
         this.primaryStage.setTitle("Blagajna");
 
         initRootLayout();
+        
+        //blablabla
 
         //showPersonOverview();
     }
