@@ -6,7 +6,6 @@ INDEX VERSION 1.127+D:\BlagajnaJava\.metadata\.plugins\org.eclipse.jdt.core
 1679064577.index
 3020317496.index
 3882240654.index
-3127573272.index
 3152152696.index
 3616180831.index
 4009614972.index
