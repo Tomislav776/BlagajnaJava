@@ -21,7 +21,7 @@ public class bazaBlagajna {
 			String connectionUrl = "jdbc:mysql://localhost:3306/blagajna";
 			conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			return false;
 		}
 
