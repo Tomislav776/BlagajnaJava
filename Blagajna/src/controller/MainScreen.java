@@ -52,7 +52,7 @@ public class MainScreen{
         		btns[k].setMinSize(149, 120);	//Poveca gumbove da popune okvir
         		btns[k].setMaxSize(620, 500);
         		    
-        		grid_GumboviArtikl.add(btns[k],i ,j);
+        		grid_GumboviArtikl.add(btns[k],j ,i);
         		grid_GumboviArtikl.setHalignment(btns[k], HPos.CENTER);  //Centrira gumbove
         		grid_GumboviArtikl.setValignment(btns[k], VPos.CENTER);
         		
