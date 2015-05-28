@@ -95,7 +95,7 @@ public class Main extends Application {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("../views/Tetsiranje.fxml"));
+            loader.setLocation(Main.class.getResource("../views/MainScreen.fxml"));
            /*
             TablicaGumbova ini = new TablicaGumbova();
             ini.initBtnsArray();
