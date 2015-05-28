@@ -48,10 +48,13 @@ public class Main extends Application {
                    user = controller.txt_user.getText();
                    pass = controller.txt_pass.getText();
                    bazaBlagajna blagajna = new bazaBlagajna();
+                   System.out.println(blagajna.Connect(user, pass));
                    if(blagajna.Connect(user, pass) == true){
                    	initRootLayout();
                    	showPersonOverview();
                    }
+                   System.out.println(user);
+                   System.out.println(pass);
                 }
             });
             
