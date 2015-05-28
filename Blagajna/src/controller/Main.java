@@ -96,6 +96,11 @@ public class Main extends Application {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("../views/Tetsiranje.fxml"));
+           /*
+            TablicaGumbova ini = new TablicaGumbova();
+            ini.initBtnsArray();
+            ini.initialize();*/
+            
             AnchorPane personOverview = (AnchorPane) loader.load();
 
             // Set person overview into the center of root layout.
