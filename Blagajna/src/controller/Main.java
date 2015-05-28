@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -13,15 +15,58 @@ public class Main extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
+    private AnchorPane LoginLayout;
+    String user = null;
+    String pass = null;
 
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Blagajna");
 
-        initRootLayout();
+        initLogin();
+        /*initRootLayout();
 
-        showPersonOverview();
+        showPersonOverview();*/
+    }
+    
+    public void initLogin() {
+    	
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../views/login.fxml"));
+            LoginLayout = (AnchorPane) loader.load();
+            
+            Login controller = loader.getController();
+            controller.setMainApp(this);
+           
+            controller.btn_prijava.setOnAction(new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent arg0) {
+                   user = controller.txt_user.getText();
+                   pass = controller.txt_pass.getText();
+                   bazaBlagajna blagajna = new bazaBlagajna();
+                   System.out.println(blagajna.Connect(user, pass));
+                   if(blagajna.Connect(user, pass) == true){
+                   	initRootLayout();
+                   	showPersonOverview();
+                   }
+                   System.out.println(user);
+                   System.out.println(pass);
+                }
+            });
+            
+            
+
+            // Show the scene containing the root layout.
+            Scene scene = new Scene(LoginLayout);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -70,6 +115,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+    	//bazaBlagajna b = new bazaBlagajna();
         launch(args);
+        //b.bazaIspis();
     }
 }
