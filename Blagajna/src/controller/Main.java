@@ -7,6 +7,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -40,7 +42,27 @@ public class Main extends Application {
             
             Login controller = loader.getController();
             controller.setMainApp(this);
-           
+            
+            //Pritiskom entera se unosi šifra
+            controller.txt_user.setOnKeyPressed(new EventHandler<KeyEvent>()
+            	    {
+            	        @Override
+            	        public void handle(KeyEvent ke)
+            	        {
+            	            if (ke.getCode().equals(KeyCode.ENTER))
+            	            {
+            	            	user = controller.txt_user.getText();
+            	                   pass = controller.txt_pass.getText();
+            	                   bazaBlagajna blagajna = new bazaBlagajna();
+            	                   System.out.println(blagajna.Connect(user, pass));
+            	                   if(blagajna.Connect(user, pass) == true){
+            	                   initRootLayout();
+            	                   showPersonOverview();
+            	            }
+            	        } }
+            	    });
+            
+            //Pritiskom gumba se unosi šifra
             controller.btn_prijava.setOnAction(new EventHandler<ActionEvent>() {
 
                 @Override
