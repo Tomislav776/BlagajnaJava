@@ -86,6 +86,10 @@ public class Main extends Application {
             Scene scene = new Scene(LoginLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
+            
+            //Fokusira se na text field
+            controller.txt_user.requestFocus();
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
