@@ -1,5 +1,9 @@
 package controller;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 import dataClass.Artikli;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -100,11 +104,25 @@ public class MainScreen{
 	public ObservableList<Artikli> getArtikli(){
 		ObservableList<Artikli> artikli = FXCollections.observableArrayList();
 		
-		//for (int i=0;i<2;i++)
-		artikli.add(new Artikli("Netko",2));
-		artikli.add(new Artikli("Netko2",3));
-		artikli.add(new Artikli("Netko3",4));
+		bazaBlagajna baza = new bazaBlagajna();
+		String upit;
 		
+		
+		upit="SELECT * FROM artikli;";
+		ResultSet res = baza.bazaCitaj(upit);
+		
+		try{
+		while (res.next()){
+			artikli.add(new Artikli(res.getString("naziv"),res.getInt("kolicina")));
+
+		}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+
 		return artikli;
 	}
 	

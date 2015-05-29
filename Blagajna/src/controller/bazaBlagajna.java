@@ -98,25 +98,26 @@ public class bazaBlagajna {
 	
 	//Funkcija koja prima bilo koji query ko string i daje ResultSet
 	
-	public ResultSet bazaCitaj(String s){
+	public ResultSet bazaCitaj(String query){
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet res = null;
 		
 		try{
-			String connectionUrl = "jdbc:mysql://localhost:3306/blagajna";
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			
+			String connectionUrl = "jdbc:mysql://localhost:3306/blagajna";
 			conn = DriverManager.getConnection(connectionUrl, "root", "");
 		
 				stmt = conn.createStatement();
-				res=stmt.executeQuery(s);
+				res=stmt.executeQuery(query);
 	
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
+		} /*finally {
 			try { if (stmt != null) stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
 			try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
-		}
+		}*/
 		
 		return res;
 	}
