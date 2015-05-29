@@ -60,7 +60,6 @@ public class MainScreen{
     	
     	//inicijalizira tablicu stupce, naziv je ime podatka u klasi Artikli
     	tableColumnNaziv.setCellValueFactory(new PropertyValueFactory<Artikli,String>("naziv"));
-    	
     	tableViewRacun.setItems(getArtikli());
     	
     	
@@ -100,9 +99,11 @@ public class MainScreen{
 	//Radi observable list stavlja artikle u nju za prikaz u table view
 	public ObservableList<Artikli> getArtikli(){
 		ObservableList<Artikli> artikli = FXCollections.observableArrayList();
-		artikli.add(new Artikli("Netko"));
-		artikli.add(new Artikli("Netko2"));
-		artikli.add(new Artikli("Netko3"));
+		
+		//for (int i=0;i<2;i++)
+		artikli.add(new Artikli("Netko",2));
+		artikli.add(new Artikli("Netko2",3));
+		artikli.add(new Artikli("Netko3",4));
 		
 		return artikli;
 	}
