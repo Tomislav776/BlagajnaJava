@@ -7,17 +7,23 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 public class Dodaj_artikl {
-	/*@FXML
-	public MenuItem dodaj_artikl;*/
-	
-	
-	
+	@FXML
+	public TextField txt_naziv;
+	@FXML
+	public TextField txt_kolicina;
+	@FXML
+	public Button btn_unesi_artikl;
+
+	private String naziv;
+	private String kolicina;
 	
 	// Reference to the main application.
     private Main main;
@@ -36,8 +42,38 @@ public class Dodaj_artikl {
      */
     @FXML
     private void initialize() {
-       
+    	/*btn_unesi_artikl.setOnAction(e -> {
+    		naziv = txt_naziv.getText();
+        	kolicina = txt_kolicina.getText();
+        	bazaBlagajna b = new bazaBlagajna();
+        	b.dodaj_artikl(naziv, kolicina);
+     	   });*/
+    	/*btn_unesi_artikl.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent arg0) {
+            	naziv = txt_naziv.getText();
+            	kolicina = txt_kolicina.getText();
+            	bazaBlagajna b = new bazaBlagajna();
+            	b.dodaj_artikl(naziv, kolicina);
+
+            }
+        });*/
     }
+    
+    	
+    	public void handleClick()
+    	{
+    		naziv = txt_naziv.getText();
+        	kolicina = txt_kolicina.getText();
+        	int kolicina_INT = Integer.parseInt(kolicina);
+        	bazaBlagajna b = new bazaBlagajna();
+        	if(b.dodaj_artikl(naziv, kolicina_INT) == true)
+        	{
+        		
+        	}
+        	
+    	}
 
     /**
      * Is called by the main application to give a reference back to itself.

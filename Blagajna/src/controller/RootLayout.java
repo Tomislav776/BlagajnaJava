@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,7 +17,8 @@ public class RootLayout {
 	@FXML
 	public MenuItem dodaj_artikl;
 	
-	
+	private String naziv;
+	private String kolicina;
 	
 	
 	// Reference to the main application.
@@ -36,6 +39,29 @@ public class RootLayout {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("../views/Dodaj_artikl.fxml"));
             AnchorPane anchor = (AnchorPane) loader.load();
+            
+            /*Dodaj_artikl controller = loader.getController();
+            controller.btn_unesi_artikl.setOnAction(e->
+            {
+            	naziv = controller.txt_naziv.getText();
+            	kolicina = controller.txt_kolicina.getText();
+            	bazaBlagajna b = new bazaBlagajna();
+            	b.dodaj_artikl(naziv, kolicina);
+            });*/
+            
+            
+            
+            /*controller.btn_unesi_artikl.setOnAction(new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent arg0) {
+                	naziv = controller.txt_naziv.getText();
+                	kolicina = controller.txt_kolicina.getText();
+                	bazaBlagajna b = new bazaBlagajna();
+                	b.dodaj_artikl(naziv, kolicina);
+                }
+            });*/
+            
             
             
             Stage window = new Stage();

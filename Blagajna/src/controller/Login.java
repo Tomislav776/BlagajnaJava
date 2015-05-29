@@ -16,7 +16,6 @@ public class Login {
 	    @FXML
 	    private Button btn_izlaz;
 	    
-	    public String panj;
 
 	    // Reference to the main application.
 	    private Main main;
@@ -34,8 +33,7 @@ public class Login {
 	     */
 	    @FXML
 	    private void initialize() {
-	        // Initialize the person table with the two columns.
-	        panj = txt_user.getText();
+	    	
 	    }
 
 	    /**
