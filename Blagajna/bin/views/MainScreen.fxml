@@ -15,7 +15,18 @@
                <children>
                   <VBox layoutY="189.0" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="189.0">
                      <children>
-                        <ListView prefHeight="520.0" prefWidth="355.0" />
+                        <TableView prefHeight="400.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="tableColumnNaziv" minWidth="250.0" prefWidth="75.0" text="Naziv" />
+                            <TableColumn fx:id="tableColumnCijena" prefWidth="75.0" text="Cijena" />
+                          </columns>
+                        </TableView>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="355.0">
+                           <children>
+                              <Label text="Ukupno:" />
+                              <TextField fx:id="txt_field_Ukupno" />
+                           </children>
+                        </HBox>
                         <HBox prefHeight="66.0" prefWidth="355.0" spacing="15.0" VBox.vgrow="ALWAYS">
                            <children>
                               <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="100.0" text="Obriši sve" />
