@@ -103,13 +103,8 @@ public class MainScreen{
 	//Radi observable list stavlja artikle u nju za prikaz u table view
 	public ObservableList<Artikli> getArtikli(){
 		ObservableList<Artikli> artikli = FXCollections.observableArrayList();
-		
-		bazaBlagajna baza = new bazaBlagajna();
-		String upit;
-		
-		
-		upit="SELECT * FROM artikli;";
-		ResultSet res = baza.bazaCitaj(upit);
+
+		ResultSet res = bazaBlagajna.bazaCitaj("SELECT * FROM artikli;");
 		
 		try{
 		while (res.next()){
@@ -120,8 +115,6 @@ public class MainScreen{
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 
 		return artikli;
 	}

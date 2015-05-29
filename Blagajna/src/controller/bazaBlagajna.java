@@ -62,43 +62,10 @@ public class bazaBlagajna {
 			return true;
 	}
 	
-	/*public void uzmi_artikl(int id) {
-		Statement stmt = null;
-		ResultSet res = null;
-		 
-	
-			try{
-				Class.forName("com.mysql.jdbc.Driver").newInstance();
-				//Vezanje na bazu
-				String connectionUrl = "jdbc:mysql://localhost:3306/blagajna";
-				conn = DriverManager.getConnection(connectionUrl, "root", "");
-			int i=0;
-			
-				do{
-					String SQL = "SELECT * FROM artikli WHERE id="+i+";";
-					++i;
-					
-					stmt = conn.createStatement();
-					res=stmt.executeQuery();
-					stmt.setString(1, naziv);
-					stmt.setInt(2, kolicina);
-				} while();
- 
-			
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		} finally {
-			try { if (stmt != null) stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
-			try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
-		}
-			return true;
-	}*/
 	
 	//Funkcija koja prima bilo koji query ko string i daje ResultSet
-	
-	public ResultSet bazaCitaj(String query){
+	//Globalna može se pozvat iz bilo koje klase bazaBlagajna.bazaCitaj
+	public static ResultSet bazaCitaj(String query){
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet res = null;
@@ -114,10 +81,10 @@ public class bazaBlagajna {
 	
 		} catch (Exception e) {
 			e.printStackTrace();
-		} /*finally {
-			try { if (stmt != null) stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
-			try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
-		}*/
+		} finally {
+			/*try { if (stmt != null) stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+			try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }*/
+		}
 		
 		return res;
 	}
