@@ -1,7 +1,14 @@
 package controller;
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class RootLayout {
 	
@@ -21,11 +28,29 @@ public class RootLayout {
     public RootLayout() {
     }
     
-    private void display()
-    {
-    	
-    }
 
+    public void display()
+    {
+    	try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../views/Dodaj_artikl.fxml"));
+            AnchorPane anchor = (AnchorPane) loader.load();
+            
+            
+            Stage window = new Stage();
+            window.initModality(Modality.APPLICATION_MODAL);
+            window.setTitle("Dodaj artikl");
+
+            
+            Scene scene = new Scene(anchor);
+            window.setScene(scene);
+            window.showAndWait();
+      
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * Initializes the controller class. This method is automatically called
      * after the fxml file has been loaded.

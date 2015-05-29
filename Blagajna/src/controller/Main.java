@@ -11,6 +11,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -18,6 +19,7 @@ public class Main extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
     private AnchorPane LoginLayout;
+   // private AnchorPane anchor;
     String user = null;
     String pass = null;
 
@@ -58,6 +60,7 @@ public class Main extends Application {
             	                   if(blagajna.Connect(user, pass) == true){
             	                   initRootLayout();
             	                   showPersonOverview();
+            	                	
             	            }
             	        } }
             	    });
@@ -74,6 +77,7 @@ public class Main extends Application {
                    if(blagajna.Connect(user, pass) == true){
                    	initRootLayout();
                    	showPersonOverview();
+                
                    }
                    System.out.println(user);
                    System.out.println(pass);
@@ -136,7 +140,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-  
+	
 
     /**
      * Returns the main stage.
