@@ -34,9 +34,9 @@ public class bazaBlagajna {
 		return true;
 	}
 	
-	public boolean dodaj_artikl(String naziv, int kolicina) {
+	public boolean dodaj_artikl(String naziv, int kolicina, double cijena) {
 		PreparedStatement stmt = null;
-		  String SQL = "INSERT INTO artikli (naziv, kolicina) VALUES(?, ?);";
+		  String SQL = "INSERT INTO artikli (naziv, kolicina, cijena) VALUES(?, ?, ?);";
 		 
 	
 			try{
@@ -47,6 +47,7 @@ public class bazaBlagajna {
 			 stmt = conn.prepareStatement(SQL);
 			stmt.setString(1, naziv);
 			stmt.setInt(2, kolicina);
+			stmt.setDouble(3, cijena);
 			
  
 			stmt.executeUpdate();

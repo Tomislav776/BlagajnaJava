@@ -7,58 +7,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="704.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40" fx:controller="controller.Dodaj_artikl">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Dodaj_artikl">
    <children>
-      <GridPane layoutX="229.0" layoutY="87.0" prefHeight="400.0" prefWidth="704.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="341.0" minHeight="10.0" prefHeight="341.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="190.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <TableView prefHeight="341.0" prefWidth="600.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="ID artikla" />
+          <TableColumn text="Naziv artikla" />
+            <TableColumn prefWidth="90.0" text="Količina artikla" />
+            <TableColumn prefWidth="82.0" text="Cijena artikla" />
+        </columns>
+      </TableView>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <VBox prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <HBox prefHeight="65.0" prefWidth="523.0">
-                     <VBox.margin>
-                        <Insets top="120.0" />
-                     </VBox.margin>
-                     <children>
-                        <Label text="Naziv artikla:">
-                           <HBox.margin>
-                              <Insets left="220.0" />
-                           </HBox.margin>
-                        </Label>
-                        <TextField fx:id="txt_naziv">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Label text="Količina:">
-                           <HBox.margin>
-                              <Insets left="220.0" />
-                           </HBox.margin>
-                        </Label>
-                        <TextField fx:id="txt_kolicina">
-                           <HBox.margin>
-                              <Insets left="50.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <Button fx:id="btn_unesi_artikal" mnemonicParsing="false" onAction="#handleClick" text="Unesi" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="320.0" />
-               </GridPane.margin>
-            </Button>
+            <TextField fx:id="txt_naziv" promptText="Naziv artikla" />
+            <TextField fx:id="txt_kolicina" promptText="Količina artikla" />
+            <TextField fx:id="txt_cijena" promptText="Cijena artikla" />
+            <Button fx:id="btn_unesi_artikl" mnemonicParsing="false" onAction="#handleClickDodaj" text="Dodaj" />
+            <Button mnemonicParsing="false" text="Editiraj" />
+            <Button mnemonicParsing="false" text="Obriši" />
          </children>
-      </GridPane>
+      </HBox>
    </children>
-</AnchorPane>
+</VBox>

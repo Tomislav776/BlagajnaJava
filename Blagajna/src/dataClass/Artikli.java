@@ -3,11 +3,12 @@ package dataClass;
 public class Artikli {
 	private String naziv;
 	private int kolicina;
+	private double cijena;
 	
-	public Artikli (String naziv, int kolicina){
-		this.naziv=naziv;
-		this.kolicina=kolicina;
-		
+	public Artikli (String naziv, int kolicina, double cijena){
+		this.naziv = naziv;
+		this.kolicina = kolicina;
+		this.cijena = cijena;
 	}
 
 	public String getNaziv() {
@@ -26,6 +27,14 @@ public class Artikli {
 	public void setKolicina(int kolicina) {
 		this.kolicina = kolicina;
 	}
+	
+	
+	public double getCijena() {
+		return cijena;
+	}
 
+	public void setCijena(double cijena) {
+		this.cijena = cijena;
+	}
 	
 }

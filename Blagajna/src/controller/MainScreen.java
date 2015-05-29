@@ -64,6 +64,7 @@ public class MainScreen{
     	
     	//inicijalizira tablicu stupce, naziv je ime podatka u klasi Artikli
     	tableColumnNaziv.setCellValueFactory(new PropertyValueFactory<Artikli,String>("naziv"));
+    	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,String>("cijena"));
     	tableViewRacun.setItems(getArtikli());
     	
     	
@@ -108,7 +109,7 @@ public class MainScreen{
 		
 		try{
 		while (res.next()){
-			artikli.add(new Artikli(res.getString("naziv"),res.getInt("kolicina")));
+			artikli.add(new Artikli(res.getString("naziv"),res.getInt("kolicina"), res.getDouble("cijena")));
 
 		}
 		}

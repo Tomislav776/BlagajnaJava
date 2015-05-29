@@ -20,10 +20,13 @@ public class Dodaj_artikl {
 	@FXML
 	public TextField txt_kolicina;
 	@FXML
+	public TextField txt_cijena;
+	@FXML
 	public Button btn_unesi_artikl;
 
 	private String naziv;
 	private String kolicina;
+	private String cijena;
 	
 	// Reference to the main application.
     private Main main;
@@ -62,13 +65,15 @@ public class Dodaj_artikl {
     }
     
     	
-    	public void handleClick()
+    	public void handleClickDodaj()
     	{
     		naziv = txt_naziv.getText();
         	kolicina = txt_kolicina.getText();
+        	cijena = txt_cijena.getText();
         	int kolicina_INT = Integer.parseInt(kolicina);
+        	double cijena_Double = Double.parseDouble(cijena);
         	bazaBlagajna b = new bazaBlagajna();
-        	if(b.dodaj_artikl(naziv, kolicina_INT) == true)
+        	if(b.dodaj_artikl(naziv, kolicina_INT, cijena_Double) == true)
         	{
         		
         	}
