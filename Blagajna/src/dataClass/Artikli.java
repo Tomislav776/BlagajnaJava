@@ -6,18 +6,11 @@ public class Artikli {
 	private int kolicina;
 	private double cijena;
 	
-<<<<<<< HEAD
-	public Artikli (int id, String naziv, int kolicina){
-		this.naziv=naziv;
-		this.kolicina=kolicina;
-		this.id=id;
-		
-=======
-	public Artikli (String naziv, int kolicina, double cijena){
+	public Artikli (int id, String naziv, int kolicina, double cijena){
 		this.naziv = naziv;
 		this.kolicina = kolicina;
 		this.cijena = cijena;
->>>>>>> origin/master
+		this.id=id;
 	}
 
 	public String getNaziv() {
@@ -42,7 +35,6 @@ public class Artikli {
 		return cijena;
 	}
 
-<<<<<<< HEAD
 	public int getId() {
 		return id;
 	}
@@ -50,11 +42,9 @@ public class Artikli {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-=======
 	public void setCijena(double cijena) {
 		this.cijena = cijena;
 	}
->>>>>>> origin/master
+
 	
 }
