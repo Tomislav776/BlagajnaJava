@@ -10,6 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -75,7 +77,12 @@ public class Dodaj_artikl {
         	bazaBlagajna b = new bazaBlagajna();
         	if(b.dodaj_artikl(naziv, kolicina_INT, cijena_Double) == true)
         	{
-        		
+        		Alert alert = new Alert(AlertType.INFORMATION);
+        		alert.setTitle("Uspješno dodan artikl");
+        		alert.setHeaderText("Uspješno ste dodali artikl.");
+        		alert.setContentText("Uspješno ste dodali artikl.");
+
+        		alert.showAndWait();
         	}
         	
     	}
