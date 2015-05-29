@@ -20,6 +20,11 @@ public class RootLayout {
      */
     public RootLayout() {
     }
+    
+    private void display()
+    {
+    	
+    }
 
     /**
      * Initializes the controller class. This method is automatically called
@@ -28,7 +33,7 @@ public class RootLayout {
     @FXML
     private void initialize() {
        dodaj_artikl.setOnAction(e -> {
-    	   System.out.println("Dodan artikl");
+    	   display();
     	   });
     }
 
