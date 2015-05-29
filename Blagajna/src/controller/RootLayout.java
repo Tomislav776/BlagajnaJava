@@ -11,6 +11,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.scene.layout.VBox;
 
 public class RootLayout {
 	
@@ -38,7 +39,7 @@ public class RootLayout {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("../views/Dodaj_artikl.fxml"));
-            AnchorPane anchor = (AnchorPane) loader.load();
+            VBox anchor = (VBox) loader.load();
             
             /*Dodaj_artikl controller = loader.getController();
             controller.btn_unesi_artikl.setOnAction(e->
