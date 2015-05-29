@@ -15,7 +15,7 @@
                <children>
                   <VBox layoutY="189.0" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="189.0">
                      <children>
-                        <TableView prefHeight="400.0" prefWidth="200.0">
+                        <TableView fx:id="tableViewRacun" editable="true" prefHeight="400.0" prefWidth="200.0">
                           <columns>
                             <TableColumn fx:id="tableColumnNaziv" minWidth="250.0" prefWidth="75.0" text="Naziv" />
                             <TableColumn fx:id="tableColumnCijena" prefWidth="75.0" text="Cijena" />
