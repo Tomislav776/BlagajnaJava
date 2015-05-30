@@ -106,7 +106,7 @@ public class MainScreen{
 	//Radi observable list stavlja artikle u nju za prikaz u table view
 	public ObservableList<Artikli> getArtikli(){
 		ObservableList<Artikli> artikli = FXCollections.observableArrayList();
-<<<<<<< HEAD
+		
 		List<Artikli> artiklii = new ArrayList<Artikli>();
 		artiklii=bazaBlagajna.bazaCitajArtikle();
 				
@@ -115,23 +115,7 @@ public class MainScreen{
 		}
 
 		
-=======
-		List<Artikli> artikli_iz_Baze = new ArrayList<Artikli>();
-		List<Artikli> artikli_Lista = new ArrayList<Artikli>();
-		
-		bazaBlagajna blagajna = new bazaBlagajna();
-		
-		try{
-			artikli_iz_Baze = blagajna.bazaCitajArtikle();
-			
-			for (int i = 0; i < artikli_iz_Baze.size(); i++) {
-				artikli.add(artikli_iz_Baze.get(i));
-			}
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
->>>>>>> a7f42a666e380655e2f45725878049e748cc83a7
+
 
 		return artikli;
 	}
