@@ -3,6 +3,8 @@ package controller;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import dataClass.Artikli;
 import javafx.application.Application;
@@ -104,14 +106,17 @@ public class MainScreen{
 	//Radi observable list stavlja artikle u nju za prikaz u table view
 	public ObservableList<Artikli> getArtikli(){
 		ObservableList<Artikli> artikli = FXCollections.observableArrayList();
-
-		ResultSet res = bazaBlagajna.bazaCitaj("SELECT * FROM artikli;");
+		List<Artikli> artikli_iz_Baze = new ArrayList<Artikli>();
+		List<Artikli> artikli_Lista = new ArrayList<Artikli>();
+		
+		bazaBlagajna blagajna = new bazaBlagajna();
 		
 		try{
-		while (res.next()){
-			artikli.add(new Artikli(res.getString("naziv"),res.getInt("kolicina"), res.getDouble("cijena")));
-
-		}
+			artikli_iz_Baze = blagajna.bazaCitajArtikle();
+			
+			for (int i = 0; i < artikli_iz_Baze.size(); i++) {
+				artikli.add(artikli_iz_Baze.get(i));
+			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();
