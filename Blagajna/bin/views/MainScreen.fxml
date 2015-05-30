@@ -45,7 +45,10 @@
                <children>
                   <SplitPane dividerPositions="0.3010471204188482" layoutX="215.0" layoutY="199.0" orientation="VERTICAL" prefHeight="766.0" prefWidth="661.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
-                      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="659.0" />
+                      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="659.0">
+                           <children>
+                              <ChoiceBox fx:id="choiceBoxKonobar" layoutX="14.0" layoutY="61.0" prefWidth="150.0" />
+                           </children></AnchorPane>
                       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                            <children>
                               <GridPane fx:id="grid_GumboviArtikl" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="659.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

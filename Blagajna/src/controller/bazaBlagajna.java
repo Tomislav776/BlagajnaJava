@@ -1,14 +1,19 @@
 package controller;
 
+import dataClass.Konobar;
 import dataClass.Racun;
+
 import java.util.*;
+
 import dataClass.Artikli;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 
 
 
@@ -188,6 +193,70 @@ public class bazaBlagajna {
 		try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
 	}
 	    return racuni;
+	}
+	
+	
+	//Konobar upis i ispis iz baze
+	public static List<Konobar> bazaCitajKonobar() {
+	    List<Konobar> konobari = new ArrayList<Konobar>();
+	    PreparedStatement stmt = null;
+		Connection conn = null;
+
+
+	    try{
+	    		Class.forName("com.mysql.jdbc.Driver").newInstance();
+				//Vezanje na bazu
+				String connectionUrl = "jdbc:mysql://localhost:3306/blagajna?characterEncoding=utf8";
+				conn = DriverManager.getConnection(connectionUrl, "root", "");
+				Connection connection = DriverManager.getConnection(connectionUrl, "root", "");
+	        
+				stmt = connection.prepareStatement("SELECT * FROM konobar;");
+				ResultSet resultSet = stmt.executeQuery();
+	    
+	        while (resultSet.next()) {
+	        	Konobar konobar = new Konobar(resultSet.getInt("id"),resultSet.getString("naziv"),resultSet.getInt("satnica"));
+	        	konobari.add(konobar);
+	        }
+	    
+	}catch(Exception e){
+		
+	}finally {
+		try { if (stmt != null) stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+		try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+	}
+	    return konobari;
+	}
+	
+	
+	/**
+	 * Doradi ako ces radit satnicu
+	 */
+	public boolean dodaj_konobar(String imeKonobar) {
+		PreparedStatement stmt = null;
+		  String SQL = "INSERT INTO racuni (naziv) VALUES(?);";
+		 
+	
+			try{
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
+				//Vezanje na bazu
+				String connectionUrl = "jdbc:mysql://localhost:3306/blagajna?characterEncoding=utf8";
+				conn = DriverManager.getConnection(connectionUrl, "root", "");
+				stmt = conn.prepareStatement(SQL);
+			
+				stmt.setString(1, imeKonobar);
+				
+			
+			stmt.executeUpdate();
+			
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			try { if (stmt != null) stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+			try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+		}
+			return true;
 	}
 
 	
