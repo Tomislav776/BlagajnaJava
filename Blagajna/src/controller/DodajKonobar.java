@@ -39,7 +39,7 @@ public class DodajKonobar {
 	@FXML
 	private TableColumn<Konobar, String> tableColumnNazivKonobar;
 	
-	ObservableList<Konobar> konobari = FXCollections.observableArrayList();
+	private ObservableList<Konobar> konobari = FXCollections.observableArrayList();
 
 	private String naziv;
 
@@ -142,9 +142,8 @@ public class DodajKonobar {
     		konobarii.add(tableViewKonobari.getSelectionModel().getSelectedItem());
     		
     		//brisanje iz baze
-    		for(Konobar konobar : konobarii) {
-    		    bazaBlagajna.obrisi_konobar(konobar.getId());
-    		}
+    		    bazaBlagajna.obrisi_konobar(tableViewKonobari.getSelectionModel().getSelectedItem().getId());
+    		
     		
     		//brisanje iz liste koja se u tom trenutku prikazuje na tablici
     		konobarii.forEach(konobari::remove);

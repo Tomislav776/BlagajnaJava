@@ -33,6 +33,10 @@ public class Main extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Blagajna");
         
+        /* Ovo postavlja min velicinu prozora
+        primaryStage.setMinWidth(1024);
+        primaryStage.setMinHeight(768);
+        */
         primaryStage.setOnCloseRequest(e-> {
         	e.consume();
         	zatvori();

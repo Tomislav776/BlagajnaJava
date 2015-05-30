@@ -223,7 +223,7 @@ public class MainScreen{
         while (k!=artikliBaza.size()) {    
         	
         		btns[k].setMinSize(149, 100);	//Poveca gumbove da popune okvir
-        		btns[k].setMaxSize(620, 500);
+        		btns[k].setMaxSize(1000, 1000);
         		    
         		grid_GumboviArtikl.add(btns[k],j ,i);
         		grid_GumboviArtikl.setHalignment(btns[k], HPos.CENTER);  //Centrira gumbove
