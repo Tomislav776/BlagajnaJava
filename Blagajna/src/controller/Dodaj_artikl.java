@@ -79,21 +79,32 @@ public class Dodaj_artikl {
     	
     	public void handleClickDodaj()
     	{
-    		naziv = txt_naziv.getText();
-        	kolicina = txt_kolicina.getText();
-        	cijena = txt_cijena.getText();
-        	int kolicina_INT = Integer.parseInt(kolicina);
-        	double cijena_Double = Double.parseDouble(cijena);
-        	bazaBlagajna b = new bazaBlagajna();
-        	if(b.dodaj_artikl(naziv, kolicina_INT, cijena_Double) == true)
-        	{
-        		Alert alert = new Alert(AlertType.INFORMATION);
-        		alert.setTitle("Uspješno dodan artikl");
+    		if(txt_naziv.getText().isEmpty() || txt_kolicina.getText().isEmpty() || txt_cijena.getText().isEmpty())
+    		{
+    			Alert alert = new Alert(AlertType.WARNING);
+        		alert.setTitle("Pripazite!");
         		alert.setHeaderText(null);
-        		alert.setContentText("Uspješno ste dodali artikl.");
+        		alert.setContentText("Niste unijeli sve potrebne informacije za unos novog artikla.");
 
         		alert.showAndWait();
-        	}
+    		}
+    		else{
+    			naziv = txt_naziv.getText();
+            	kolicina = txt_kolicina.getText();
+            	cijena = txt_cijena.getText();
+            	int kolicina_INT = Integer.parseInt(kolicina);
+            	double cijena_Double = Double.parseDouble(cijena);
+            	bazaBlagajna b = new bazaBlagajna();
+            	if(b.dodaj_artikl(naziv, kolicina_INT, cijena_Double) == true)
+            	{
+            		Alert alert = new Alert(AlertType.INFORMATION);
+            		alert.setTitle("Uspješno dodan artikl");
+            		alert.setHeaderText(null);
+            		alert.setContentText("Uspješno ste dodali artikl.");
+
+            		alert.showAndWait();
+            	}
+    		}
         	
     	}
 
