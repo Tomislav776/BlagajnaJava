@@ -18,6 +18,9 @@ public class RootLayout {
 	@FXML
 	public MenuItem dodaj_artikl;
 	
+	@FXML
+	public MenuItem dodaj_konobar;
+	
 	private String naziv;
 	private String kolicina;
 	
@@ -78,6 +81,28 @@ public class RootLayout {
             e.printStackTrace();
         }
     }
+    
+    public void displayKonobar()
+    {
+    	try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../views/Dodaj_konobar.fxml"));
+            VBox anchor = (VBox) loader.load();
+                    
+            Stage window = new Stage();
+            window.initModality(Modality.APPLICATION_MODAL);
+            window.setTitle("Dodaj konobara");
+
+            
+            Scene scene = new Scene(anchor);
+            window.setScene(scene);
+            window.showAndWait();
+      
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * Initializes the controller class. This method is automatically called
      * after the fxml file has been loaded.
@@ -86,6 +111,10 @@ public class RootLayout {
     private void initialize() {
        dodaj_artikl.setOnAction(e -> {
     	   display();
+    	   });
+       
+       dodaj_konobar.setOnAction(e -> {
+    	   displayKonobar();
     	   });
     }
 
