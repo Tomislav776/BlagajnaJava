@@ -65,9 +65,11 @@ public class bazaBlagajna {
 			return true;
 	}
 	
-	public List<Artikli> bazaCitajArtikle(String query) throws SQLException {
+	public static List<Artikli> bazaCitajArtikle() {
 	    List<Artikli> artikli = new ArrayList<Artikli>();
 	    PreparedStatement stmt = null;
+		Connection conn = null;
+
 
 	    try{
 	    		Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -75,7 +77,7 @@ public class bazaBlagajna {
 				String connectionUrl = "jdbc:mysql://localhost:3306/blagajna";
 				conn = DriverManager.getConnection(connectionUrl, "root", "");
 	    	Connection connection = DriverManager.getConnection(connectionUrl, "root", "");
-	        stmt = connection.prepareStatement(query);
+	        stmt = connection.prepareStatement("SELECT * FROM artikli;");
 	        ResultSet resultSet = stmt.executeQuery();
 	    
 	        while (resultSet.next()) {
