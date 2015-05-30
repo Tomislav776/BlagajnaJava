@@ -38,7 +38,7 @@ public class MainScreen{
     public TableView<Artikli> tableViewRacun;
 	
 	@FXML
-    public TableColumn tableColumnCijena;
+    public TableColumn<Artikli, Double> tableColumnCijena;
 	
 	@FXML
     public TableColumn<Artikli, String> tableColumnNaziv;
@@ -53,9 +53,11 @@ public class MainScreen{
 
    	//Inicjalizira gumbove
     public void initBtnsArray() {
-        for(int i = 0; i < btns.length; i++) {
-            btns[i] = new Button("Button-"+i);
-           
+    	List<Artikli> artikli = new ArrayList<Artikli>();
+		artikli=bazaBlagajna.bazaCitajArtikle();
+		
+        for(int i = 0; i < artikli.size(); i++) {
+            btns[i] = new Button(artikli.get(i).getNaziv()); 
         }
     }
     
@@ -66,56 +68,69 @@ public class MainScreen{
     	
     	//inicijalizira tablicu stupce, naziv je ime podatka u klasi Artikli
     	tableColumnNaziv.setCellValueFactory(new PropertyValueFactory<Artikli,String>("naziv"));
-    	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,String>("cijena"));
-    	tableViewRacun.setItems(getArtikli());
+    	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,Double>("cijena"));
+    	tableViewRacun.setItems(getArtikli(""));
     	
     	
-    	
+    	List<Artikli> artikli = new ArrayList<Artikli>();
+		artikli=bazaBlagajna.bazaCitajArtikle();
          
-        int k=-1;
-        for(int i = 0 ; i<4;i++) {    
-        	for (int j=0;j<4;j++){
-        		k++;
-        		btns[k].setMinSize(149, 120);	//Poveca gumbove da popune okvir
-        		btns[k].setMaxSize(620, 500);
-        		    
-        		grid_GumboviArtikl.add(btns[k],j ,i);
-        		grid_GumboviArtikl.setHalignment(btns[k], HPos.CENTER);  //Centrira gumbove
-        		grid_GumboviArtikl.setValignment(btns[k], VPos.CENTER);
-        		
-        		//grid_GumboviArtikl.setHgrow(btns[k], Priority.ALWAYS); 
-        		//grid_GumboviArtikl.setVgrow(btns[k], Priority.ALWAYS);
-        		
-        		//Postavlja Listenere na gumbove
-        		btns[k].setOnAction (e -> {
-        			gumbArtikliKlik(e);
-        		});
-        		}
-        	}
+        	int k=0,i=0,j=0;
+	        while (k!=artikli.size()) {    
+	        	
+	        		
+	        		btns[k].setMinSize(149, 120);	//Poveca gumbove da popune okvir
+	        		btns[k].setMaxSize(620, 500);
+	        		    
+	        		grid_GumboviArtikl.add(btns[k],j ,i);
+	        		grid_GumboviArtikl.setHalignment(btns[k], HPos.CENTER);  //Centrira gumbove
+	        		grid_GumboviArtikl.setValignment(btns[k], VPos.CENTER);
+	        		
+	        		
+	        		//Postavlja Listenere na gumbove
+	        		btns[k].setOnAction (e -> {
+	        			gumbArtikliKlik(e);
+	        		});
+	        		
+	        	++k;
+	        	++j;
+	        	if (j%4==0){
+	        		j=0;
+	        		++i;
+	        	}
+	        }
         }
     
     //Funkcija koja se izvodi kad se klikne na gumb
 	public void gumbArtikliKlik(ActionEvent sender){
 		Button btn=(Button) sender.getSource();
+		String naziv=btn.getText();
 		
+		System.out.println(btn.getText());
 		
+		tableViewRacun.setItems(getArtikli(naziv));
+		//getArtikli(naziv);
 		//System.out.println("Provba");
 	}
 	
 	
 	//Radi observable list stavlja artikle u nju za prikaz u table view
-	public ObservableList<Artikli> getArtikli(){
+	public ObservableList<Artikli> getArtikli(String naziv){
 		ObservableList<Artikli> artikli = FXCollections.observableArrayList();
 		
 		List<Artikli> artiklii = new ArrayList<Artikli>();
 		artiklii=bazaBlagajna.bazaCitajArtikle();
-				
-		for (int i =0;i < artiklii.size();i++){
-			artikli.add(artiklii.get(i));
-		}
+		
+		artikli.add(artiklii.get(0));
 
 		
-
+		for (int i =0 ;i<artiklii.size();i++){
+			System.out.println("+"+naziv+" "+artiklii.get(i).getNaziv());
+		if (naziv == artiklii.get(i).getNaziv()){
+			System.out.println("wtf");
+			artikli.add(artiklii.get(i));
+		}
+		}
 
 		return artikli;
 	}
