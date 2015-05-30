@@ -180,6 +180,7 @@ public class Dodaj_artikl {
     	@FXML
     	private void osvjezi()
     	{
+    		artikli.removeAll(artikli);
     		tableColumnNaziv.setCellValueFactory(new PropertyValueFactory<Artikli,String>("naziv"));
         	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,String>("cijena"));
         	tableColumnKolicina.setCellValueFactory(new PropertyValueFactory<Artikli,String>("kolicina"));
