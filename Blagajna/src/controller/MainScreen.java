@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dataClass.Artikli;
+import dataClass.Konobar;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +21,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -38,8 +41,21 @@ public class MainScreen{
 	
 	private List<Artikli> artikliBaza = new ArrayList<Artikli>(bazaBlagajna.bazaCitajArtikle());
 	
+	private String valuta=" kn";
+	
+	/**
+	 * NAZIV lokala napraviti
+	 */
+	private String nazivLokala="Lokal";
+	
 	@FXML
-	public ChoiceBox choiceBoxKonobar;
+	public ChoiceBox<String> choiceBoxKonobar;
+	
+	@FXML
+	public static SplitPane splitPaneHorizontalni;
+	
+	@FXML
+	public SplitPane splitPaneVertikalan;
 	
 	@FXML
 	public Button btnObrisi;
@@ -72,21 +88,15 @@ public class MainScreen{
         this.main = main;
 
     }
-
-   	//Inicjalizira gumbove
-    public void initBtnsArray() {
-		
-        for(int i = 0; i < artikliBaza.size(); i++) {
-            btns[i] = new Button(artikliBaza.get(i).getNaziv()); 
-        }
-    }
     
     //popunjava Grid s gumbovima
     @FXML
     public void initialize() {
     	initBtnsArray();
+    	initChoiceBox();
     	
     	//inicijalizira tablicu stupce, naziv je ime podatka u klasi Artikli
+    	tableViewRacun.setPlaceholder(new Label("Unesite artikle za naplatu"));
     	tableColumnNaziv.setCellValueFactory(new PropertyValueFactory<Artikli,String>("naziv"));
     	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,Double>("cijena"));
     	tableViewRacun.setItems(getArtikli(""));
@@ -106,34 +116,78 @@ public class MainScreen{
 	    	   Artikli podatakNaIspisuRacuna = tableViewRacun.getSelectionModel().getSelectedItem();
 	    	   artikli.remove(podatakNaIspisuRacuna);  
 	    	   
-	    	   txt_field_Ukupno.setText(ukupno());
+	    	   txt_field_Ukupno.setText(ukupno()+valuta);
 	    		});
 	       
-	       /*
+	       
 	       btnNaplati.setOnAction (e -> {
-	    	   	
-	    		});*/
+	    	   	gumbNaplatiKlik(e);
+	    		});
+	       
+	       //Da fixira split pane i ne pokazuje ga
+	       //splitPaneHorizontalni.setDividerPositions(0.3);
+	       //splitPaneHorizontalni.lookupAll(".split-pane-divider").stream().forEach(div ->  div.setMouseTransparent(true));
         }
+    
+    
+    //Izvodi se pritiskom gumba napalti dodaje u bazu racune
+    /**
+     * Mozda bi trebo printat racun
+     * 
+     */
+    public boolean gumbNaplatiKlik(ActionEvent sender){
+    Alert alert = new Alert(AlertType.INFORMATION);
+    
+    	if(choiceBoxKonobar.getValue()==null){
+    		alert.setTitle("Racun nije naplacen");
+    		alert.setHeaderText(null);
+    		alert.setContentText("Racun nije naplacen."+'\n'+"Odaberite konobara i pokušajte ponovno.");
+    		alert.showAndWait();
+    		return false;
+    	}
+    	
+    	bazaBlagajna b = new bazaBlagajna();
+    	if(b.dodaj_Racun(Double.parseDouble(ukupno()), nazivLokala, choiceBoxKonobar.getValue()) == true)
+    	{
+    		artikli.removeAll(artikli);
+    		tableViewRacun.setPlaceholder(new Label("Unesite artikle za naplatu"));
+    		txt_field_Ukupno.setText(ukupno()+valuta);
+    		
+    		alert.setTitle("Racun");
+    		alert.setHeaderText(null);
+    		alert.setContentText("Racun je naplacen");
+    		alert.showAndWait();
+    	}
+    	return true;
+    }
+    
+ 	//Inicjalizira gumbove
+    public void initBtnsArray() {
+		
+        for(int i = 0; i < artikliBaza.size(); i++) {
+            btns[i] = new Button(artikliBaza.get(i).getNaziv()); 
+        }
+    }
     
     //Funkcija koja se izvodi kad se klikne na neki od gumbova s artiklima
 	public void gumbArtikliKlik(ActionEvent sender){
+		
 		Button btn=(Button) sender.getSource();
 		String naziv=btn.getText();
 		tableViewRacun.setItems(getArtikli(naziv));
 		
-		txt_field_Ukupno.setText(ukupno()); //Postavlja cijenu
+		txt_field_Ukupno.setText(ukupno()+valuta); //Postavlja cijenu
 		}
 	
 	
 	//Vraæa zbroj artikala
 	public String ukupno(){
 		double ukupno=0;
-		String valuta = " kn";
 		
 		for (int i =0; i<artikli.size();i++){
 			ukupno+=artikli.get(i).getCijena();
 		}
-		return String.valueOf(ukupno)+valuta;
+		return String.valueOf(ukupno);
 	}
 	
 	
@@ -167,7 +221,7 @@ public class MainScreen{
 		int k=0,i=0,j=0;
         while (k!=artikliBaza.size()) {    
         	
-        		btns[k].setMinSize(149, 120);	//Poveca gumbove da popune okvir
+        		btns[k].setMinSize(149, 100);	//Poveca gumbove da popune okvir
         		btns[k].setMaxSize(620, 500);
         		    
         		grid_GumboviArtikl.add(btns[k],j ,i);
@@ -187,6 +241,16 @@ public class MainScreen{
         		++i;
         	}
         }
+	}
+	
+	//incijalizira choice box
+	public void initChoiceBox(){
+		
+		List<Konobar> konobarBaza = new ArrayList<Konobar>(bazaBlagajna.bazaCitajKonobar());
+	
+		for (int i=0;i<konobarBaza.size();i++)
+		choiceBoxKonobar.getItems().add(konobarBaza.get(i).getNaziv());
+		
 	}
 	
 }

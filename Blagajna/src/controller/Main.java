@@ -141,10 +141,6 @@ public class Main extends Application {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("../views/MainScreen.fxml"));
-           /*
-            TablicaGumbova ini = new TablicaGumbova();
-            ini.initBtnsArray();
-            ini.initialize();*/
             
             AnchorPane personOverview = (AnchorPane) loader.load();
 

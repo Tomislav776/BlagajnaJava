@@ -75,9 +75,9 @@ public class bazaBlagajna {
 	/**
 	  Popravi datum 
 	 **/
-	public boolean dodaj_Racun(double iznos, String nazivLokala, String konobar, String datum) {
+	public boolean dodaj_Racun(double iznos, String nazivLokala, String konobar) {
 		PreparedStatement stmt = null;
-		  String SQL = "INSERT INTO racuni (iznos, nazivLokala, konobar, datum) VALUES(?, ?, ?, ?);";
+		  String SQL = "INSERT INTO racuni (iznos, nazivLokala, konobar) VALUES(?, ?, ?);";
 		 
 	
 			try{
@@ -90,7 +90,7 @@ public class bazaBlagajna {
 				stmt.setDouble(1, iznos);
 				stmt.setString(2, nazivLokala);
 				stmt.setString(3, konobar);
-				stmt.setString(4, datum); /** Brijem da netreba **/ /*Treba :D*/
+				//ipak netreba noobe
 			
 			stmt.executeUpdate();
 			
@@ -233,7 +233,7 @@ public class bazaBlagajna {
 	 */
 	public boolean dodaj_konobar(String imeKonobar) {
 		PreparedStatement stmt = null;
-		  String SQL = "INSERT INTO racuni (naziv) VALUES(?);";
+		  String SQL = "INSERT INTO konobar (naziv, satnica) VALUES(?, ?);";
 		 
 	
 			try{
@@ -244,6 +244,7 @@ public class bazaBlagajna {
 				stmt = conn.prepareStatement(SQL);
 			
 				stmt.setString(1, imeKonobar);
+				stmt.setInt(2, 3);
 				
 			
 			stmt.executeUpdate();
