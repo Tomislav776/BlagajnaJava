@@ -111,40 +111,45 @@ public class MainScreen{
 	        	}
 	        }
 	        
-	        
+	       //Brise sve artikle
 	       btnObrisiSve.setOnAction (e -> {
 	    	  artikli.removeAll(artikli);
-	    	  txt_field_Ukupno.setText(String.valueOf(ukupno()));
+	    	  txt_field_Ukupno.setText(ukupno());
     		});
-	       /*
+	       
+	       
+	       //Brise odabrani artikl u ispisu
 	       btnObrisi.setOnAction (e -> {
+	    	   Artikli podatakNaIspisuRacuna = tableViewRacun.getSelectionModel().getSelectedItem();
+	    	   artikli.remove(podatakNaIspisuRacuna);  
 	    	   
-	    	   Artikli currentPerson = (Artikli)   tableViewRacun.getItems().;
-	    			   
-	    	Artikli currentPerson = (Artikli) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
-           	
-	    	artikli.remove(currentPerson);
-           	tableViewRacun.setItems(getArtikli(""));
+	    	   txt_field_Ukupno.setText(ukupno());
+	    		});
+	       
+	       /*
+	       btnNaplati.setOnAction (e -> {
+	    	   	
 	    		});*/
         }
     
-    //Funkcija koja se izvodi kad se klikne na gumb
+    //Funkcija koja se izvodi kad se klikne na neki od gumbova s artiklima
 	public void gumbArtikliKlik(ActionEvent sender){
 		Button btn=(Button) sender.getSource();
 		String naziv=btn.getText();
 		tableViewRacun.setItems(getArtikli(naziv));
 		
-		txt_field_Ukupno.setText(String.valueOf(ukupno()));
+		txt_field_Ukupno.setText(ukupno()); //Postavlja cijenu
 		}
 	
-	public double ukupno(){
+	//Vraæa zbroj artikala
+	public String ukupno(){
 		double ukupno=0;
+		String valuta = " kn";
 		
 		for (int i =0; i<artikli.size();i++){
 			ukupno+=artikli.get(i).getCijena();
 		}
-		
-		return ukupno;
+		return String.valueOf(ukupno)+valuta;
 	}
 	
 	
@@ -152,17 +157,17 @@ public class MainScreen{
 	public ObservableList<Artikli> getArtikli(String naziv){
 		
 		for (int i =0 ;i<artikliBaza.size();i++){
-		if (naziv.equals(artikliBaza.get(i).getNaziv())){
-			artikli.add(artikliBaza.get(i));
-			break;
-		}
+			if (naziv.equals(artikliBaza.get(i).getNaziv())){
+				artikli.add(artikliBaza.get(i));
+				break;
+			}
+			
+			
 		}
 
 		return artikli;
 	}
 	
-
-    	
 }
     
     

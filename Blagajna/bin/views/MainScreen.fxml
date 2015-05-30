@@ -15,23 +15,26 @@
                <children>
                   <VBox layoutY="189.0" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="189.0">
                      <children>
-                        <TableView fx:id="tableViewRacun" editable="true" prefHeight="400.0" prefWidth="200.0">
+                        <TableView fx:id="tableViewRacun" editable="true" prefHeight="410.0" prefWidth="200.0">
                           <columns>
                             <TableColumn fx:id="tableColumnNaziv" minWidth="250.0" prefWidth="75.0" text="Naziv" />
                             <TableColumn fx:id="tableColumnCijena" prefWidth="75.0" text="Cijena" />
                           </columns>
                         </TableView>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="355.0">
+                        <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="355.0" spacing="10.0">
                            <children>
                               <Label text="Ukupno:" />
-                              <TextField fx:id="txt_field_Ukupno" />
+                              <TextField fx:id="txt_field_Ukupno" prefHeight="40.0" />
                            </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" top="5.0" />
+                           </VBox.margin>
                         </HBox>
-                        <HBox prefHeight="66.0" prefWidth="355.0" spacing="15.0" VBox.vgrow="ALWAYS">
+                        <HBox alignment="CENTER" maxHeight="40.0" prefHeight="40.0" prefWidth="355.0" spacing="15.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Button fx:id="btnObrisiSve" mnemonicParsing="false" prefHeight="56.0" prefWidth="100.0" text="Obriši sve" />
-                              <Button fx:id="btnObrisi" mnemonicParsing="false" prefHeight="51.0" prefWidth="100.0" text="Obriši" />
-                              <Button fx:id="btnNaplati" mnemonicParsing="false" prefHeight="49.0" prefWidth="100.0" text="Naplati" />
+                              <Button fx:id="btnObrisiSve" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Obriši sve" />
+                              <Button fx:id="btnObrisi" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Obriši" />
+                              <Button fx:id="btnNaplati" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Naplati" />
                            </children>
                         </HBox>
                      </children>
