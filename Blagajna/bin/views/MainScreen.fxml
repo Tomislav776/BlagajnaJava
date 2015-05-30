@@ -10,7 +10,7 @@
 
 <AnchorPane minHeight="768.0" minWidth="1024.0" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainScreen">
    <children>
-      <SplitPane fx:id="splitPaneVertikalan" dividerPositions="0.35" layoutX="280.0" layoutY="208.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane fx:id="splitPaneVertikalan" dividerPositions="0.35" layoutX="280.0" layoutY="208.0" maxHeight="1000000.0" maxWidth="1000000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="686.0" prefWidth="288.0">
                <children>
@@ -18,7 +18,7 @@
                      <children>
                         <TableView fx:id="tableViewRacun" editable="true" prefHeight="634.0" prefWidth="355.0" VBox.vgrow="ALWAYS">
                           <columns>
-                            <TableColumn fx:id="tableColumnNaziv" minWidth="250.0" prefWidth="75.0" text="Naziv" />
+                            <TableColumn fx:id="tableColumnNaziv" minWidth="278.0" prefWidth="75.0" text="Naziv" />
                             <TableColumn fx:id="tableColumnCijena" prefWidth="75.0" text="Cijena" />
                           </columns>
                         </TableView>
@@ -47,7 +47,7 @@
             </AnchorPane>
           <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <SplitPane fx:id="splitPaneHorizontalni" dividerPositions="0.2081151832460733" layoutX="215.0" layoutY="199.0" orientation="VERTICAL" prefHeight="766.0" prefWidth="661.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane fx:id="splitPaneHorizontalni" dividerPositions="0.2081151832460733" layoutX="215.0" layoutY="199.0" maxHeight="1000000.0" maxWidth="1000000.0" orientation="VERTICAL" prefHeight="766.0" prefWidth="661.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
                       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="659.0">
                            <children>

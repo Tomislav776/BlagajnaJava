@@ -52,7 +52,7 @@ public class MainScreen{
 	public ChoiceBox<String> choiceBoxKonobar;
 	
 	@FXML
-	public static SplitPane splitPaneHorizontalni;
+	public SplitPane splitPaneHorizontalni;
 	
 	@FXML
 	public SplitPane splitPaneVertikalan;
@@ -124,9 +124,10 @@ public class MainScreen{
 	    	   	gumbNaplatiKlik(e);
 	    		});
 	       
+
 	       //Da fixira split pane i ne pokazuje ga
-	       //splitPaneHorizontalni.setDividerPositions(0.3);
-	       //splitPaneHorizontalni.lookupAll(".split-pane-divider").stream().forEach(div ->  div.setMouseTransparent(true));
+	       //splitPaneVertikalan.setDividerPositions(0.32);
+	       //splitPaneVertikalan.lookupAll(".split-pane-divider").stream().forEach(div ->  div.setMouseTransparent(true));
         }
     
     
