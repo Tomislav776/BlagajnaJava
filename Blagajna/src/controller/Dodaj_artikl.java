@@ -1,7 +1,12 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import dataClass.Artikli;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -9,9 +14,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -19,12 +27,27 @@ import javafx.scene.layout.AnchorPane;
 public class Dodaj_artikl {
 	@FXML
 	public TextField txt_naziv;
+	
 	@FXML
 	public TextField txt_kolicina;
+	
 	@FXML
 	public TextField txt_cijena;
+	
 	@FXML
 	public Button btn_unesi_artikl;
+	
+	@FXML
+    public TableView<Artikli> tableViewArtikli;
+	
+	@FXML
+    public TableColumn tableColumnCijena;
+	
+	@FXML
+    public TableColumn<Artikli, String> tableColumnNaziv;
+	
+	@FXML
+    public TableColumn<Artikli, String> tableColumnKolicina;
 
 	private String naziv;
 	private String kolicina;
@@ -47,23 +70,10 @@ public class Dodaj_artikl {
      */
     @FXML
     private void initialize() {
-    	/*btn_unesi_artikl.setOnAction(e -> {
-    		naziv = txt_naziv.getText();
-        	kolicina = txt_kolicina.getText();
-        	bazaBlagajna b = new bazaBlagajna();
-        	b.dodaj_artikl(naziv, kolicina);
-     	   });*/
-    	/*btn_unesi_artikl.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent arg0) {
-            	naziv = txt_naziv.getText();
-            	kolicina = txt_kolicina.getText();
-            	bazaBlagajna b = new bazaBlagajna();
-            	b.dodaj_artikl(naziv, kolicina);
-
-            }
-        });*/
+    	tableColumnNaziv.setCellValueFactory(new PropertyValueFactory<Artikli,String>("naziv"));
+    	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,String>("cijena"));
+    	tableColumnKolicina.setCellValueFactory(new PropertyValueFactory<Artikli,String>("kolicina"));
+    	tableViewArtikli.setItems(getArtikli());
     }
     
     	
@@ -96,4 +106,17 @@ public class Dodaj_artikl {
         this.main = main;
 
     }
+    
+    public ObservableList<Artikli> getArtikli(){
+		ObservableList<Artikli> artikli = FXCollections.observableArrayList();
+		
+		List<Artikli> artikliIzBaze = new ArrayList<Artikli>();
+		artikliIzBaze = bazaBlagajna.bazaCitajArtikle();
+				
+		for (int i =0;i < artikliIzBaze.size();i++){
+			artikli.add(artikliIzBaze.get(i));
+		}
+
+		return artikli;
+	}
 }
