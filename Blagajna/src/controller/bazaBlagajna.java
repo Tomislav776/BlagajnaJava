@@ -67,18 +67,30 @@ public class bazaBlagajna {
 	
 	public List<Artikli> bazaCitajArtikle(String query) throws SQLException {
 	    List<Artikli> artikli = new ArrayList<Artikli>();
+	    PreparedStatement stmt = null;
 
-	    try (
-	        Connection connection = database.getConnection();
-	        PreparedStatement statement = connection.prepareStatement(query);
-	        ResultSet resultSet = statement.executeQuery();
-	    ) {
+	    try{
+	    		Class.forName("com.mysql.jdbc.Driver").newInstance();
+				//Vezanje na bazu
+				String connectionUrl = "jdbc:mysql://localhost:3306/blagajna";
+				conn = DriverManager.getConnection(connectionUrl, "root", "");
+	    	Connection connection = DriverManager.getConnection(connectionUrl, "root", "");
+	        stmt = connection.prepareStatement(query);
+	        ResultSet resultSet = stmt.executeQuery();
+	    
 	        while (resultSet.next()) {
 	        	Artikli artikl = new Artikli(resultSet.getInt("id"),resultSet.getString("naziv"),resultSet.getInt("kolicina"),resultSet.getDouble("Cijena"));
 	        	artikli.add(artikl);
 	        }
-	    }
+	    
 
+	    
+	}catch(Exception e){
+		
+	}finally {
+		try { if (stmt != null) stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+		try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+	}
 	    return artikli;
 	}
 	

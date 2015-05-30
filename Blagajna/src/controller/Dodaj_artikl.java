@@ -79,7 +79,7 @@ public class Dodaj_artikl {
         	{
         		Alert alert = new Alert(AlertType.INFORMATION);
         		alert.setTitle("Uspješno dodan artikl");
-        		alert.setHeaderText("Uspješno ste dodali artikl.");
+        		alert.setHeaderText(null);
         		alert.setContentText("Uspješno ste dodali artikl.");
 
         		alert.showAndWait();
