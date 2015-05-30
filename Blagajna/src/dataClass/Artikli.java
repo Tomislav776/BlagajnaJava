@@ -6,6 +6,9 @@ public class Artikli {
 	private int kolicina;
 	private double cijena;
 	
+	public Artikli (){
+	}
+	
 	public Artikli (int id, String naziv, int kolicina, double cijena){
 		this.naziv = naziv;
 		this.kolicina = kolicina;

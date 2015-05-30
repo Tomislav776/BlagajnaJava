@@ -16,6 +16,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TableSelectionModel;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -23,8 +26,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+
 
 public class Dodaj_artikl {
+	
 	@FXML
 	private TextField txt_naziv;
 	
@@ -41,9 +48,6 @@ public class Dodaj_artikl {
 	private Button btn_obrisi;
 	
 	@FXML
-	private Button btn_osvjezi;
-	
-	@FXML
 	private TableView<Artikli> tableViewArtikli;
 	
 	@FXML
@@ -54,6 +58,11 @@ public class Dodaj_artikl {
 	
 	@FXML
 	private TableColumn<Artikli, String> tableColumnKolicina;
+	
+	@FXML
+    private TextField filter;
+	
+	ObservableList<Artikli> artikli = FXCollections.observableArrayList();
 
 	private String naziv;
 	private String kolicina;
@@ -76,11 +85,45 @@ public class Dodaj_artikl {
      */
     @FXML
     private void initialize() {
+
+    	// inicijalizacija stupaca i prikaz
     	tableColumnNaziv.setCellValueFactory(new PropertyValueFactory<Artikli,String>("naziv"));
     	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,String>("cijena"));
     	tableColumnKolicina.setCellValueFactory(new PropertyValueFactory<Artikli,String>("kolicina"));
+    	tableViewArtikli.getSelectionModel().setCellSelectionEnabled(true);
+		tableViewArtikli.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     	tableViewArtikli.setItems(getArtikli());
-    }
+
+        // wrepamo ObservableList u FilteredList
+        FilteredList<Artikli> filtriraniArtikli = new FilteredList<>(artikli);
+
+        // Listener za svaki put kada se filter (textfield) promjeni (upise ili obrise neko slovo)
+        filter.textProperty().addListener((observable, oldValue, newValue) -> {
+        	filtriraniArtikli.setPredicate(artikl -> {
+                // Ako je filter prazan, prikaži sve artikle
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                 //Usporedi naziv artikla s nazivom iz filtera
+                String lowerCaseFilter = newValue.toLowerCase();
+               	if (artikl.getNaziv().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // vrati true ako neki artikl sadrzi tekst iz filtera
+                }
+                return false; // ako ne sadrzi vrati false
+            });
+       });
+
+        // wrepaj FilteredList u SortedList
+        SortedList<Artikli> sortiraniArtikli = new SortedList<>(filtriraniArtikli);
+
+        // Poveži SortedList comparator sa TableView comparatorom
+        sortiraniArtikli.comparatorProperty().bind(tableViewArtikli.comparatorProperty());
+
+        // Stavi samo sortirane (i filtirane) artikle u tablicu
+        tableViewArtikli.setItems(sortiraniArtikli);
+
+}
     
     	@FXML
     	private void handleClickDodaj()
@@ -103,6 +146,10 @@ public class Dodaj_artikl {
             	bazaBlagajna b = new bazaBlagajna();
             	if(b.dodaj_artikl(naziv, kolicina_INT, cijena_Double) == true)
             	{
+            		txt_naziv.clear();
+            		txt_kolicina.clear();
+            		txt_cijena.clear();
+            		osvjezi();
             		Alert alert = new Alert(AlertType.INFORMATION);
             		alert.setTitle("Uspješno dodan artikl");
             		alert.setHeaderText(null);
@@ -115,11 +162,28 @@ public class Dodaj_artikl {
     	}
     	
     	@FXML
+    	private void obrisi()
+    	{
+    		ObservableList<Artikli> artikli1 = FXCollections.observableArrayList();
+    		artikli1.add(tableViewArtikli.getSelectionModel().getSelectedItem());
+    		
+    		//brisanje iz baze
+    		for(Artikli artikl : artikli1) {
+    		    bazaBlagajna.obrisi_artikl(artikl.getId());
+    		}
+    		
+    		//brisanje iz liste koja se u tom trenutku prikazuje na tablici
+    		artikli1.forEach(artikli::remove);
+    		osvjezi();
+    	}
+    	
+    	@FXML
     	private void osvjezi()
     	{
     		tableColumnNaziv.setCellValueFactory(new PropertyValueFactory<Artikli,String>("naziv"));
         	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,String>("cijena"));
         	tableColumnKolicina.setCellValueFactory(new PropertyValueFactory<Artikli,String>("kolicina"));
+        	
         	tableViewArtikli.setItems(getArtikli());
     	}
 
@@ -134,8 +198,6 @@ public class Dodaj_artikl {
     }
     
     private ObservableList<Artikli> getArtikli(){
-		ObservableList<Artikli> artikli = FXCollections.observableArrayList();
-		
 		List<Artikli> artikliIzBaze = new ArrayList<Artikli>();
 		artikliIzBaze = bazaBlagajna.bazaCitajArtikle();
 				

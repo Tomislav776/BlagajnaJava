@@ -8,6 +8,14 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Dodaj_artikl">
    <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <TextField fx:id="filter" alignment="CENTER" prefHeight="25.0" prefWidth="325.0" promptText="Unesite naziv artikla da vidite postoji li vec u bazi podataka">
+               <HBox.margin>
+                  <Insets left="150.0" top="10.0" />
+               </HBox.margin></TextField>
+         </children>
+      </HBox>
       <TableView fx:id="tableViewArtikli" prefHeight="341.0" prefWidth="600.0">
         <columns>
           <TableColumn fx:id="tableColumnNaziv" editable="false" prefWidth="219.0" text="Naziv artikla" />
@@ -17,12 +25,20 @@
       </TableView>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <TextField fx:id="txt_naziv" promptText="Naziv artikla" />
-            <TextField fx:id="txt_kolicina" promptText="Količina artikla" />
+            <TextField fx:id="txt_naziv" promptText="Naziv artikla">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin></TextField>
+            <TextField fx:id="txt_kolicina" promptText="Količina artikla">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin></TextField>
             <TextField fx:id="txt_cijena" promptText="Cijena artikla" />
-            <Button fx:id="btn_unesi_artikl" mnemonicParsing="false" onAction="#handleClickDodaj" text="Dodaj" />
-            <Button fx:id="btn_obrisi" mnemonicParsing="false" text="Obriši" />
-            <Button fx:id="btn_osvjezi" mnemonicParsing="false" onAction="#osvjezi" text="Osvježi" />
+            <Button fx:id="btn_unesi_artikl" mnemonicParsing="false" onAction="#handleClickDodaj" text="Dodaj">
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin></Button>
+            <Button fx:id="btn_obrisi" mnemonicParsing="false" onAction="#obrisi" text="Obriši" />
          </children>
       </HBox>
    </children>

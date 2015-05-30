@@ -13,6 +13,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+import java.util.Optional;
+import javafx.scene.control.ButtonBar.ButtonData;
 
 public class Main extends Application {
 
@@ -27,11 +32,13 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Blagajna");
-
+        
+        primaryStage.setOnCloseRequest(e-> {
+        	e.consume();
+        	zatvori();
+        	});
+        
         initLogin();
-        /*initRootLayout();
-
-        showPersonOverview();*/
     }
     
     public void initLogin() {
@@ -81,6 +88,16 @@ public class Main extends Application {
                 }
             });
             
+            
+            //Pritiskom na gumb izlaz poziva se funkcija zatvori koja otvara dijalog gdje vas pita da li ste sigurni da želite izaæi van iz aplikacije, ukoliko kliknete da jeste, aplikacija se gasi
+            controller.btn_izlaz.setOnAction(new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent arg0) {
+                	zatvori();
+                }
+            });
+           
             
 
             // Show the scene containing the root layout.
@@ -145,6 +162,25 @@ public class Main extends Application {
      */
     public Stage getPrimaryStage() {
         return primaryStage;
+    }
+    
+    
+    public void zatvori()
+    {
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+    	alert.setTitle("Izlazak iz aplikacije");
+    	alert.setHeaderText(null);
+    	alert.setContentText("Jeste li sigurni da želite izaæi iz aplikacije?");
+
+    	ButtonType button1 = new ButtonType("Jesam, izaði");
+    	ButtonType button2 = new ButtonType("Nisam, ostani u aplikaciji", ButtonData.CANCEL_CLOSE);
+
+    	alert.getButtonTypes().setAll(button1, button2);
+
+    	Optional<ButtonType> result = alert.showAndWait();
+    	if (result.get() == button1){
+    		primaryStage.close();
+    	}
     }
 
     public static void main(String[] args) {

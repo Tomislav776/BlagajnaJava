@@ -14,7 +14,7 @@ public class Login {
 	    @FXML
 	    public Button btn_prijava;
 	    @FXML
-	    private Button btn_izlaz;
+	    public Button btn_izlaz;
 	    
 
 	    // Reference to the main application.

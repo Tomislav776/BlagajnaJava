@@ -65,6 +65,33 @@ public class bazaBlagajna {
 			return true;
 	}
 	
+	public static boolean obrisi_artikl(int id) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		  String SQL = "DELETE FROM artikli WHERE id = ?;";
+		 
+			try{
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
+				//Vezanje na bazu
+				String connectionUrl = "jdbc:mysql://localhost:3306/blagajna?characterEncoding=utf8";
+				conn = DriverManager.getConnection(connectionUrl, "root", "");
+			 stmt = conn.prepareStatement(SQL);
+			stmt.setInt(1, id);
+			
+ 
+			stmt.executeUpdate();
+			
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			try { if (stmt != null) stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+			try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+		}
+			return true;
+	}
+	
 	public static List<Artikli> bazaCitajArtikle() {
 	    List<Artikli> artikli = new ArrayList<Artikli>();
 	    PreparedStatement stmt = null;
