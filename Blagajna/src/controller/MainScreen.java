@@ -31,6 +31,8 @@ import javafx.stage.Stage;
 
 public class MainScreen{
 	
+	public  ObservableList<Artikli> artikli = FXCollections.observableArrayList();
+	
 	@FXML
     public GridPane grid_GumboviArtikl;
 	
@@ -116,17 +118,13 @@ public class MainScreen{
 	
 	//Radi observable list stavlja artikle u nju za prikaz u table view
 	public ObservableList<Artikli> getArtikli(String naziv){
-		ObservableList<Artikli> artikli = FXCollections.observableArrayList();
 		
 		List<Artikli> artiklii = new ArrayList<Artikli>();
 		artiklii=bazaBlagajna.bazaCitajArtikle();
 		
-		artikli.add(artiklii.get(0));
-
 		
 		for (int i =0 ;i<artiklii.size();i++){
-			System.out.println("+"+naziv+" "+artiklii.get(i).getNaziv());
-		if (naziv == artiklii.get(i).getNaziv()){
+		if (naziv.equals(artiklii.get(i).getNaziv())){
 			System.out.println("wtf");
 			artikli.add(artiklii.get(i));
 		}
