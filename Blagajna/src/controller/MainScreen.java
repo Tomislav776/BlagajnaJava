@@ -139,7 +139,7 @@ public class MainScreen{
 	
 		for (int i =0 ;i<artikliBaza.size();i++){
 			if (naziv.equals(artikliBaza.get(i).getNaziv())){
-				/*if (pamti!=-1){
+				if (pamti!=-1){
 					Alert alert = new Alert(AlertType.INFORMATION);
             		alert.setTitle("Više artikala s istim nazivom");
             		alert.setHeaderText(null);
@@ -147,7 +147,7 @@ public class MainScreen{
 
             		alert.showAndWait();
             		break;
-				}*/
+				}
 		
 				artikli.add(artikliBaza.get(i));
 				pamti = i;
