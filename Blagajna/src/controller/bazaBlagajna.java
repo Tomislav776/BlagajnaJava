@@ -85,7 +85,7 @@ public class bazaBlagajna {
 				stmt.setDouble(1, iznos);
 				stmt.setString(2, nazivLokala);
 				stmt.setString(3, konobar);
-				stmt.setString(4, datum); /** Brijem da netreba **/
+				stmt.setString(4, datum); /** Brijem da netreba **/ /*Treba :D*/
 			
 			stmt.executeUpdate();
 			

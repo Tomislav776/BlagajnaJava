@@ -1,5 +1,9 @@
 package dataClass;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
 public class Racun {
 	
 	private int id;
@@ -11,9 +15,12 @@ public class Racun {
 	public Racun (int id, double iznos, String nazivLokala, String konobar, String datum){
 		this.id=id;
 		this.iznos=iznos;
-		this.datum = datum;
 		this.nazivLokala=nazivLokala;
 		this.konobar=konobar;
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+    	LocalDateTime trenutnoVrijeme = LocalDateTime.now(ZoneId.of("Europe/Zagreb"));
+    	String formatiranoVrijeme = trenutnoVrijeme.format(format);
+    	this.datum = formatiranoVrijeme;
 	}
 	
 
