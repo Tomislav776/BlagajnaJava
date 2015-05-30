@@ -17,10 +17,12 @@ import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -85,31 +87,8 @@ public class MainScreen{
     	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,Double>("cijena"));
     	tableViewRacun.setItems(getArtikli(""));
     	
-         
-        	int k=0,i=0,j=0;
-	        while (k!=artikliBaza.size()) {    
-	        	
-	        		
-	        		btns[k].setMinSize(149, 120);	//Poveca gumbove da popune okvir
-	        		btns[k].setMaxSize(620, 500);
-	        		    
-	        		grid_GumboviArtikl.add(btns[k],j ,i);
-	        		grid_GumboviArtikl.setHalignment(btns[k], HPos.CENTER);  //Centrira gumbove
-	        		grid_GumboviArtikl.setValignment(btns[k], VPos.CENTER);
-	        		
-	        		
-	        		//Postavlja Listenere na gumbove
-	        		btns[k].setOnAction (e -> {
-	        			gumbArtikliKlik(e);
-	        		});
-	        		
-	        	++k;
-	        	++j;
-	        	if (j%4==0){
-	        		j=0;
-	        		++i;
-	        	}
-	        }
+    	initGumboviUGridu(); 
+        	
 	        
 	       //Brise sve artikle
 	       btnObrisiSve.setOnAction (e -> {
@@ -141,6 +120,7 @@ public class MainScreen{
 		txt_field_Ukupno.setText(ukupno()); //Postavlja cijenu
 		}
 	
+	
 	//Vraæa zbroj artikala
 	public String ukupno(){
 		double ukupno=0;
@@ -155,17 +135,54 @@ public class MainScreen{
 	
 	//Radi observable list stavlja artikle u nju za prikaz u table view
 	public ObservableList<Artikli> getArtikli(String naziv){
-		
+	int pamti = -1;
+	
 		for (int i =0 ;i<artikliBaza.size();i++){
 			if (naziv.equals(artikliBaza.get(i).getNaziv())){
-				artikli.add(artikliBaza.get(i));
-				break;
-			}
-			
-			
-		}
+				/*if (pamti!=-1){
+					Alert alert = new Alert(AlertType.INFORMATION);
+            		alert.setTitle("Više artikala s istim nazivom");
+            		alert.setHeaderText(null);
+            		alert.setContentText("U vašoj bazi podataka nalazi se više artikala s istim nazivom, "+'\n'+"Kako bi dodali artikl koji vi želite promijenite naziv u bazi jednome od njih.");
 
+            		alert.showAndWait();
+            		break;
+				}*/
+		
+				artikli.add(artikliBaza.get(i));
+				pamti = i;
+			}
+		}
+			
 		return artikli;
+	}
+	
+	
+	//Inicijalizira gumbove u gridu
+	public void initGumboviUGridu (){
+		int k=0,i=0,j=0;
+        while (k!=artikliBaza.size()) {    
+        	
+        		btns[k].setMinSize(149, 120);	//Poveca gumbove da popune okvir
+        		btns[k].setMaxSize(620, 500);
+        		    
+        		grid_GumboviArtikl.add(btns[k],j ,i);
+        		grid_GumboviArtikl.setHalignment(btns[k], HPos.CENTER);  //Centrira gumbove
+        		grid_GumboviArtikl.setValignment(btns[k], VPos.CENTER);
+        		
+        		
+        		//Postavlja Listenere na gumbove
+        		btns[k].setOnAction (e -> {
+        			gumbArtikliKlik(e);
+        		});
+        		
+        	++k;
+        	++j;
+        	if (j%4==0){
+        		j=0;
+        		++i;
+        	}
+        }
 	}
 	
 }
