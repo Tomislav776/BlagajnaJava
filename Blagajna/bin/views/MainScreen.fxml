@@ -29,9 +29,9 @@
                         </HBox>
                         <HBox prefHeight="66.0" prefWidth="355.0" spacing="15.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="100.0" text="Obriši sve" />
-                              <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="100.0" text="Obriši" />
-                              <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="100.0" text="Naplati" />
+                              <Button fx:id="btnObrisiSve" mnemonicParsing="false" prefHeight="56.0" prefWidth="100.0" text="Obriši sve" />
+                              <Button fx:id="btnObrisi" mnemonicParsing="false" prefHeight="51.0" prefWidth="100.0" text="Obriši" />
+                              <Button fx:id="btnNaplati" mnemonicParsing="false" prefHeight="49.0" prefWidth="100.0" text="Naplati" />
                            </children>
                         </HBox>
                      </children>

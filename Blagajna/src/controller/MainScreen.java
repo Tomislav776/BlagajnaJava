@@ -31,7 +31,21 @@ import javafx.stage.Stage;
 
 public class MainScreen{
 	
-	public  ObservableList<Artikli> artikli = FXCollections.observableArrayList();
+	private  ObservableList<Artikli> artikli = FXCollections.observableArrayList();
+	
+	private List<Artikli> artikliBaza = new ArrayList<Artikli>(bazaBlagajna.bazaCitajArtikle());
+	
+	@FXML
+	public Button btnObrisi;
+	
+	@FXML
+	public Button btnObrisiSve;
+	
+	@FXML
+	public Button btnNaplati;
+	
+	@FXML
+	public TextField txt_field_Ukupno;
 	
 	@FXML
     public GridPane grid_GumboviArtikl;
@@ -55,11 +69,9 @@ public class MainScreen{
 
    	//Inicjalizira gumbove
     public void initBtnsArray() {
-    	List<Artikli> artikli = new ArrayList<Artikli>();
-		artikli=bazaBlagajna.bazaCitajArtikle();
 		
-        for(int i = 0; i < artikli.size(); i++) {
-            btns[i] = new Button(artikli.get(i).getNaziv()); 
+        for(int i = 0; i < artikliBaza.size(); i++) {
+            btns[i] = new Button(artikliBaza.get(i).getNaziv()); 
         }
     }
     
@@ -73,12 +85,9 @@ public class MainScreen{
     	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,Double>("cijena"));
     	tableViewRacun.setItems(getArtikli(""));
     	
-    	
-    	List<Artikli> artikli = new ArrayList<Artikli>();
-		artikli=bazaBlagajna.bazaCitajArtikle();
          
         	int k=0,i=0,j=0;
-	        while (k!=artikli.size()) {    
+	        while (k!=artikliBaza.size()) {    
 	        	
 	        		
 	        		btns[k].setMinSize(149, 120);	//Poveca gumbove da popune okvir
@@ -101,38 +110,58 @@ public class MainScreen{
 	        		++i;
 	        	}
 	        }
+	        
+	        
+	       btnObrisiSve.setOnAction (e -> {
+	    	  artikli.removeAll(artikli);
+	    	  txt_field_Ukupno.setText(String.valueOf(ukupno()));
+    		});
+	       /*
+	       btnObrisi.setOnAction (e -> {
+	    	   
+	    	   Artikli currentPerson = (Artikli)   tableViewRacun.getItems().;
+	    			   
+	    	Artikli currentPerson = (Artikli) ButtonCell.this.getTableView().getItems().get(ButtonCell.this.getIndex());
+           	
+	    	artikli.remove(currentPerson);
+           	tableViewRacun.setItems(getArtikli(""));
+	    		});*/
         }
     
     //Funkcija koja se izvodi kad se klikne na gumb
 	public void gumbArtikliKlik(ActionEvent sender){
 		Button btn=(Button) sender.getSource();
 		String naziv=btn.getText();
-		
-		System.out.println(btn.getText());
-		
 		tableViewRacun.setItems(getArtikli(naziv));
-		//getArtikli(naziv);
-		//System.out.println("Provba");
+		
+		txt_field_Ukupno.setText(String.valueOf(ukupno()));
+		}
+	
+	public double ukupno(){
+		double ukupno=0;
+		
+		for (int i =0; i<artikli.size();i++){
+			ukupno+=artikli.get(i).getCijena();
+		}
+		
+		return ukupno;
 	}
 	
 	
 	//Radi observable list stavlja artikle u nju za prikaz u table view
 	public ObservableList<Artikli> getArtikli(String naziv){
 		
-		List<Artikli> artiklii = new ArrayList<Artikli>();
-		artiklii=bazaBlagajna.bazaCitajArtikle();
-		
-		
-		for (int i =0 ;i<artiklii.size();i++){
-		if (naziv.equals(artiklii.get(i).getNaziv())){
-			System.out.println("wtf");
-			artikli.add(artiklii.get(i));
+		for (int i =0 ;i<artikliBaza.size();i++){
+		if (naziv.equals(artikliBaza.get(i).getNaziv())){
+			artikli.add(artikliBaza.get(i));
+			break;
 		}
 		}
 
 		return artikli;
 	}
 	
+
     	
 }
     
