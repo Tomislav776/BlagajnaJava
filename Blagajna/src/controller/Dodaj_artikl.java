@@ -26,28 +26,34 @@ import javafx.scene.layout.AnchorPane;
 
 public class Dodaj_artikl {
 	@FXML
-	public TextField txt_naziv;
+	private TextField txt_naziv;
 	
 	@FXML
-	public TextField txt_kolicina;
+	private TextField txt_kolicina;
 	
 	@FXML
-	public TextField txt_cijena;
+	private TextField txt_cijena;
 	
 	@FXML
-	public Button btn_unesi_artikl;
+	private Button btn_unesi_artikl;
 	
 	@FXML
-    public TableView<Artikli> tableViewArtikli;
+	private Button btn_obrisi;
 	
 	@FXML
-    public TableColumn tableColumnCijena;
+	private Button btn_osvjezi;
 	
 	@FXML
-    public TableColumn<Artikli, String> tableColumnNaziv;
+	private TableView<Artikli> tableViewArtikli;
 	
 	@FXML
-    public TableColumn<Artikli, String> tableColumnKolicina;
+	private TableColumn tableColumnCijena;
+	
+	@FXML
+	private TableColumn<Artikli, String> tableColumnNaziv;
+	
+	@FXML
+	private TableColumn<Artikli, String> tableColumnKolicina;
 
 	private String naziv;
 	private String kolicina;
@@ -76,13 +82,13 @@ public class Dodaj_artikl {
     	tableViewArtikli.setItems(getArtikli());
     }
     
-    	
-    	public void handleClickDodaj()
+    	@FXML
+    	private void handleClickDodaj()
     	{
     		if(txt_naziv.getText().isEmpty() || txt_kolicina.getText().isEmpty() || txt_cijena.getText().isEmpty())
     		{
     			Alert alert = new Alert(AlertType.WARNING);
-        		alert.setTitle("Pripazite!");
+        		alert.setTitle("Pripazite");
         		alert.setHeaderText(null);
         		alert.setContentText("Niste unijeli sve potrebne informacije za unos novog artikla.");
 
@@ -107,6 +113,15 @@ public class Dodaj_artikl {
     		}
         	
     	}
+    	
+    	@FXML
+    	private void osvjezi()
+    	{
+    		tableColumnNaziv.setCellValueFactory(new PropertyValueFactory<Artikli,String>("naziv"));
+        	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,String>("cijena"));
+        	tableColumnKolicina.setCellValueFactory(new PropertyValueFactory<Artikli,String>("kolicina"));
+        	tableViewArtikli.setItems(getArtikli());
+    	}
 
     /**
      * Is called by the main application to give a reference back to itself.
@@ -118,7 +133,7 @@ public class Dodaj_artikl {
 
     }
     
-    public ObservableList<Artikli> getArtikli(){
+    private ObservableList<Artikli> getArtikli(){
 		ObservableList<Artikli> artikli = FXCollections.observableArrayList();
 		
 		List<Artikli> artikliIzBaze = new ArrayList<Artikli>();

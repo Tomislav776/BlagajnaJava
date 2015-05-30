@@ -21,8 +21,8 @@
             <TextField fx:id="txt_kolicina" promptText="Količina artikla" />
             <TextField fx:id="txt_cijena" promptText="Cijena artikla" />
             <Button fx:id="btn_unesi_artikl" mnemonicParsing="false" onAction="#handleClickDodaj" text="Dodaj" />
-            <Button mnemonicParsing="false" text="Editiraj" />
-            <Button mnemonicParsing="false" text="Obriši" />
+            <Button fx:id="btn_obrisi" mnemonicParsing="false" text="Obriši" />
+            <Button fx:id="btn_osvjezi" mnemonicParsing="false" onAction="#osvjezi" text="Osvježi" />
          </children>
       </HBox>
    </children>

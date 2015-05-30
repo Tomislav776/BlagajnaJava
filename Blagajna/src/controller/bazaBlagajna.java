@@ -23,7 +23,7 @@ public class bazaBlagajna {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			//Vezanje na bazu
-			String connectionUrl = "jdbc:mysql://localhost:3306/blagajna";
+			String connectionUrl = "jdbc:mysql://localhost:3306/blagajna?characterEncoding=utf8";
 			conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
 		} catch (Exception e) {
 			//e.printStackTrace();
@@ -44,7 +44,7 @@ public class bazaBlagajna {
 			try{
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				//Vezanje na bazu
-				String connectionUrl = "jdbc:mysql://localhost:3306/blagajna";
+				String connectionUrl = "jdbc:mysql://localhost:3306/blagajna?characterEncoding=utf8";
 				conn = DriverManager.getConnection(connectionUrl, "root", "");
 			 stmt = conn.prepareStatement(SQL);
 			stmt.setString(1, naziv);
@@ -74,7 +74,7 @@ public class bazaBlagajna {
 	    try{
 	    		Class.forName("com.mysql.jdbc.Driver").newInstance();
 				//Vezanje na bazu
-				String connectionUrl = "jdbc:mysql://localhost:3306/blagajna";
+				String connectionUrl = "jdbc:mysql://localhost:3306/blagajna?characterEncoding=utf8";
 				conn = DriverManager.getConnection(connectionUrl, "root", "");
 	    	Connection connection = DriverManager.getConnection(connectionUrl, "root", "");
 	        stmt = connection.prepareStatement("SELECT * FROM artikli;");
