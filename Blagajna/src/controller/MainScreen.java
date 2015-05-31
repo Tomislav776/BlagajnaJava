@@ -221,13 +221,9 @@ public class MainScreen{
 					if (naziv.equals(artikli.get(j).getNaziv())){
 						artikli.get(j).setKolicina(artikli.get(j).getKolicina()+1);
 						artikli.get(j).setCijena(artikli.get(j).getKolicina()*artikliBaza.get(i).getCijena());
-						
-						tableViewRacun.getColumns().get(j).setVisible(false);
-						tableViewRacun.getColumns().get(j).setVisible(true);
-						
-						System.out.println(j);
+
+						osvjezi();
 						kolProvjera=false;
-						System.out.println(artikli.size()+" "+artikli.get(j).getNaziv()+" "+artikli.get(j).getCijena()+" "+artikli.get(j).getKolicina()+" "+artikliBaza.get(i).getCijena());
 						break;
 					}
 				}
@@ -242,6 +238,12 @@ public class MainScreen{
 		
 		return artikli;
 	}
+	
+	public void osvjezi() { 
+		tableViewRacun.setItems(null); 
+		tableViewRacun.layout(); 
+		tableViewRacun.setItems(FXCollections.observableList(artikli)); 
+}
 	
 	
 	//Inicijalizira gumbove u gridu
