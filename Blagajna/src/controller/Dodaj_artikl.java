@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import dataClass.Artikli;
 import javafx.collections.FXCollections;
@@ -68,6 +70,9 @@ public class Dodaj_artikl {
 	private String kolicina;
 	private String cijena;
 	
+	private Locale locale = RootLayout.getLocale();
+	private ResourceBundle bundle = RootLayout.getBundle();
+	
 	// Reference to the main application.
     private Main main;
 
@@ -86,10 +91,15 @@ public class Dodaj_artikl {
     @FXML
     private void initialize() {
 
+    	filter.setPromptText(bundle.getString("filter"));
+    	
     	// inicijalizacija stupaca i prikaz
     	tableColumnNaziv.setCellValueFactory(new PropertyValueFactory<Artikli,String>("naziv"));
+    	tableColumnNaziv.setText(bundle.getString("tableColumnNaziv"));
     	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,String>("cijena"));
+    	tableColumnCijena.setText(bundle.getString("tableColumnCijena"));
     	tableColumnKolicina.setCellValueFactory(new PropertyValueFactory<Artikli,String>("kolicina"));
+    	tableColumnKolicina.setText(bundle.getString("tableColumnKolicina"));
     	tableViewArtikli.getSelectionModel().setCellSelectionEnabled(true);
 		tableViewArtikli.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     	tableViewArtikli.setItems(getArtikli());
@@ -122,6 +132,13 @@ public class Dodaj_artikl {
 
         // Stavi samo sortirane (i filtirane) artikle u tablicu
         tableViewArtikli.setItems(sortiraniArtikli);
+        
+        btn_unesi_artikl.setText(bundle.getString("btn_unesi_artikl"));
+        btn_obrisi.setText(bundle.getString("btn_obrisi"));
+        
+        txt_naziv.setPromptText(bundle.getString("txt_naziv"));
+        txt_kolicina.setPromptText(bundle.getString("txt_kolicina"));
+        txt_cijena.setPromptText(bundle.getString("txt_cijena"));
 
 }
     
@@ -184,8 +201,8 @@ public class Dodaj_artikl {
     		tableColumnNaziv.setCellValueFactory(new PropertyValueFactory<Artikli,String>("naziv"));
         	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,String>("cijena"));
         	tableColumnKolicina.setCellValueFactory(new PropertyValueFactory<Artikli,String>("kolicina"));
-        	
         	tableViewArtikli.setItems(getArtikli());
+
     	}
 
     /**

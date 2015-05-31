@@ -11,7 +11,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -36,13 +38,28 @@ public class RootLayout implements Initializable{
 	public MenuItem izlaz;
 	
 	@FXML
+	public Menu jezik;
+	
+	@FXML
 	public ToggleGroup radioGroup1;
+	
+	@FXML
+	public RadioMenuItem hrvatski;
+	
+	@FXML
+	public RadioMenuItem engleski;
+	
+	@FXML
+	public Menu opcije;
+	
+	@FXML
+	public Menu aplikacija;
 	
 	private String naziv;
 	private String kolicina;
 	
-	private ResourceBundle bundle;
-	private Locale locale;
+	private static ResourceBundle bundle;
+	private static Locale locale;
 	
 	
 	// Reference to the main application.
@@ -53,6 +70,16 @@ public class RootLayout implements Initializable{
      * The constructor is called before the initialize() method.
      */
     public RootLayout() {
+    }
+    
+    public static Locale getLocale()
+    {
+    	return locale;
+    }
+    
+    public static ResourceBundle getBundle()
+    {
+    	return bundle;
     }
     
 
@@ -66,7 +93,7 @@ public class RootLayout implements Initializable{
 
             Stage window = new Stage();
             window.initModality(Modality.APPLICATION_MODAL);
-            window.setTitle("Dodaj artikl");
+            window.setTitle(bundle.getString("dodaj_artikl"));
 
             
             Scene scene = new Scene(vbox);
@@ -88,7 +115,7 @@ public class RootLayout implements Initializable{
                     
             Stage window = new Stage();
             window.initModality(Modality.APPLICATION_MODAL);
-            window.setTitle("Dodaj konobara");
+            window.setTitle(bundle.getString("dodaj_konobara"));
 
             
             Scene scene = new Scene(vbox);
@@ -110,7 +137,7 @@ public class RootLayout implements Initializable{
 
             Stage window = new Stage();
             window.initModality(Modality.APPLICATION_MODAL);
-            window.setTitle("Napravi obraèun");
+            window.setTitle(bundle.getString("obracun"));
 
             
             Scene scene = new Scene(vbox);
@@ -171,6 +198,16 @@ public class RootLayout implements Initializable{
     	   });
        
        loadLang("hr");
+       
+       hrvatski.setOnAction(e->
+       {
+    	   loadLang("hr");
+       });
+       
+       engleski.setOnAction(e->
+       {
+    	   loadLang("en");
+       });
     }
     
     private void loadLang(String lang)
@@ -178,6 +215,15 @@ public class RootLayout implements Initializable{
     	locale = new Locale(lang);
     	bundle = ResourceBundle.getBundle("lang.lang", locale);
     	dodaj_artikl.setText(bundle.getString("dodaj_artikl"));
+    	opcije.setText(bundle.getString("opcije"));
+    	aplikacija.setText(bundle.getString("aplikacija"));
+    	o_nama.setText(bundle.getString("o_nama"));
+    	izlaz.setText(bundle.getString("izlaz"));
+    	jezik.setText(bundle.getString("jezik"));
+    	hrvatski.setText(bundle.getString("hrvatski"));
+    	engleski.setText(bundle.getString("engleski"));
+    	dodaj_konobar.setText(bundle.getString("dodaj_konobara"));
+    	obracun.setText(bundle.getString("obracun"));
     }
 
     /**

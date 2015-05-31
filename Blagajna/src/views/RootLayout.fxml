@@ -9,25 +9,25 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="Opcije">
+          <Menu fx:id="opcije" mnemonicParsing="false" text="Opcije">
             <items>
                   <MenuItem fx:id="dodaj_konobar" mnemonicParsing="false" text="Dodaj konobar" />
                   <MenuItem fx:id="dodaj_artikl" mnemonicParsing="false" text="Dodaj artikl" />
                   <MenuItem fx:id="obracun" mnemonicParsing="false" text="Napravi obračun" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Aplikacija">
+          <Menu fx:id="aplikacija" mnemonicParsing="false" text="Aplikacija">
             <items>
               <MenuItem fx:id="o_nama" mnemonicParsing="false" text="O nama" />
                   <MenuItem fx:id="izlaz" mnemonicParsing="false" text="Izlaz iz aplikacije" />
-                  <Menu mnemonicParsing="false" text="Jezik">
+                  <Menu fx:id="jezik" mnemonicParsing="false" text="Jezik">
                     <items>
-                        <RadioMenuItem mnemonicParsing="false" text="Hrvatski">
+                        <RadioMenuItem fx:id="hrvatski" mnemonicParsing="false" selected="true" text="Hrvatski">
                            <toggleGroup>
                               <ToggleGroup fx:id="radioGroup1" />
                            </toggleGroup>
                         </RadioMenuItem>
-                        <RadioMenuItem mnemonicParsing="false" text="Engleski" toggleGroup="$radioGroup1" />
+                        <RadioMenuItem fx:id="engleski" mnemonicParsing="false" text="Engleski" toggleGroup="$radioGroup1" />
                     </items>
                   </Menu>
             </items>
