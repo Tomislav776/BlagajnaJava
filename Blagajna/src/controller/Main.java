@@ -170,9 +170,9 @@ public class Main extends Application {
     	Alert alert = new Alert(AlertType.CONFIRMATION);
     	alert.setTitle("Izlazak iz aplikacije");
     	alert.setHeaderText(null);
-    	alert.setContentText("Jeste li sigurni da želite izaæi iz aplikacije?");
+    	alert.setContentText("Jeste li sigurni da želite izaći iz aplikacije?");
 
-    	ButtonType button1 = new ButtonType("Jesam, izaði");
+    	ButtonType button1 = new ButtonType("Jesam, izađi");
     	ButtonType button2 = new ButtonType("Nisam, ostani u aplikaciji", ButtonData.CANCEL_CLOSE);
 
     	alert.getButtonTypes().setAll(button1, button2);

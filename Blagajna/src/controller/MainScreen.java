@@ -140,9 +140,9 @@ public class MainScreen{
     Alert alert = new Alert(AlertType.INFORMATION);
     
     	if(choiceBoxKonobar.getValue()==null){
-    		alert.setTitle("Racun nije naplacen");
+    		alert.setTitle("Račun nije naplačen");
     		alert.setHeaderText(null);
-    		alert.setContentText("Racun nije naplacen."+'\n'+"Odaberite konobara i pokušajte ponovno.");
+    		alert.setContentText("Račun nije naplacen."+'\n'+"Odaberite konobara i pokušajte ponovno.");
     		alert.showAndWait();
     		return false;
     	}
@@ -156,7 +156,7 @@ public class MainScreen{
     		
     		alert.setTitle("Racun");
     		alert.setHeaderText(null);
-    		alert.setContentText("Racun je naplacen");
+    		alert.setContentText("Račun je naplačen.");
     		alert.showAndWait();
     	}
     	return true;

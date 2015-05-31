@@ -23,16 +23,16 @@ import com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException;
 
 public class bazaBlagajna {
 	Connection conn = null;
+	static String connectionUrl = "jdbc:mysql://92.222.18.69:3306/blagajna?characterEncoding=utf8";
 	
 	public boolean Connect(String connectionUser, String connectionPassword) {
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			//Vezanje na bazu
-			String connectionUrl = "jdbc:mysql://localhost:3306/blagajna?characterEncoding=utf8";
 			conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
 		} catch (Exception e) {
-			//e.printStackTrace();
+			e.printStackTrace();
 			return false;
 		}
 
@@ -50,7 +50,6 @@ public class bazaBlagajna {
 			try{
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				//Vezanje na bazu
-				String connectionUrl = "jdbc:mysql://localhost:3306/blagajna?characterEncoding=utf8";
 				conn = DriverManager.getConnection(connectionUrl, "root", "");
 			 stmt = conn.prepareStatement(SQL);
 			stmt.setString(1, naziv);
@@ -83,7 +82,6 @@ public class bazaBlagajna {
 			try{
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				//Vezanje na bazu
-				String connectionUrl = "jdbc:mysql://localhost:3306/blagajna?characterEncoding=utf8";
 				conn = DriverManager.getConnection(connectionUrl, "root", "");
 				stmt = conn.prepareStatement(SQL);
 			
@@ -114,7 +112,6 @@ public class bazaBlagajna {
 			try{
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				//Vezanje na bazu
-				String connectionUrl = "jdbc:mysql://localhost:3306/blagajna?characterEncoding=utf8";
 				conn = DriverManager.getConnection(connectionUrl, "root", "");
 			 stmt = conn.prepareStatement(SQL);
 			stmt.setInt(1, id);
@@ -143,7 +140,6 @@ public class bazaBlagajna {
 	    try{
 	    		Class.forName("com.mysql.jdbc.Driver").newInstance();
 				//Vezanje na bazu
-				String connectionUrl = "jdbc:mysql://localhost:3306/blagajna?characterEncoding=utf8";
 				conn = DriverManager.getConnection(connectionUrl, "root", "");
 				Connection connection = DriverManager.getConnection(connectionUrl, "root", "");
 	        
@@ -174,7 +170,6 @@ public class bazaBlagajna {
 	    try{
 	    		Class.forName("com.mysql.jdbc.Driver").newInstance();
 				//Vezanje na bazu
-				String connectionUrl = "jdbc:mysql://localhost:3306/blagajna?characterEncoding=utf8";
 				conn = DriverManager.getConnection(connectionUrl, "root", "");
 				Connection connection = DriverManager.getConnection(connectionUrl, "root", "");
 	        
@@ -206,7 +201,6 @@ public class bazaBlagajna {
 	    try{
 	    		Class.forName("com.mysql.jdbc.Driver").newInstance();
 				//Vezanje na bazu
-				String connectionUrl = "jdbc:mysql://localhost:3306/blagajna?characterEncoding=utf8";
 				conn = DriverManager.getConnection(connectionUrl, "root", "");
 				Connection connection = DriverManager.getConnection(connectionUrl, "root", "");
 	        
@@ -239,7 +233,6 @@ public class bazaBlagajna {
 			try{
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				//Vezanje na bazu
-				String connectionUrl = "jdbc:mysql://localhost:3306/blagajna?characterEncoding=utf8";
 				conn = DriverManager.getConnection(connectionUrl, "root", "");
 				stmt = conn.prepareStatement(SQL);
 			
@@ -268,7 +261,6 @@ public class bazaBlagajna {
 			try{
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				//Vezanje na bazu
-				String connectionUrl = "jdbc:mysql://localhost:3306/blagajna?characterEncoding=utf8";
 				conn = DriverManager.getConnection(connectionUrl, "root", "");
 			 stmt = conn.prepareStatement(SQL);
 			stmt.setInt(1, id);
