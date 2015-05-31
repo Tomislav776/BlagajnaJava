@@ -36,7 +36,8 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import javafx.scene.Node;
-import javafx.print.PrinterJob;
+import javafx.print.*;
+import javafx.scene.transform.Scale;
 
 public class MainScreen{
 	
@@ -189,8 +190,10 @@ public class MainScreen{
         }
     }
     
-    boolean doPrint(Node n)
+    private boolean doPrint(Node n)
     {
+    	Printer printer = Printer.getDefaultPrinter();
+        PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.PORTRAIT, Printer.MarginType.DEFAULT);
     	PrinterJob job = PrinterJob.createPrinterJob();
     	if(job == null) return false;
     	if(!job.printPage(n)) return false;
