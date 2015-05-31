@@ -33,7 +33,10 @@ public class Main extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Blagajna");
         
-        
+        /* Ovo postavlja min velicinu prozora
+        primaryStage.setMinWidth(1024);
+        primaryStage.setMinHeight(768);
+        */
         primaryStage.setOnCloseRequest(e-> {
         	e.consume();
         	zatvori();
@@ -142,10 +145,6 @@ public class Main extends Application {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("../views/MainScreen.fxml"));
-            
-            
-            primaryStage.setMinWidth(1024);
-            primaryStage.setMinHeight(808);
             
             AnchorPane personOverview = (AnchorPane) loader.load();
 
