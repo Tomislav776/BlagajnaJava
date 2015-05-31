@@ -112,7 +112,7 @@ public class MainScreen{
     	tableColumnNaziv.setCellValueFactory(new PropertyValueFactory<Artikli,String>("naziv"));
     	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,Double>("cijena"));
     	tableColumnKolicina.setCellValueFactory(new PropertyValueFactory<Artikli,Integer>("kolicina"));
-    	//tableColumnUkupno.setCellValueFactory(new PropertyValueFactory<Artikli,Double>("ukupno"));
+    	tableColumnUkupno.setCellValueFactory(new PropertyValueFactory<Artikli,Double>("ukupno"));
 
     	tableViewRacun.setItems(getArtikli(""));
     	
