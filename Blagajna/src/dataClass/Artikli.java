@@ -5,6 +5,7 @@ public class Artikli {
 	private String naziv;
 	private int kolicina;
 	private double cijena;
+	private double ukupno;
 	
 	public Artikli (){
 	}
@@ -14,6 +15,15 @@ public class Artikli {
 		this.kolicina = kolicina;
 		this.cijena = cijena;
 		this.id=id;
+		this.ukupno=0;
+	}
+	
+	public Artikli (int id, String naziv, int kolicina, double cijena, double ukupno){
+		this.naziv = naziv;
+		this.kolicina = kolicina;
+		this.cijena = cijena;
+		this.id=id;
+		this.ukupno=ukupno;
 	}
 
 	public String getNaziv() {
@@ -33,10 +43,6 @@ public class Artikli {
 		this.kolicina = kolicina;
 	}
 	
-	
-	public double getCijena() {
-		return cijena;
-	}
 
 	public int getId() {
 		return id;
@@ -45,8 +51,21 @@ public class Artikli {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public double getCijena() {
+		return cijena;
+	}
+	
 	public void setCijena(double cijena) {
 		this.cijena = cijena;
+	}
+	
+	public double getUkupno() {
+		return ukupno;
+	}
+	
+	public void setUkupno(double ukupno) {
+		this.ukupno = ukupno;
 	}
 
 	

@@ -84,6 +84,9 @@ public class MainScreen{
 	
 	@FXML
     public TableColumn<Artikli, Integer> tableColumnKolicina;
+	
+	@FXML
+    public TableColumn<Artikli, Double> tableColumnUkupno;
 
     private Button[] btns = new Button[50];
 
@@ -109,6 +112,8 @@ public class MainScreen{
     	tableColumnNaziv.setCellValueFactory(new PropertyValueFactory<Artikli,String>("naziv"));
     	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,Double>("cijena"));
     	tableColumnKolicina.setCellValueFactory(new PropertyValueFactory<Artikli,Integer>("kolicina"));
+    	//tableColumnUkupno.setCellValueFactory(new PropertyValueFactory<Artikli,Double>("ukupno"));
+
     	tableViewRacun.setItems(getArtikli(""));
     	
     	initGumboviUGridu(); 
@@ -191,7 +196,7 @@ public class MainScreen{
 		double ukupno=0;
 		
 		for (int i =0; i<artikli.size();i++){
-			ukupno+=artikli.get(i).getCijena()*artikli.get(i).getKolicina();
+			ukupno+=artikli.get(i).getUkupno();
 		}
 		return String.valueOf(ukupno);
 	}
@@ -201,6 +206,7 @@ public class MainScreen{
 	public ObservableList<Artikli> getArtikli(String naziv){
 	int pamti = -1;
 	boolean kolProvjera=true;
+	double ukupno=0;
 	
 		for (int i =0 ;i<artikliBaza.size();i++){
 			if (naziv.equals(artikliBaza.get(i).getNaziv())){
@@ -220,8 +226,9 @@ public class MainScreen{
 					
 					if (naziv.equals(artikli.get(j).getNaziv())){
 						artikli.get(j).setKolicina(artikli.get(j).getKolicina()+1);
-						artikli.get(j).setCijena(artikli.get(j).getKolicina()*artikliBaza.get(i).getCijena());
-
+						
+						artikli.get(j).setUkupno(artikli.get(j).getKolicina()*artikliBaza.get(i).getCijena());
+	
 						osvjezi();
 						kolProvjera=false;
 						break;
@@ -229,7 +236,8 @@ public class MainScreen{
 				}
 				
 				if (kolProvjera){
-					artikli.add(new Artikli(artikliBaza.get(i).getId(), artikliBaza.get(i).getNaziv(), artikliBaza.get(i).getKolicina(), artikliBaza.get(i).getCijena()));
+					ukupno=artikliBaza.get(i).getCijena();
+					artikli.add(new Artikli(artikliBaza.get(i).getId(), artikliBaza.get(i).getNaziv(), artikliBaza.get(i).getKolicina(), artikliBaza.get(i).getCijena(), ukupno));
 				}
 				
 				pamti = i;
