@@ -146,13 +146,6 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("../views/MainScreen.fxml"));
             
-            primaryStage.setMinWidth(1024);
-            primaryStage.setMinHeight(808);
-<<<<<<< HEAD
-             
-           
-=======
->>>>>>> 0a7142a03bf2967be71988f7c3b8dacdbcc4a42a
             AnchorPane personOverview = (AnchorPane) loader.load();
 
             // Set person overview into the center of root layout.
