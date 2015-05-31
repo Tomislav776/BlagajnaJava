@@ -20,6 +20,16 @@
             <items>
               <MenuItem fx:id="o_nama" mnemonicParsing="false" text="O nama" />
                   <MenuItem fx:id="izlaz" mnemonicParsing="false" text="Izlaz iz aplikacije" />
+                  <Menu mnemonicParsing="false" text="Jezik">
+                    <items>
+                        <RadioMenuItem mnemonicParsing="false" text="Hrvatski">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="radioGroup1" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="Engleski" toggleGroup="$radioGroup1" />
+                    </items>
+                  </Menu>
             </items>
           </Menu>
         </menus>

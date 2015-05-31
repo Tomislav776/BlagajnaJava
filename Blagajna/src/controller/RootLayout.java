@@ -1,19 +1,24 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.layout.VBox;
 
-public class RootLayout {
+public class RootLayout implements Initializable{
 	
 	@FXML
 	public MenuItem dodaj_artikl;
@@ -30,8 +35,14 @@ public class RootLayout {
 	@FXML
 	public MenuItem izlaz;
 	
+	@FXML
+	public ToggleGroup radioGroup1;
+	
 	private String naziv;
 	private String kolicina;
+	
+	private ResourceBundle bundle;
+	private Locale locale;
 	
 	
 	// Reference to the main application.
@@ -99,7 +110,7 @@ public class RootLayout {
 
             Stage window = new Stage();
             window.initModality(Modality.APPLICATION_MODAL);
-            window.setTitle("O aplikaciji");
+            window.setTitle("Napravi obraèun");
 
             
             Scene scene = new Scene(vbox);
@@ -137,8 +148,8 @@ public class RootLayout {
      * Initializes the controller class. This method is automatically called
      * after the fxml file has been loaded.
      */
-    @FXML
-    private void initialize() {
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
        dodaj_artikl.setOnAction(e -> {
     	   display();
     	   });
@@ -158,6 +169,15 @@ public class RootLayout {
        izlaz.setOnAction(e -> {
     	   main.zatvori();
     	   });
+       
+       loadLang("hr");
+    }
+    
+    private void loadLang(String lang)
+    {
+    	locale = new Locale(lang);
+    	bundle = ResourceBundle.getBundle("lang.lang", locale);
+    	dodaj_artikl.setText(bundle.getString("dodaj_artikl"));
     }
 
     /**
