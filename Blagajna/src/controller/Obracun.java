@@ -32,6 +32,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 
@@ -109,7 +111,26 @@ public class Obracun {
      	   });
     	
     	btn_graficki_prikaz.setOnAction(e -> {
-    		//TO-DO aka za sutra :P
+    		try {
+    	        // Load the fxml file and create a new stage for the popup.
+    	        FXMLLoader loader = new FXMLLoader();
+    	        loader.setLocation(Main.class.getResource("../views/ObracunGraf.fxml"));
+    	        AnchorPane page = (AnchorPane) loader.load();
+    	        Stage dialogStage = new Stage();
+    	        dialogStage.setTitle("Obracun prometa - graf");
+    	        dialogStage.initModality(Modality.WINDOW_MODAL);
+    	        Scene scene = new Scene(page);
+    	        dialogStage.setScene(scene);
+
+    	        // Set the promet into the controller.
+    	        ObracunGraf controller = loader.getController();
+    	        controller.setPrometPodaci(obracun);
+
+    	        dialogStage.show();
+
+    	    } catch (IOException ee) {
+    	        ee.printStackTrace();
+    	    }
      	   });
 }
     
