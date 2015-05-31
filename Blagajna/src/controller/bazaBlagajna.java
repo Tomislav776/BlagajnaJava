@@ -1,6 +1,7 @@
 package controller;
 
 import dataClass.Konobar;
+import dataClass.Promet;
 import dataClass.Racun;
 
 import java.util.*;
@@ -13,6 +14,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+
 
 
 
@@ -141,9 +144,8 @@ public class bazaBlagajna {
 	    		Class.forName("com.mysql.jdbc.Driver").newInstance();
 				//Vezanje na bazu
 				conn = DriverManager.getConnection(connectionUrl, "root", "");
-				Connection connection = DriverManager.getConnection(connectionUrl, "root", "");
 	        
-				stmt = connection.prepareStatement("SELECT * FROM artikli;");
+				stmt = conn.prepareStatement("SELECT * FROM artikli;");
 				ResultSet resultSet = stmt.executeQuery();
 	    
 	        while (resultSet.next()) {
@@ -189,6 +191,40 @@ public class bazaBlagajna {
 	}
 	    return racuni;
 	}
+	
+	//Cita promete iz baze te ih vraca kao listu
+		public static List<Promet> bazaCitajPromet(String pocetakRazdoblja, String krajRazdoblja) {
+		    List<Promet> promet = new ArrayList<Promet>();
+		    PreparedStatement stmt = null;
+			Connection conn = null;
+			String razdoblje = "Od " + pocetakRazdoblja + " do " + krajRazdoblja;
+			double ukupanIznosPrometa = 0;
+
+		    try{
+		    		Class.forName("com.mysql.jdbc.Driver").newInstance();
+					//Vezanje na bazu
+					conn = DriverManager.getConnection(connectionUrl, "root", "");
+		        
+					stmt = conn.prepareStatement("SELECT * FROM racuni WHERE datum BETWEEN ? AND ?");
+					stmt.setString(1, pocetakRazdoblja);
+					stmt.setString(2, krajRazdoblja);
+					ResultSet resultSet = stmt.executeQuery();
+		    
+		        while (resultSet.next()) {
+		        	ukupanIznosPrometa += resultSet.getDouble("iznos");
+		        }
+		        
+		        Promet promet1 = new Promet(ukupanIznosPrometa, razdoblje);
+	        	promet.add(promet1);
+		    
+		}catch(Exception e){
+			
+		}finally {
+			try { if (stmt != null) stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+			try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+		}
+		    return promet;
+		}
 	
 	
 	//Konobar upis i ispis iz baze

@@ -33,10 +33,6 @@ public class Main extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Blagajna");
         
-        /* Ovo postavlja min velicinu prozora
-        primaryStage.setMinWidth(1024);
-        primaryStage.setMinHeight(768);
-        */
         primaryStage.setOnCloseRequest(e-> {
         	e.consume();
         	zatvori();
@@ -69,7 +65,7 @@ public class Main extends Application {
             	                   bazaBlagajna blagajna = new bazaBlagajna();
             	                   if(blagajna.Connect(user, pass) == true){
             	                   initRootLayout();
-            	                   showPersonOverview();
+            	                   initSredisnjiLayout();
             	                	
             	            }
             	        } }
@@ -85,7 +81,7 @@ public class Main extends Application {
                    bazaBlagajna blagajna = new bazaBlagajna();
                    if(blagajna.Connect(user, pass) == true){
                    	initRootLayout();
-                   	showPersonOverview();
+                   	initSredisnjiLayout();
                 
                    }
 
@@ -127,6 +123,11 @@ public class Main extends Application {
             loader.setLocation(Main.class.getResource("../views/RootLayout.fxml"));
             rootLayout = (BorderPane) loader.load();
             
+            RootLayout controller = loader.getController();
+            controller.setMainApp(this);
+            
+            primaryStage.setMinWidth(1024);
+            primaryStage.setMinHeight(808);
             
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
@@ -140,19 +141,12 @@ public class Main extends Application {
     /**
      * Shows the person overview inside the root layout.
      */
-    public void showPersonOverview() {
+    public void initSredisnjiLayout() {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("../views/MainScreen.fxml"));
             
-            primaryStage.setMinWidth(1024);
-            primaryStage.setMinHeight(808);
-<<<<<<< HEAD
-             
-           
-=======
->>>>>>> 0a7142a03bf2967be71988f7c3b8dacdbcc4a42a
             AnchorPane personOverview = (AnchorPane) loader.load();
 
             // Set person overview into the center of root layout.

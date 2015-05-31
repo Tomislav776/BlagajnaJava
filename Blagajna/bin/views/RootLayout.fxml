@@ -9,21 +9,17 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="Opcije">
             <items>
                   <MenuItem fx:id="dodaj_konobar" mnemonicParsing="false" text="Dodaj konobar" />
-              <MenuItem mnemonicParsing="false" text="Close" />
                   <MenuItem fx:id="dodaj_artikl" mnemonicParsing="false" text="Dodaj artikl" />
+                  <MenuItem fx:id="obracun" mnemonicParsing="false" text="Napravi obračun" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="Aplikacija">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="o_nama" mnemonicParsing="false" text="O nama" />
+                  <MenuItem fx:id="izlaz" mnemonicParsing="false" text="Izlaz iz aplikacije" />
             </items>
           </Menu>
         </menus>

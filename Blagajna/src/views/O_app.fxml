@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40">
+   <children>
+      <VBox layoutX="144.0" layoutY="14.0" prefHeight="500.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextArea editable="false" prefHeight="64.0" prefWidth="123.0" text="App izradili:&#10;&#10;Antonio Pauletich&#10;Bruno Sertić&#10;Tomislav Trgovac">
+                     <HBox.margin>
+                        <Insets left="120.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Arial Bold" size="12.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </TextArea>
+               </children>
+            </HBox>
+            <HBox prefHeight="144.0" prefWidth="400.0" />
+            <HBox prefHeight="288.0" prefWidth="400.0">
+               <children>
+                  <TextArea editable="false" prefHeight="211.0" prefWidth="400.0" text="Aplikacija Blagajna izrađena je kao projekt u sklopu OOP2 &#10;kolegija na Tehničkom Veleučilištu u Zagrebu.&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;                                            &#10;&#10;                                             &#10;&#10;                                     &#10;&#10;                                     Copyright @ 2015">
+                     <font>
+                        <Font name="Gill Sans MT Bold" size="13.0" />
+                     </font>
+                  </TextArea>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
