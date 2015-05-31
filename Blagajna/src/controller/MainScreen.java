@@ -80,6 +80,9 @@ public class MainScreen{
 	
 	@FXML
     public TableColumn<Artikli, String> tableColumnNaziv;
+	
+	@FXML
+    public TableColumn<Artikli, Integer> tableColumnKolicina;
 
     private Button[] btns = new Button[50];
 
@@ -95,10 +98,16 @@ public class MainScreen{
     	initBtnsArray();
     	initChoiceBox();
     	
+    	//inicijalizira broj naplacenih artikala na 1
+    	for (int i =0;i<artikliBaza.size();i++){
+    	artikliBaza.get(i).setKolicina(1);
+    	}
+    	
     	//inicijalizira tablicu stupce, naziv je ime podatka u klasi Artikli
     	tableViewRacun.setPlaceholder(new Label("Unesite artikle za naplatu"));
     	tableColumnNaziv.setCellValueFactory(new PropertyValueFactory<Artikli,String>("naziv"));
     	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,Double>("cijena"));
+    	tableColumnKolicina.setCellValueFactory(new PropertyValueFactory<Artikli,Integer>("kolicina"));
     	tableViewRacun.setItems(getArtikli(""));
     	
     	initGumboviUGridu(); 
@@ -123,11 +132,6 @@ public class MainScreen{
 	       btnNaplati.setOnAction (e -> {
 	    	   	gumbNaplatiKlik(e);
 	    		});
-	       
-
-	       //Da fixira split pane i ne pokazuje ga
-	       //splitPaneVertikalan.setDividerPositions(0.32);
-	       //splitPaneVertikalan.lookupAll(".split-pane-divider").stream().forEach(div ->  div.setMouseTransparent(true));
         }
     
     
@@ -186,7 +190,7 @@ public class MainScreen{
 		double ukupno=0;
 		
 		for (int i =0; i<artikli.size();i++){
-			ukupno+=artikli.get(i).getCijena();
+			ukupno+=artikli.get(i).getCijena()*artikli.get(i).getKolicina();
 		}
 		return String.valueOf(ukupno);
 	}
@@ -195,6 +199,7 @@ public class MainScreen{
 	//Radi observable list stavlja artikle u nju za prikaz u table view
 	public ObservableList<Artikli> getArtikli(String naziv){
 	int pamti = -1;
+	boolean kolProvjera=true;
 	
 		for (int i =0 ;i<artikliBaza.size();i++){
 			if (naziv.equals(artikliBaza.get(i).getNaziv())){
@@ -207,14 +212,46 @@ public class MainScreen{
             		alert.showAndWait();
             		break;
 				}
-		
+				
+				//Povecava kolicinu i novu cijenu
+				for (int j=0;j<artikli.size();j++){
+					if (naziv.equals(artikli.get(j).getNaziv())){
+						artikli.get(j).setKolicina(artikli.get(j).getKolicina()+1);
+						artikli.get(j).setCijena(artikli.get(j).getKolicina()*artikliBaza.get(i).getCijena());
+						
+						System.out.println(artikli.get(j).getKolicina()+" "+artikliBaza.get(i).getCijena()+" "+artikli.get(j).getNaziv());
+						
+						tableViewRacun.getColumns().get(j).setVisible(false);
+						tableViewRacun.getColumns().get(j).setVisible(true);
+						
+						kolProvjera=false;
+					}
+				}
+				
+				if (kolProvjera){
 				artikli.add(artikliBaza.get(i));
+				}
+				
 				pamti = i;
 			}
 		}
 			
 		return artikli;
 	}
+	
+	
+	/*
+	//Osvjezava table view prikaz
+	private void osvjezi()
+	{
+		artikli.removeAll(artikli);
+		tableColumnNaziv.setCellValueFactory(new PropertyValueFactory<Artikli,String>("naziv"));
+    	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,Double>("cijena"));
+    	tableColumnKolicina.setCellValueFactory(new PropertyValueFactory<Artikli,Integer>("kolicina"));
+    	
+    	tableViewRacun.setItems(getArtikli(""));
+	}
+	*/
 	
 	
 	//Inicijalizira gumbove u gridu

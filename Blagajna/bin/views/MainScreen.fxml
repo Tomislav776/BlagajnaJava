@@ -16,8 +16,9 @@
                <children>
                   <TableView fx:id="tableViewRacun" editable="true" maxHeight="1.0E7" maxWidth="1.0E7" prefHeight="634.0" prefWidth="355.0" VBox.vgrow="ALWAYS">
                     <columns>
-                      <TableColumn fx:id="tableColumnNaziv" minWidth="278.0" prefWidth="75.0" text="Naziv" />
-                      <TableColumn fx:id="tableColumnCijena" prefWidth="75.0" text="Cijena" />
+                      <TableColumn fx:id="tableColumnNaziv" minWidth="176.0" prefWidth="230.0" text="Naziv" />
+                        <TableColumn fx:id="tableColumnKolicina" prefWidth="57.0" text="Kolicina" />
+                      <TableColumn fx:id="tableColumnCijena" prefWidth="67.0" text="Cijena" />
                     </columns>
                   </TableView>
                   <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="355.0" spacing="10.0">
