@@ -9,6 +9,7 @@ import java.util.List;
 import dataClass.Artikli;
 import dataClass.Konobar;
 import javafx.application.Application;
+import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -213,45 +214,34 @@ public class MainScreen{
             		break;
 				}
 				
+				
 				//Povecava kolicinu i novu cijenu
-				for (int j=0;j<artikli.size();j++){
+				for (int j = 0; j < artikli.size(); j++){
+					
 					if (naziv.equals(artikli.get(j).getNaziv())){
 						artikli.get(j).setKolicina(artikli.get(j).getKolicina()+1);
 						artikli.get(j).setCijena(artikli.get(j).getKolicina()*artikliBaza.get(i).getCijena());
 						
-						System.out.println(artikli.get(j).getKolicina()+" "+artikliBaza.get(i).getCijena()+" "+artikli.get(j).getNaziv());
-						
 						tableViewRacun.getColumns().get(j).setVisible(false);
 						tableViewRacun.getColumns().get(j).setVisible(true);
 						
+						System.out.println(j);
 						kolProvjera=false;
+						System.out.println(artikli.size()+" "+artikli.get(j).getNaziv()+" "+artikli.get(j).getCijena()+" "+artikli.get(j).getKolicina()+" "+artikliBaza.get(i).getCijena());
+						break;
 					}
 				}
 				
 				if (kolProvjera){
-				artikli.add(artikliBaza.get(i));
+					artikli.add(new Artikli(artikliBaza.get(i).getId(), artikliBaza.get(i).getNaziv(), artikliBaza.get(i).getKolicina(), artikliBaza.get(i).getCijena()));
 				}
 				
 				pamti = i;
 			}
 		}
-			
+		
 		return artikli;
 	}
-	
-	
-	/*
-	//Osvjezava table view prikaz
-	private void osvjezi()
-	{
-		artikli.removeAll(artikli);
-		tableColumnNaziv.setCellValueFactory(new PropertyValueFactory<Artikli,String>("naziv"));
-    	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,Double>("cijena"));
-    	tableColumnKolicina.setCellValueFactory(new PropertyValueFactory<Artikli,Integer>("kolicina"));
-    	
-    	tableViewRacun.setItems(getArtikli(""));
-	}
-	*/
 	
 	
 	//Inicijalizira gumbove u gridu
