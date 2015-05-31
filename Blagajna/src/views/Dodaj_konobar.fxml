@@ -27,7 +27,7 @@
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin></TextField>
-            <Button fx:id="btn_unesi_artikl" mnemonicParsing="false" onAction="#handleClickDodaj" text="Dodaj">
+            <Button fx:id="btnDodajKonobar" mnemonicParsing="false" onAction="#handleClickDodaj" text="Dodaj">
                <HBox.margin>
                   <Insets left="10.0" right="10.0" />
                </HBox.margin></Button>

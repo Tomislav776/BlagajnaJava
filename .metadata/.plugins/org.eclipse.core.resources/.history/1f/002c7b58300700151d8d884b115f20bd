@@ -33,10 +33,6 @@ public class Main extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Blagajna");
         
-        /* Ovo postavlja min velicinu prozora
-        primaryStage.setMinWidth(1024);
-        primaryStage.setMinHeight(768);
-        */
         primaryStage.setOnCloseRequest(e-> {
         	e.consume();
         	zatvori();
@@ -56,7 +52,7 @@ public class Main extends Application {
             Login controller = loader.getController();
             controller.setMainApp(this);
             
-            //Pritiskom entera se unosi Å¡ifra
+            //Pritiskom entera se unosi šifra
             controller.txt_user.setOnKeyPressed(new EventHandler<KeyEvent>()
             	    {
             	        @Override
@@ -75,7 +71,7 @@ public class Main extends Application {
             	        } }
             	    });
             
-            //Pritiskom gumba se unosi Å¡ifra
+            //Pritiskom gumba se unosi šifra
             controller.btn_prijava.setOnAction(new EventHandler<ActionEvent>() {
 
                 @Override
@@ -93,7 +89,7 @@ public class Main extends Application {
             });
             
             
-            //Pritiskom na gumb izlaz poziva se funkcija zatvori koja otvara dijalog gdje vas pita da li ste sigurni da Å¾elite izaÃ¦i van iz aplikacije, ukoliko kliknete da jeste, aplikacija se gasi
+            //Pritiskom na gumb izlaz poziva se funkcija zatvori koja otvara dijalog gdje vas pita da li ste sigurni da želite izaæi van iz aplikacije, ukoliko kliknete da jeste, aplikacija se gasi
             controller.btn_izlaz.setOnAction(new EventHandler<ActionEvent>() {
 
                 @Override
@@ -145,6 +141,10 @@ public class Main extends Application {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("../views/MainScreen.fxml"));
+           /*
+            TablicaGumbova ini = new TablicaGumbova();
+            ini.initBtnsArray();
+            ini.initialize();*/
             
             AnchorPane personOverview = (AnchorPane) loader.load();
 
@@ -170,9 +170,9 @@ public class Main extends Application {
     	Alert alert = new Alert(AlertType.CONFIRMATION);
     	alert.setTitle("Izlazak iz aplikacije");
     	alert.setHeaderText(null);
-    	alert.setContentText("Jeste li sigurni da Å¾elite izaÃ¦i iz aplikacije?");
+    	alert.setContentText("Jeste li sigurni da želite izaæi iz aplikacije?");
 
-    	ButtonType button1 = new ButtonType("Jesam, izaÃ°i");
+    	ButtonType button1 = new ButtonType("Jesam, izaði");
     	ButtonType button2 = new ButtonType("Nisam, ostani u aplikaciji", ButtonData.CANCEL_CLOSE);
 
     	alert.getButtonTypes().setAll(button1, button2);
