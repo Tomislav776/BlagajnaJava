@@ -35,6 +35,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
+import javafx.scene.Node;
+import javafx.print.PrinterJob;
 
 public class MainScreen{
 	
@@ -168,6 +170,13 @@ public class MainScreen{
     		alert.setHeaderText(null);
     		alert.setContentText("Račun je naplačen.");
     		alert.showAndWait();
+    		if(doPrint(tableViewRacun))
+    		{
+    			alert.setTitle("Račun je isprintan!");
+        		alert.setHeaderText(null);
+        		alert.setContentText("Račun je isprintan!");
+        		alert.showAndWait();
+    		}
     	}
     	return true;
     }
@@ -178,6 +187,14 @@ public class MainScreen{
         for(int i = 0; i < artikliBaza.size(); i++) {
             btns[i] = new Button(artikliBaza.get(i).getNaziv()); 
         }
+    }
+    
+    boolean doPrint(Node n)
+    {
+    	PrinterJob job = PrinterJob.createPrinterJob();
+    	if(job == null) return false;
+    	if(!job.printPage(n)) return false;
+    	return job.endJob();
     }
     
     //Funkcija koja se izvodi kad se klikne na neki od gumbova s artiklima
