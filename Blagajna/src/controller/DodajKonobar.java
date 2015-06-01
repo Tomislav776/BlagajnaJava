@@ -2,6 +2,8 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -42,6 +44,9 @@ public class DodajKonobar {
 	private ObservableList<Konobar> konobari = FXCollections.observableArrayList();
 
 	private String naziv;
+	
+	private Locale locale = RootLayout.getLocale();
+	private ResourceBundle bundle = RootLayout.getBundle();
 
 	
 	// Reference to the main application.
@@ -64,10 +69,11 @@ public class DodajKonobar {
 
     	// inicijalizacija stupaca i prikaz
     	tableColumnNazivKonobar.setCellValueFactory(new PropertyValueFactory<Konobar,String>("naziv"));
-    	
+    	tableColumnNazivKonobar.setText(bundle.getString("tableColumnNazivKonobar"));
     	tableViewKonobari.getSelectionModel().setCellSelectionEnabled(true);
     	tableViewKonobari.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     	tableViewKonobari.setItems(getKonobari());
+    	
 
     	/*
         // wrepamo ObservableList u FilteredList
@@ -95,6 +101,11 @@ public class DodajKonobar {
         // Stavi samo sortirane (i filtirane) artikle u tablicu
     	tableViewKonobari.setItems(sortiraniArtikli);
     	*/
+    	
+    	btnDodajKonobar.setText(bundle.getString("btnDodajKonobar"));
+    	btnObrisikonobar.setText(bundle.getString("btnObrisikonobar"));
+    	txt_nazivKonobar.setPromptText(bundle.getString("txt_nazivKonobar"));
+    	filterKonobar.setPromptText(bundle.getString("filterKonobar"));
 
 }
     

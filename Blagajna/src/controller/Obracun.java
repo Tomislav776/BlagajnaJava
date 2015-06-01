@@ -7,6 +7,8 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import dataClass.Artikli;
 import dataClass.Promet;
@@ -19,6 +21,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -39,6 +42,12 @@ import javafx.collections.transformation.SortedList;
 
 
 public class Obracun {
+	
+	@FXML
+	public Label Label_pocetakRazdoblja;
+	
+	@FXML
+	public Label Label_krajRazdoblja;
 	
 	@FXML
 	public DatePicker pocetakRazdoblja;
@@ -69,6 +78,9 @@ public class Obracun {
 	private String formatiranPocetakRazdoblja;
 	private String formatiranKrajRazdoblja;
 	
+	private Locale locale = RootLayout.getLocale();
+	private ResourceBundle bundle = RootLayout.getBundle();
+	
 	// Reference to the main application.
     private Main main;
 
@@ -86,10 +98,18 @@ public class Obracun {
      */
     @FXML
     private void initialize() {
+    	
+    	Label_pocetakRazdoblja.setText(bundle.getString("Label_pocetakRazdoblja"));
+    	Label_krajRazdoblja.setText(bundle.getString("Label_krajRazdoblja"));
+    	btn_napravi_obracun.setText(bundle.getString("btn_napravi_obracun"));
+    	btn_graficki_prikaz.setText(bundle.getString("btn_graficki_prikaz"));
 
     	// inicijalizacija stupaca i prikaz
     	tableColumnPromet.setCellValueFactory(new PropertyValueFactory<Promet,Double>("iznos_prometa"));
+    	tableColumnPromet.setText(bundle.getString("tableColumnPromet"));
     	tableColumnRazdoblje.setCellValueFactory(new PropertyValueFactory<Promet,String>("Razdoblje"));
+    	tableColumnRazdoblje.setText(bundle.getString("tableColumnRazdoblje"));
+    	tableViewObracun.setPlaceholder(new Label(bundle.getString("tableViewObracun")));
     	tableViewObracun.getSelectionModel().setCellSelectionEnabled(true);
 		tableViewObracun.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     	

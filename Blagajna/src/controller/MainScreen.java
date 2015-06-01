@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import dataClass.Artikli;
 import dataClass.Konobar;
@@ -53,6 +55,9 @@ public class MainScreen{
 	private String nazivLokala="Lokal";
 	
 	@FXML
+	public Label labelKonobar;
+	
+	@FXML
 	public ChoiceBox<String> choiceBoxKonobar;
 	
 	@FXML
@@ -92,6 +97,9 @@ public class MainScreen{
     public TableColumn<Artikli, Double> tableColumnUkupno;
 
     private Button[] btns = new Button[50];
+    
+    private Locale locale = RootLayout.getLocale();
+	private ResourceBundle bundle = RootLayout.getBundle();
 
    private Main main; 
    public void setMainApp(Main main) {
@@ -111,11 +119,21 @@ public class MainScreen{
     	}
     	
     	//inicijalizira tablicu stupce, naziv je ime podatka u klasi Artikli
-    	tableViewRacun.setPlaceholder(new Label("Unesite artikle za naplatu"));
+    	tableViewRacun.setPlaceholder(new Label(bundle.getString("tableViewRacun")));
     	tableColumnNaziv.setCellValueFactory(new PropertyValueFactory<Artikli,String>("naziv"));
+    	tableColumnNaziv.setText(bundle.getString("tableColumnNaziv"));
     	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,Double>("cijena"));
+    	tableColumnCijena.setText(bundle.getString("tableColumnCijena"));
     	tableColumnKolicina.setCellValueFactory(new PropertyValueFactory<Artikli,Integer>("kolicina"));
+    	tableColumnKolicina.setText(bundle.getString("tableColumnKolicina"));
     	tableColumnUkupno.setCellValueFactory(new PropertyValueFactory<Artikli,Double>("ukupno"));
+    	tableColumnUkupno.setText(bundle.getString("tableColumnUkupno"));
+    	
+    	btnNaplati.setText(bundle.getString("btnNaplati"));
+    	btnObrisi.setText(bundle.getString("btnObrisi"));
+    	btnObrisiSve.setText(bundle.getString("btnObrisiSve"));
+    	
+    	labelKonobar.setText(bundle.getString("labelKonobar"));
 
     	tableViewRacun.setItems(getArtikli(""));
     	
@@ -141,6 +159,8 @@ public class MainScreen{
 	       btnNaplati.setOnAction (e -> {
 	    	   	gumbNaplatiKlik(e);
 	    		});
+	       
+	       
         }
     
     

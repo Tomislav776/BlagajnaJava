@@ -24,6 +24,8 @@ public class Main extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
     private AnchorPane LoginLayout;
+    private AnchorPane MainScreen;
+    private RootLayout controller;
    // private AnchorPane anchor;
     String user = null;
     String pass = null;
@@ -123,7 +125,7 @@ public class Main extends Application {
             loader.setLocation(Main.class.getResource("../views/RootLayout.fxml"));
             rootLayout = (BorderPane) loader.load();
             
-            RootLayout controller = loader.getController();
+            controller = loader.getController();
             controller.setMainApp(this);
             
             primaryStage.setMinWidth(1024);
@@ -147,10 +149,9 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("../views/MainScreen.fxml"));
             
-            AnchorPane personOverview = (AnchorPane) loader.load();
-
+            MainScreen = (AnchorPane) loader.load();
             // Set person overview into the center of root layout.
-            rootLayout.setCenter(personOverview);
+            rootLayout.setCenter(MainScreen);
         } catch (IOException e) {
             e.printStackTrace();
         }

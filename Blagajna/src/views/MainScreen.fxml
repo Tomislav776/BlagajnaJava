@@ -50,7 +50,7 @@
                <children>
                   <HBox alignment="CENTER_RIGHT" maxHeight="100.0" maxWidth="1.0E7" prefHeight="59.0" prefWidth="669.0" spacing="10.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Label text="Konobar:" wrapText="true">
+                        <Label fx:id="labelKonobar" text="Konobar:" wrapText="true">
                            <font>
                               <Font size="14.0" />
                            </font>
