@@ -110,6 +110,8 @@ public class MainScreen{
     //popunjava Grid s gumbovima
     @FXML
     public void initialize() {
+    	artikliBaza = bazaBlagajna.bazaCitajArtikle();
+    	
     	initBtnsArray();
     	initChoiceBox();
     	
@@ -287,6 +289,7 @@ public class MainScreen{
 		return artikli;
 	}
 	
+	//refresha table view prikaz za račun
 	public void osvjezi() { 
 		tableViewRacun.setItems(null); 
 		tableViewRacun.layout(); 

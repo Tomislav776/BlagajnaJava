@@ -21,10 +21,10 @@ import javafx.scene.control.ButtonBar.ButtonData;
 
 public class Main extends Application {
 
-    private Stage primaryStage;
+    protected static Stage primaryStage;
     private BorderPane rootLayout;
     private AnchorPane LoginLayout;
-    private AnchorPane MainScreen;
+    protected static AnchorPane MainScreen;
     private RootLayout controller;
    // private AnchorPane anchor;
     String user = null;
@@ -183,6 +183,11 @@ public class Main extends Application {
     	if (result.get() == button1){
     		primaryStage.close();
     	}
+    }
+    
+    public void refreshMainScreen(){
+    	initRootLayout();
+    	initSredisnjiLayout();
     }
 
     public static void main(String[] args) {

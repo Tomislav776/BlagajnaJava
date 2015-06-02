@@ -21,7 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import dataClass.Artikli;
 import dataClass.Konobar;
 
-public class DodajKonobar {
+public class DodajKonobar extends Main{
 	
 	@FXML
 	private TextField filterKonobar;
@@ -136,6 +136,9 @@ public class DodajKonobar {
             		alert.setContentText("Uspješno ste dodali konobara.");
 
             		alert.showAndWait();
+            		
+            		//Refresh Main Screena
+            		refreshMainScreen();
             	}
     		}
         	
@@ -154,6 +157,8 @@ public class DodajKonobar {
     		//brisanje iz liste koja se u tom trenutku prikazuje na tablici
     		konobarii.forEach(konobari::remove);
     		osvjezi();
+    		
+    		refreshMainScreen();
     	}
     	
     	@FXML

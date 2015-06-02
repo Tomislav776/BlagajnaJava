@@ -28,11 +28,18 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 
 
-public class Dodaj_artikl {
+public class Dodaj_artikl extends Main{
+	
+	//private AnchorPane MainScreen;
+	private AnchorPane MainScreen;
 	
 	@FXML
 	private TextField txt_naziv;
@@ -173,6 +180,15 @@ public class Dodaj_artikl {
             		alert.setContentText("Uspješno ste dodali artikl.");
 
             		alert.showAndWait();
+            		
+            		//Refresh Main screna
+            	    //primaryStage.close();
+            	    //initRootLayout();
+	                //initSredisnjiLayout();
+
+            		//RADI al sam preumoran da razumijem kolko sam genijalan i zasto radi
+            		refreshMainScreen();
+            		
             	}
     		}
         	
@@ -192,6 +208,9 @@ public class Dodaj_artikl {
     		//brisanje iz liste koja se u tom trenutku prikazuje na tablici
     		artikli1.forEach(artikli::remove);
     		osvjezi();
+    		
+    		//Refresh i tu dodan Main Screena
+    		refreshMainScreen();
     	}
     	
     	@FXML
