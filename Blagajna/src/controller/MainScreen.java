@@ -234,7 +234,7 @@ public class MainScreen{
     	if(b.dodaj_Racun(Double.parseDouble(ukupno()), nazivLokala, choiceBoxKonobar.getValue()) == true)
     	{
     		
-    		tableViewRacun.setPlaceholder(new Label("Unesite artikle za naplatu"));
+    		
     		txt_field_Ukupno.setText(ukupno()+valuta);
     		
     		alert.setTitle("Racun");
@@ -249,6 +249,7 @@ public class MainScreen{
         		alert.showAndWait();
     		}
     		artikli.removeAll(artikli);
+    		tableViewRacun.setPlaceholder(new Label("Unesite artikle za naplatu"));
     	}
     	return true;
     }
