@@ -45,6 +45,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 import javafx.scene.Node;
@@ -346,7 +347,28 @@ public class MainScreen{
 	
 	//Inicijalizira gumbove u gridu
 	public void initGumboviUGridu (){
+		List<ColumnConstraints> stupci = new ArrayList<ColumnConstraints>();
+		List<RowConstraints> redovi = new ArrayList<RowConstraints>();
 		int k=0,i=0,j=0;
+		
+		grid_GumboviArtikl.getChildren().removeAll(grid_GumboviArtikl.getChildren());
+		
+		grid_GumboviArtikl.setPrefSize(669, 725);
+	     // never size the gridpane larger than its preferred size:
+		grid_GumboviArtikl.setMaxSize(10000000, 1000000);
+	     
+		for (int z=0;z<brojRedakaGrida;z++){
+			redovi.add(new RowConstraints());
+			redovi.get(z).setPercentHeight(50);
+		}
+		grid_GumboviArtikl.getRowConstraints().addAll(redovi);
+		
+		for (int z=0;z<brojStupacaGrida;z++){
+			stupci.add(new ColumnConstraints());
+			stupci.get(z).setPercentWidth(50);
+		}
+		grid_GumboviArtikl.getColumnConstraints().addAll(stupci);
+		
         while (k!=artikliBaza.size()) {    
         	
         		//btns[k].setMinSize(300, 100);	//Poveca gumbove da popune okvir
@@ -375,11 +397,12 @@ public class MainScreen{
         		
         	++k;
         	++j;
-        	if (j%4==0){
+        	if (j%brojStupacaGrida==0){
         		j=0;
         		++i;
         	}
         }
+        
 	}
 	
 	//incijalizira choice box

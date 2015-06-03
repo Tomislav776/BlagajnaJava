@@ -1,8 +1,8 @@
 Naziv lokala:
-Lokal
+Konjine
 Valuta:
  kn
 Broj redaka:
-7
+5
 Broj stupaca:
 4

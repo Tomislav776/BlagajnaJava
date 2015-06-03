@@ -22,7 +22,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-public class Postavke{
+public class Postavke extends Main{
 
 	    @FXML
 	    public TextField txtFieldNazivLokala;
@@ -101,6 +101,7 @@ public class Postavke{
        	        		alert.setTitle("Postavke");
        	        		alert.setHeaderText(null);
        	        		alert.setContentText("Trenutne postavke spremljene.");
+       	        		refreshMainScreen();
        	        		alert.showAndWait();
 
 	    		});
