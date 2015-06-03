@@ -1,5 +1,11 @@
 package controller;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -56,7 +62,7 @@ public class MainScreen{
 	/**
 	 * NAZIV lokala napraviti
 	 */
-	private String nazivLokala="Lokal";
+	protected static String nazivLokala="Nije odabran";
 	
 	@FXML
 	public Label labelKonobar;
@@ -114,9 +120,11 @@ public class MainScreen{
 
     }
     
-    //popunjava Grid s gumbovima
+    //inicijalizira Main Screen
     @FXML
     public void initialize() {
+    	ucitajPostavkeKorisnika();
+    	
     	artikliBaza = bazaBlagajna.bazaCitajArtikle();
     	
     	initBtnsArray();
@@ -197,6 +205,7 @@ public class MainScreen{
 	      
 	       //Nemogu ovako dobit focus...
 	       //txtFieldUnesiteArtikl.requestFocus();
+	       
 	       
         }
     
@@ -378,6 +387,31 @@ public class MainScreen{
 		for (int i=0;i<konobarBaza.size();i++)
 		choiceBoxKonobar.getItems().add(konobarBaza.get(i).getNaziv());
 		
+	}
+	
+	//inicijalizira varijable po zelji korisnika  
+	public void ucitajPostavkeKorisnika(){ 
+    BufferedReader reader = null;
+
+	    try {
+	        File file = new File("Postavke.txt");
+	        reader = new BufferedReader(new FileReader(file));
+	        nazivLokala=reader.readLine();
+	        String line;
+	        while ((line = reader.readLine()) != null) {
+	            System.out.println(line);
+	        }
+	        
+	
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            reader.close();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
 	}
 	
 }

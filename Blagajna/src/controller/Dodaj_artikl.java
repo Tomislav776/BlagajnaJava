@@ -38,9 +38,6 @@ import javafx.collections.transformation.SortedList;
 
 public class Dodaj_artikl extends Main{
 	
-	//private AnchorPane MainScreen;
-	private AnchorPane MainScreen;
-	
 	@FXML
 	private TextField txt_naziv;
 	

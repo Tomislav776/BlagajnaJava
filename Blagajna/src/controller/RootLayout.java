@@ -32,6 +32,9 @@ public class RootLayout implements Initializable{
 	public MenuItem obracun;
 	
 	@FXML
+	public MenuItem postavke;
+	
+	@FXML
 	public MenuItem o_nama;
 	
 	@FXML
@@ -171,6 +174,28 @@ public class RootLayout implements Initializable{
         }
     }
     
+    public void displayPostavke()
+    {
+    	try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../views/Postavke.fxml"));
+            AnchorPane anchor = (AnchorPane) loader.load();
+
+            Stage window = new Stage();
+            window.initModality(Modality.APPLICATION_MODAL);
+            window.setTitle("Postavke");
+
+            
+            Scene scene = new Scene(anchor);
+            window.setScene(scene);
+            window.showAndWait();
+      
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     /**
      * Initializes the controller class. This method is automatically called
      * after the fxml file has been loaded.
@@ -191,6 +216,10 @@ public class RootLayout implements Initializable{
        
        o_nama.setOnAction(e -> {
     	   displayONama();
+    	   });
+       
+       postavke.setOnAction(e -> {
+    	   displayPostavke();
     	   });
        
        izlaz.setOnAction(e -> {

@@ -19,7 +19,7 @@
           <Menu fx:id="aplikacija" mnemonicParsing="false" text="Aplikacija">
             <items>
               <MenuItem fx:id="o_nama" mnemonicParsing="false" text="O nama" />
-                  <MenuItem fx:id="izlaz" mnemonicParsing="false" text="Izlaz iz aplikacije" />
+                  <MenuItem fx:id="postavke" mnemonicParsing="false" text="Postavke" />
                   <Menu fx:id="jezik" mnemonicParsing="false" text="Jezik">
                     <items>
                         <RadioMenuItem fx:id="hrvatski" mnemonicParsing="false" selected="true" text="Hrvatski">
@@ -30,6 +30,7 @@
                         <RadioMenuItem fx:id="engleski" mnemonicParsing="false" text="Engleski" toggleGroup="$radioGroup1" />
                     </items>
                   </Menu>
+                  <MenuItem fx:id="izlaz" mnemonicParsing="false" text="Izlaz iz aplikacije" />
             </items>
           </Menu>
         </menus>

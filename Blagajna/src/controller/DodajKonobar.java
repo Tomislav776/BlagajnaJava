@@ -73,9 +73,9 @@ public class DodajKonobar extends Main{
     	tableViewKonobari.getSelectionModel().setCellSelectionEnabled(true);
     	tableViewKonobari.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     	tableViewKonobari.setItems(getKonobari());
-    	
-
     	/*
+    	filterKonobar.setPromptText(bundle.getString("filter"));
+    	
         // wrepamo ObservableList u FilteredList
         FilteredList<Konobar> filtriraniKonobari = new FilteredList<>(konobari);
         // Listener za svaki put kada se filter (textfield) promjeni (upise ili obrise neko slovo)
@@ -87,19 +87,19 @@ public class DodajKonobar extends Main{
                 }
                  //Usporedi naziv artikla s nazivom iz filtera
                 String lowerCaseFilter = newValue.toLowerCase();
-               	if (artikl.getNaziv().toLowerCase().contains(lowerCaseFilter)) {
+               	if (konobar.getNaziv().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // vrati true ako neki artikl sadrzi tekst iz filtera
                 }
                 return false; // ako ne sadrzi vrati false
             });
        });
         // wrepaj FilteredList u SortedList
-        SortedList<Artikli> sortiraniArtikli = new SortedList<>(filtriraniArtikli);
+        SortedList<Konobar> sortiraniKonobari = new SortedList<>(filtriraniKonobari);
         // Poveži SortedList comparator sa TableView comparatorom
-        sortiraniArtikli.comparatorProperty().bind(tableViewArtikli.comparatorProperty());
+        sortiraniKonobari.comparatorProperty().bind(tableViewKonobari.comparatorProperty());
         
         // Stavi samo sortirane (i filtirane) artikle u tablicu
-    	tableViewKonobari.setItems(sortiraniArtikli);
+    	tableViewKonobari.setItems(sortiraniKonobari);
     	*/
     	
     	btnDodajKonobar.setText(bundle.getString("btnDodajKonobar"));
