@@ -234,7 +234,7 @@ public class MainScreen{
     	if(b.dodaj_Racun(Double.parseDouble(ukupno()), nazivLokala, choiceBoxKonobar.getValue()) == true)
     	{
     		
-    		
+    		tableViewRacun.setPlaceholder(new Label("Unesite artikle za naplatu"));
     		txt_field_Ukupno.setText(ukupno()+valuta);
     		
     		alert.setTitle("Racun");
@@ -249,7 +249,6 @@ public class MainScreen{
         		alert.showAndWait();
     		}
     		artikli.removeAll(artikli);
-    		tableViewRacun.setPlaceholder(new Label(bundle.getString("tableViewRacun")));
     	}
     	return true;
     }
@@ -354,7 +353,6 @@ public class MainScreen{
 		int k=0,i=0,j=0;
 		
 		grid_GumboviArtikl.getChildren().removeAll(grid_GumboviArtikl.getChildren());
-		grid_GumboviArtikl.getChildren().clear();
 		
 		grid_GumboviArtikl.setPrefSize(669, 725);
 	     // never size the gridpane larger than its preferred size:
@@ -400,7 +398,7 @@ public class MainScreen{
         		
         	++k;
         	++j;
-        	if (j%brojStupacaGrida==0){
+        	if (j%6==0){
         		j=0;
         		++i;
         	}
@@ -450,10 +448,10 @@ public class MainScreen{
 	    		valuta=postavke.get(i+1);
 	    	
 	    	if (postavke.get(i).equals("Broj redaka:"))
-	    		brojRedakaGrida=Integer.parseInt(postavke.get(i+1));
+	    		brojRedakaGrida=Integer.parseInt(postavke.get(i+1))-1;
 	    	
 	    	if (postavke.get(i).equals("Broj stupaca:"))
-	    		brojStupacaGrida=Integer.parseInt(postavke.get(i+1));
+	    		brojStupacaGrida=Integer.parseInt(postavke.get(i+1))-1;
 	    }
 	}
 	

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="1.0E7" maxWidth="1.0E7" minHeight="768.0" minWidth="1024.0" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainScreen">
+   <children>
+      <HBox layoutX="-97.0" maxHeight="1.0E7" maxWidth="1.0E7" prefHeight="768.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox maxHeight="1000000.0" maxWidth="1000000.0" prefHeight="746.0" prefWidth="355.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <TableView fx:id="tableViewRacun" editable="true" maxHeight="1.0E7" maxWidth="1.0E7" prefHeight="634.0" prefWidth="355.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                      <TableColumn fx:id="tableColumnNaziv" minWidth="176.0" prefWidth="191.0" text="Naziv" />
+                        <TableColumn fx:id="tableColumnKolicina" prefWidth="55.0" text="Kolicina" />
+                      <TableColumn fx:id="tableColumnCijena" prefWidth="52.0" text="Cijena" />
+                        <TableColumn fx:id="tableColumnUkupno" prefWidth="56.0" text="Ukupno" />
+                    </columns>
+                  </TableView>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="355.0" spacing="10.0">
+                     <children>
+                        <Label text="Ukupno:" />
+                        <TextField fx:id="txt_field_Ukupno" prefHeight="40.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" maxHeight="40.0" prefHeight="40.0" prefWidth="355.0" spacing="15.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="btnObrisiSve" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Obriši sve" />
+                        <Button fx:id="btnObrisi" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Obriši" />
+                        <Button fx:id="btnNaplati" mnemonicParsing="false" prefHeight="200.0" prefWidth="100.0" text="Naplati" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </VBox>
+            <VBox maxHeight="1000000.0" maxWidth="1000000.0" prefHeight="768.0" prefWidth="669.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER_RIGHT" maxHeight="100.0" maxWidth="1.0E7" prefHeight="59.0" prefWidth="669.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <TextField fx:id="txtFieldUnesiteArtikl" maxWidth="10000.0" prefHeight="25.0" prefWidth="410.0" promptText="Unesite artikl" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Label fx:id="labelKonobar" text="Konobar:" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="choiceBoxKonobar" prefWidth="150.0" />
+                     </children>
+                     <padding>
+                        <Insets right="15.0" />
+                     </padding>
+                  </HBox>
+                  <GridPane fx:id="grid_GumboviArtikl" maxHeight="1.0E7" maxWidth="1.0E7" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="669.0" VBox.vgrow="ALWAYS">
+                    <rowConstraints>
+                        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <padding>
+                        <Insets bottom="30.0" />
+                     </padding>
+                  </GridPane>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
