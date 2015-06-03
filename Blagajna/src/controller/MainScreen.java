@@ -15,6 +15,7 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -31,6 +32,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -78,6 +81,9 @@ public class MainScreen{
 	
 	@FXML
 	public TextField txt_field_Ukupno;
+	
+	@FXML
+	public TextField txtFieldUnesiteArtikl;
 	
 	@FXML
     public GridPane grid_GumboviArtikl;
@@ -166,6 +172,31 @@ public class MainScreen{
 	    	   	gumbNaplatiKlik(e);
 	    		});
 	       
+	       //Da se artikli mogu unositi preko text fielda
+	       txtFieldUnesiteArtikl.setOnKeyPressed(new EventHandler<KeyEvent>()
+           	    {
+           	        @Override
+           	        public void handle(KeyEvent ke)
+           	        {
+           	            if (ke.getCode().equals(KeyCode.ENTER))
+           	            {
+           	            	String naziv=txtFieldUnesiteArtikl.getText();
+           	            	//boolean daliPostojiArtikl=false;
+           	            	
+           	            for (int i =0;i<artikliBaza.size();i++)
+           	            	if (naziv.equals(artikliBaza.get(i).getNaziv())){
+		           	     		tableViewRacun.setItems(getArtikli(naziv));
+		           	     		
+		           	     		txt_field_Ukupno.setText(ukupno()+valuta);
+		           	     		txtFieldUnesiteArtikl.clear();
+		           	     		break;
+           	            	}
+           	            	
+           	        } }
+           	    });
+	      
+	       //Nemogu ovako dobit focus...
+	       //txtFieldUnesiteArtikl.requestFocus();
 	       
         }
     

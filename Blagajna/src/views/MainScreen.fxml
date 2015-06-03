@@ -51,6 +51,11 @@
                <children>
                   <HBox alignment="CENTER_RIGHT" maxHeight="100.0" maxWidth="1.0E7" prefHeight="59.0" prefWidth="669.0" spacing="10.0" VBox.vgrow="ALWAYS">
                      <children>
+                        <TextField fx:id="txtFieldUnesiteArtikl" maxWidth="10000.0" prefHeight="25.0" prefWidth="410.0" promptText="Unesite artikl" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </TextField>
                         <Label fx:id="labelKonobar" text="Konobar:" wrapText="true">
                            <font>
                               <Font size="14.0" />
@@ -83,6 +88,9 @@
                      </padding>
                   </GridPane>
                </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
             </VBox>
          </children>
       </HBox>
