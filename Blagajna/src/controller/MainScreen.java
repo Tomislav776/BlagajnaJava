@@ -353,6 +353,7 @@ public class MainScreen{
 		int k=0,i=0,j=0;
 		
 		grid_GumboviArtikl.getChildren().removeAll(grid_GumboviArtikl.getChildren());
+		grid_GumboviArtikl.getChildren().clear();
 		
 		grid_GumboviArtikl.setPrefSize(669, 725);
 	     // never size the gridpane larger than its preferred size:
