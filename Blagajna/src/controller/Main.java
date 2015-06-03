@@ -128,6 +128,18 @@ public class Main extends Application {
             controller = loader.getController();
             controller.setMainApp(this);
             
+            controller.hrvatski.setOnAction(e->
+            {
+            	controller.loadLang("hr");
+            	refreshMainScreen1();
+            });
+            
+            controller.engleski.setOnAction(e->
+            {
+            	controller.loadLang("en");
+            	refreshMainScreen1();
+            });
+            
             primaryStage.setMinWidth(1120);
             primaryStage.setMinHeight(808);
             
@@ -187,6 +199,10 @@ public class Main extends Application {
     
     public void refreshMainScreen(){
     	initRootLayout();
+    	initSredisnjiLayout();
+    }
+    
+    public void refreshMainScreen1(){
     	initSredisnjiLayout();
     }
 

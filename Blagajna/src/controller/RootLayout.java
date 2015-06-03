@@ -239,7 +239,7 @@ public class RootLayout implements Initializable{
        });
     }
     
-    private void loadLang(String lang)
+    public void loadLang(String lang)
     {
     	locale = new Locale(lang);
     	bundle = ResourceBundle.getBundle("lang.lang", locale);
