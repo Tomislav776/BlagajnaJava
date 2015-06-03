@@ -31,6 +31,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -130,6 +131,9 @@ public class MainScreen{
     	tableColumnKolicina.setText(bundle.getString("tableColumnKolicina"));
     	tableColumnUkupno.setCellValueFactory(new PropertyValueFactory<Artikli,Double>("ukupno"));
     	tableColumnUkupno.setText(bundle.getString("tableColumnUkupno"));
+    	
+    	//Nezz dal da se povećava ili ne ako da ovo sređuje da svi stupci budu vidljivi, da popune prostor
+    	tableViewRacun.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     	
     	btnNaplati.setText(bundle.getString("btnNaplati"));
     	btnObrisi.setText(bundle.getString("btnObrisi"));
@@ -302,12 +306,23 @@ public class MainScreen{
 		int k=0,i=0,j=0;
         while (k!=artikliBaza.size()) {    
         	
-        		btns[k].setMinSize(149, 100);	//Poveca gumbove da popune okvir
-        		btns[k].setMaxSize(1000, 1000);
-        		    
-        		grid_GumboviArtikl.add(btns[k],j ,i);
+        		//btns[k].setMinSize(300, 100);	//Poveca gumbove da popune okvir
+        		//btns[k].setMaxSize(1000, 1000);
+        		
+        	//A nezznam trebalo bi bit responzivnije al kaj ja znam jel je
+        		AnchorPane pane = new AnchorPane();
+        		
+        		grid_GumboviArtikl.add(pane,j ,i);
+        		
+        		pane.getChildren().add(btns[k]);
+        		pane.setBottomAnchor(btns[k], 0.0);
+        		pane.setTopAnchor(btns[k], 0.0);
+        		pane.setLeftAnchor(btns[k], 0.0);
+        		pane.setRightAnchor(btns[k], 0.0);
+        		
         		grid_GumboviArtikl.setHalignment(btns[k], HPos.CENTER);  //Centrira gumbove
         		grid_GumboviArtikl.setValignment(btns[k], VPos.CENTER);
+        		
         		
         		
         		//Postavlja Listenere na gumbove

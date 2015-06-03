@@ -128,7 +128,7 @@ public class Main extends Application {
             controller = loader.getController();
             controller.setMainApp(this);
             
-            primaryStage.setMinWidth(1024);
+            primaryStage.setMinWidth(1120);
             primaryStage.setMinHeight(808);
             
             // Show the scene containing the root layout.
