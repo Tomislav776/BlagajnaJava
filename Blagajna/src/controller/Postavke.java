@@ -26,13 +26,13 @@ public class Postavke{
 	    public TextField txtFieldNazivLokala;
 	    
 	    @FXML
-	    public ChoiceBox choiceBoxValuta;
+	    public ChoiceBox<String> choiceBoxValuta;
 	    
 	    @FXML
-	    public ChoiceBox<String> choiceBoxBrojRedaka;
+	    public ChoiceBox<Integer> choiceBoxBrojRedaka;
 	    
 	    @FXML
-	    public ChoiceBox choiceBoxBrojStupaca;
+	    public ChoiceBox<Integer> choiceBoxBrojStupaca;
 	    
 	    @FXML
 	    public Button btnSpremiPostavke;
@@ -75,9 +75,10 @@ public class Postavke{
 
 	    		});*/
 	    	
-	    	/*choiceBoxBrojRedaka.getItems().add("baba");
-	    	choiceBoxBrojRedaka.getItems().add("lane");*/
-	
+	    	/*
+	    	choiceBoxBrojRedaka.getItems().add(1);
+	    	choiceBoxBrojRedaka.getItems().add(2);
+	*/
 	    }
 
 	    /**
