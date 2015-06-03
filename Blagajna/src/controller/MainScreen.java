@@ -233,7 +233,7 @@ public class MainScreen{
     	bazaBlagajna b = new bazaBlagajna();
     	if(b.dodaj_Racun(Double.parseDouble(ukupno()), nazivLokala, choiceBoxKonobar.getValue()) == true)
     	{
-    		artikli.removeAll(artikli);
+    		
     		tableViewRacun.setPlaceholder(new Label("Unesite artikle za naplatu"));
     		txt_field_Ukupno.setText(ukupno()+valuta);
     		
@@ -248,6 +248,7 @@ public class MainScreen{
         		alert.setContentText("Račun je isprintan!");
         		alert.showAndWait();
     		}
+    		artikli.removeAll(artikli);
     	}
     	return true;
     }
