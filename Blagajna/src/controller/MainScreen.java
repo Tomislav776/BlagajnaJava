@@ -249,7 +249,7 @@ public class MainScreen{
         		alert.showAndWait();
     		}
     		artikli.removeAll(artikli);
-    		tableViewRacun.setPlaceholder(new Label("Unesite artikle za naplatu"));
+    		tableViewRacun.setPlaceholder(new Label(bundle.getString("tableViewRacun")));
     	}
     	return true;
     }
