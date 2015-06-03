@@ -48,13 +48,11 @@
                      </font>
                   </Label>
                   <ChoiceBox fx:id="choiceBoxBrojRedaka" prefWidth="150.0" />
-                  <Button mnemonicParsing="false" text="Button" />
                </children>
             </HBox>
             <HBox alignment="CENTER" spacing="30.0">
                <children>
                   <Button fx:id="btnSpremiPostavke" mnemonicParsing="false" text="Promijeni" />
-                  <Button fx:id="btnIzadi" mnemonicParsing="false" text="Izađi" />
                </children>
             </HBox>
          </children>

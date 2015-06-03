@@ -57,7 +57,10 @@ public class MainScreen{
 	
 	private List<Artikli> artikliBaza = new ArrayList<Artikli>(bazaBlagajna.bazaCitajArtikle());
 	
-	private String valuta=" kn";
+	private String valuta="Valuta";
+	
+	private int brojRedakaGrida=0;
+	private int brojStupacaGrida=0;
 	
 	/**
 	 * NAZIV lokala napraviti
@@ -391,15 +394,15 @@ public class MainScreen{
 	
 	//inicijalizira varijable po zelji korisnika  
 	public void ucitajPostavkeKorisnika(){ 
-    BufferedReader reader = null;
+		List<String> postavke = new ArrayList<String>();
+		BufferedReader reader = null;
 
 	    try {
 	        File file = new File("Postavke.txt");
 	        reader = new BufferedReader(new FileReader(file));
-	        nazivLokala=reader.readLine();
 	        String line;
 	        while ((line = reader.readLine()) != null) {
-	            System.out.println(line);
+	            postavke.add(line);
 	        }
 	        
 	
@@ -411,6 +414,20 @@ public class MainScreen{
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
+	    }
+	    
+	    for (int i =0;i<postavke.size();i++){
+	    	if (postavke.get(i).equals("Naziv lokala:"))
+	    		nazivLokala=postavke.get(i+1);
+	    	
+	    	if (postavke.get(i).equals("Valuta:"))
+	    		valuta=postavke.get(i+1);
+	    	
+	    	if (postavke.get(i).equals("Broj redaka:"))
+	    		brojRedakaGrida=Integer.parseInt(postavke.get(i+1));
+	    	
+	    	if (postavke.get(i).equals("Broj stupaca:"))
+	    		brojStupacaGrida=Integer.parseInt(postavke.get(i+1));
 	    }
 	}
 	
