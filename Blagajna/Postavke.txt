@@ -1,8 +1,0 @@
-Naziv lokala:
-Pandam
-Valuta:
- €
-Broj redaka:
-7
-Broj stupaca:
-4
