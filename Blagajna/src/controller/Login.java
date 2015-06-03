@@ -1,4 +1,9 @@
 package controller;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -33,7 +38,10 @@ public class Login {
 	     */
 	    @FXML
 	    private void initialize() {
-	    	
+	    	if (!(new File("Postavke.txt").isFile())){
+    			postaviDefault();
+    		}
+    	
 	    }
 
 	    /**
@@ -45,4 +53,33 @@ public class Login {
 	        this.main = main;
 
 	    }
+	    
+	    	public void postaviDefault(){
+			
+			try (BufferedWriter bw = new BufferedWriter(new PrintWriter("Postavke.txt"))) {
+	                 
+           		bw.write("Naziv lokala:");
+	            bw.newLine();
+           		bw.write("Lokal");
+           		bw.newLine();
+           		
+           		bw.write("Valuta:");
+	            bw.newLine();
+           		bw.write(" kn");
+           		bw.newLine();
+           		
+           		bw.write("Broj redaka:");
+	                bw.newLine();
+           		bw.write("7");
+           		bw.newLine();
+           		
+           		bw.write("Broj stupaca:");
+	                bw.newLine();
+           		bw.write("4");
+           		bw.newLine();
+	    	    } catch (IOException k) {
+	    	        k.printStackTrace();
+	    	    }  
+           	
+		}
 }

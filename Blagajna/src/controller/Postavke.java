@@ -72,7 +72,6 @@ public class Postavke{
 	    	postaviVrijednostiKorisnika();
 	    	
 	    	btnSpremiPostavke.setOnAction (pok -> {
-       	            
        	            	try (BufferedWriter bw = new BufferedWriter(new PrintWriter("Postavke.txt"))) {
        	                 
        	            		bw.write("Naziv lokala:");
@@ -156,4 +155,5 @@ public class Postavke{
 			    		choiceBoxBrojStupaca.setValue(Integer.parseInt(postavke.get(i+1)));
 			    }
 			}
+		
 }

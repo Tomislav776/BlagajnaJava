@@ -1,8 +1,8 @@
 Naziv lokala:
-Ludilooo
+Lokal
 Valuta:
  kn
 Broj redaka:
-9
+7
 Broj stupaca:
-2
+4
