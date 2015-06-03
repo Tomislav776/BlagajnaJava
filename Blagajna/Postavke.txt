@@ -1,8 +1,0 @@
-Naziv lokala:
-Konjine
-Valuta:
- kn
-Broj redaka:
-5
-Broj stupaca:
-4
