@@ -1,7 +1,7 @@
 Naziv lokala:
-Lokal
+Pandam
 Valuta:
- kn
+ €
 Broj redaka:
 7
 Broj stupaca:
