@@ -339,6 +339,32 @@ public class bazaBlagajna {
 		}
 			return true;
 	}
+	
+	//Smanjuje kolicinu artikla
+	public boolean smanjiKolicinuArtikla(int id, int kolicina) {
+		PreparedStatement stmt = null;
+		  String SQL = " UPDATE artikli SET kolicina=kolicina-? WHERE id=?";
+		 
+			try{
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
+				//Vezanje na bazu
+				conn = DriverManager.getConnection(connectionUrl, "root", "");
+			stmt = conn.prepareStatement(SQL);
+			stmt.setInt(1, kolicina);
+			stmt.setInt(2, id);
+			
+			stmt.executeUpdate();
+			
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			try { if (stmt != null) stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+			try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+		}
+			return true;
+	}
 
 	
 }
