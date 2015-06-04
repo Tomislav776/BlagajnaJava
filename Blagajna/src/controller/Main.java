@@ -37,6 +37,9 @@ public class Main extends Application {
         Image icon = new Image(getClass().getResourceAsStream("../resources/images/21-128.png"));
         this.primaryStage.getIcons().add(icon);
         
+        
+        /*jbt slon*/
+        
         primaryStage.setOnCloseRequest(e-> {
         	e.consume();
         	zatvori();
