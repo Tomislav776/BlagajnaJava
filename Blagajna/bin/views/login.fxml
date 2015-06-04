@@ -49,7 +49,7 @@
             </VBox>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
                <image>
-                  <Image url="@../../../../../../print/login_lock.gif" />
+                  <Image url="@../resources/images/login_lock.gif" />
                </image>
             </ImageView>
          </children>

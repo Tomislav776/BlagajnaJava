@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -16,17 +17,18 @@ import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+
 import java.util.Optional;
+
 import javafx.scene.control.ButtonBar.ButtonData;
 
 public class Main extends Application {
 
-    protected static Stage primaryStage;
+    private Stage primaryStage;
     private BorderPane rootLayout;
     private AnchorPane LoginLayout;
     protected static AnchorPane MainScreen;
     private RootLayout controller;
-   // private AnchorPane anchor;
     String user = null;
     String pass = null;
 
@@ -34,6 +36,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Blagajna");
+        
+        Image icon = new Image(getClass().getResourceAsStream("../resources/images/21-128.png"));
+        this.primaryStage.getIcons().add(icon);
         
         primaryStage.setOnCloseRequest(e-> {
         	e.consume();
