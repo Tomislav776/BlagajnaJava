@@ -85,16 +85,16 @@ public class Obracun {
     private Main main;
 
     /**
-     * The constructor.
-     * The constructor is called before the initialize() method.
+     * Konstruktor.
+     * Konstruktor se poziva prije initialize() metode.
      */
     public Obracun() {
     }
     
 
     /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
+     * Inicijalizira controller klasu. Ova se metoda automatski poziva nakon
+     * što se uèita fxml datoteka.
      */
     @FXML
     private void initialize() {
@@ -157,15 +157,20 @@ public class Obracun {
     	
 
     /**
-     * Is called by the main application to give a reference back to itself.
-     * 
-     * @param mainApp
+     * Poziva se iz Maina da bi se referencirao na samog sebe.
+     * @param main
      */
     public void setMainApp(Main main) {
         this.main = main;
 
     }
     
+    /**
+	 * Ovom metodom se spajamo na bazu podataka i išèitavamo promet za traženo razdoblje.
+	 * @param pocetakRazdoblja Prvi parametar je datum u obliku Stringa koji oznaèava poèetak traženog razdoblja.
+	 * @param krajRazdoblja Drugi parametar je datum u obliku Stringa koji oznaèava završetak traženog razdoblja.
+	 * @return Vraæa ObservableList prometa iz baze.
+	 */
     private ObservableList<Promet> getObracun(String pocetakRazdoblja, String krajRazdoblja){
 		List<Promet> obracunIzBaze = new ArrayList<Promet>();
 		obracunIzBaze = bazaBlagajna.bazaCitajPromet(pocetakRazdoblja, krajRazdoblja);

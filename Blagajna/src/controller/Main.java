@@ -29,6 +29,10 @@ public class Main extends Application {
     String user = null;
     String pass = null;
 
+    /**
+     * Metoda koju pozove launch metoda iz maina.
+     * @param primaryStage Stage na koji će se postavljati layoutovi.
+     */
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -36,9 +40,6 @@ public class Main extends Application {
         
         Image icon = new Image(getClass().getResourceAsStream("../resources/images/21-128.png"));
         this.primaryStage.getIcons().add(icon);
-        
-        
-        /*jbt slon*/
         
         primaryStage.setOnCloseRequest(e-> {
         	e.consume();
@@ -48,10 +49,13 @@ public class Main extends Application {
         initLogin();
     }
     
+    /**
+     * Postavlja scenu na login layout te ju prikaže na Stageu.
+     */
     public void initLogin() {
     	
         try {
-            // Load root layout from fxml file.
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("../views/login.fxml"));
             LoginLayout = (AnchorPane) loader.load();
@@ -107,7 +111,7 @@ public class Main extends Application {
            
             
 
-            // Show the scene containing the root layout.
+
             Scene scene = new Scene(LoginLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -121,11 +125,11 @@ public class Main extends Application {
     }
 
     /**
-     * Initializes the root layout.
+     * Postavlja scenu na RootLayout te ju prikaže na Stageu.
      */
     public void initRootLayout() {
         try {
-            // Load root layout from fxml file.
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("../views/RootLayout.fxml"));
             rootLayout = (BorderPane) loader.load();
@@ -148,7 +152,6 @@ public class Main extends Application {
             primaryStage.setMinWidth(1120);
             primaryStage.setMinHeight(808);
             
-            // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -158,16 +161,16 @@ public class Main extends Application {
     }
 
     /**
-     * Shows the person overview inside the root layout.
+     * Postavlja MainScreen layout u centralni dio RootLayout BorderPanea.
      */
     public void initSredisnjiLayout() {
         try {
-            // Load person overview.
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("../views/MainScreen.fxml"));
             
             MainScreen = (AnchorPane) loader.load();
-            // Set person overview into the center of root layout.
+
             rootLayout.setCenter(MainScreen);
         } catch (IOException e) {
             e.printStackTrace();
@@ -176,14 +179,18 @@ public class Main extends Application {
 	
 
     /**
-     * Returns the main stage.
-     * @return
+     * Vraća glavni Stage.
+     * @return primaryStage To je glavni Stage.
      */
     public Stage getPrimaryStage() {
         return primaryStage;
     }
     
     
+    /**
+     * Otvara alert dijalog gdje pita korisnika da li stvarno hoće izaći iz aplikacije,
+     * ako korisnik odabere da je siguran onda izlazi iz aplikacije, inaće ostaje u njoj.
+     */
     public void zatvori()
     {
     	Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -202,11 +209,17 @@ public class Main extends Application {
     	}
     }
     
+    /**
+     * Refresha RootLayout i MainScreenLayoutove.
+     */
     public void refreshMainScreen(){
     	initRootLayout();
     	initSredisnjiLayout();
     }
     
+    /**
+     * Refresha MainScreenLayout (poziva se nakon dodavanja artikla i/ili konobara).
+     */
     public void refreshMainScreen1(){
     	initSredisnjiLayout();
     }

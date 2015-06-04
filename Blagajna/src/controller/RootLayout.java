@@ -69,8 +69,8 @@ public class RootLayout implements Initializable{
     private Main main;
 
     /**
-     * The constructor.
-     * The constructor is called before the initialize() method.
+     * Inicijalizira controller klasu. Ova se metoda automatski poziva nakon
+     * što se uèita fxml datoteka.
      */
     public RootLayout() {
     }
@@ -85,7 +85,9 @@ public class RootLayout implements Initializable{
     	return bundle;
     }
     
-
+    /**
+     * Otvara dijalog za dodavanje novih artikala u bazu.
+     */
     public void display()
     {
     	try {
@@ -108,6 +110,9 @@ public class RootLayout implements Initializable{
         }
     }
     
+    /**
+     * Otvara dijalog za dodavanje novih konobara u bazu.
+     */
     public void displayKonobar()
     {
     	try {
@@ -130,6 +135,9 @@ public class RootLayout implements Initializable{
         }
     }
     
+    /**
+     * Otvara dijalog za napraviti obraèun i grafièki prikaz tog obraèuna za neko razdoblje.
+     */
     public void displayObracun()
     {
     	try {
@@ -152,6 +160,9 @@ public class RootLayout implements Initializable{
         }
     }
     
+    /**
+     * Otvara dijalog koji sadrži informacije o autorima aplikacije.
+     */
     public void displayONama()
     {
     	try {
@@ -174,6 +185,9 @@ public class RootLayout implements Initializable{
         }
     }
     
+    /**
+     * Otvara dijalog u kojem korisnik može birati odreðene postavke za aplikaciju.
+     */
     public void displayPostavke()
     {
     	try {
@@ -197,8 +211,8 @@ public class RootLayout implements Initializable{
     }
     
     /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
+     * Inicijalizira controller klasu. Ova se metoda automatski poziva nakon
+     * što se uèita fxml datoteka.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -239,6 +253,10 @@ public class RootLayout implements Initializable{
        });
     }
     
+    /**
+     * Postavlja jezik aplikacije.
+     * @param lang String koji odreðuje jezik aplikacije, može biti "hr" ili "en".
+     */
     public void loadLang(String lang)
     {
     	locale = new Locale(lang);
@@ -256,9 +274,8 @@ public class RootLayout implements Initializable{
     }
 
     /**
-     * Is called by the main application to give a reference back to itself.
-     * 
-     * @param mainApp
+     * Poziva se iz Maina da bi se referencirao na samog sebe.
+     * @param main
      */
     public void setMainApp(Main main) {
         this.main = main;

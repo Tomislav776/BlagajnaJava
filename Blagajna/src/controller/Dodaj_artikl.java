@@ -81,16 +81,16 @@ public class Dodaj_artikl extends Main{
     private Main main;
 
     /**
-     * The constructor.
-     * The constructor is called before the initialize() method.
+     * Konstruktor.
+     * Konstruktor se poziva prije initialize() metode.
      */
     public Dodaj_artikl() {
     }
     
 
     /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
+     * Inicijalizira controller klasu. Ova se metoda automatski poziva nakon
+     * što se uèita fxml datoteka.
      */
     @FXML
     private void initialize() {
@@ -145,7 +145,10 @@ public class Dodaj_artikl extends Main{
         txt_cijena.setPromptText(bundle.getString("txt_cijena"));
 
 }
-    
+    /**
+	 * Ova metoda se poziva kada se klikne na gumb za dodati artikl. Ukoliko je neko od potrebnih text fieldova prazno
+	 * iskaèe alert, inaæe se spaja na bazu i u nju dodaje novi artikl.
+	 */
     	@FXML
     	private void handleClickDodaj()
     	{
@@ -191,6 +194,9 @@ public class Dodaj_artikl extends Main{
         	
     	}
     	
+    	/**
+    	 * Klikom na gumb obriši briše se oznaèeni artikl iz baze.
+    	 */
     	@FXML
     	private void obrisi()
     	{
@@ -210,6 +216,9 @@ public class Dodaj_artikl extends Main{
     		refreshMainScreen();
     	}
     	
+    	/**
+    	 * Osvježava prikaz artikla u tablici.
+    	 */
     	@FXML
     	private void osvjezi()
     	{
@@ -222,15 +231,18 @@ public class Dodaj_artikl extends Main{
     	}
 
     /**
-     * Is called by the main application to give a reference back to itself.
-     * 
-     * @param mainApp
+     * Poziva se iz Maina da bi se referencirao na samog sebe.
+     * @param main
      */
     public void setMainApp(Main main) {
         this.main = main;
 
     }
     
+    /**
+	 * Ovom metodom se spajamo na bazu podataka i išèitavamo artikle u listu.
+	 * @return Vraæa ObservableList artikla koji se nalaze u bazi.
+	 */
     private ObservableList<Artikli> getArtikli(){
 		List<Artikli> artikliIzBaze = new ArrayList<Artikli>();
 		artikliIzBaze = bazaBlagajna.bazaCitajArtikle();

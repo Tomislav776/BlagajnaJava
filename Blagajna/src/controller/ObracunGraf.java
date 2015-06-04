@@ -23,8 +23,8 @@ public class ObracunGraf {
     private ObservableList<String> razdoblja = FXCollections.observableArrayList();
 
     /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
+     * Inicijalizira controller klasu. Ova se metoda automatski poziva nakon
+     * što se uèita fxml datoteka.
      */
     @FXML
     private void initialize() {
@@ -32,12 +32,12 @@ public class ObracunGraf {
 
     /**
      * Sets the promet to show the statistics for.
-     * 
+     * @param prometi Lista prometa od kojih želimo napraviti grafièki prikaz.
      */
     public void setPrometPodaci(List<Promet> prometi) {
     	
     	String[] razdobljaString = new String[prometi.size()];
-    	for (int i = 0; i<prometi.size(); i++) {
+    	for (int i = 0; i < prometi.size(); i++) {
     		razdobljaString[i] = prometi.get(i).getRazdoblje();
         }
     	
@@ -46,7 +46,7 @@ public class ObracunGraf {
     	
         int[] IznosPrometaURazdoblju = new int[prometi.size()];
         
-        for (int i = 0; i<prometi.size(); i++) {
+        for (int i = 0; i < prometi.size(); i++) {
             IznosPrometaURazdoblju[i] = (int)prometi.get(i).getIznos_prometa();
         }
 
