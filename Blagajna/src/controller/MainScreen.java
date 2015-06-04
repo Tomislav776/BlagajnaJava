@@ -165,15 +165,17 @@ public class MainScreen extends Main{
 	        
 	       //Brise sve artikle
 	       btnObrisiSve.setOnAction (e -> {
-	    	  artikli.removeAll(artikli);
+	    	   enableButton("Svi");
+	    	   artikli.removeAll(artikli);
 	    	  txt_field_Ukupno.setText(ukupno());
+	    	  
     		});
 	       
 	       
 	       //Brise odabrani artikl u ispisu
 	       btnObrisi.setOnAction (e -> {
 	    	   Artikli podatakNaIspisuRacuna = tableViewRacun.getSelectionModel().getSelectedItem();
-	    	   promijeniKolicinu(e, tableViewRacun.getSelectionModel().getSelectedItem().getNaziv());
+	    	   enableButton(tableViewRacun.getSelectionModel().getSelectedItem().getNaziv());
 	    	   
 	    	   artikli.remove(podatakNaIspisuRacuna);  
 	    	   
@@ -234,7 +236,7 @@ public class MainScreen extends Main{
     	bazaBlagajna b = new bazaBlagajna();
     	
     	//Mjenjanje kolicine artikala u bazi
-    	promijeniKolicinu(sender, "");
+    	promijeniKolicinu(sender);
     	
     	if(b.dodaj_Racun(Double.parseDouble(ukupno()), nazivLokala, choiceBoxKonobar.getValue()) == true)
     	{
@@ -284,7 +286,7 @@ public class MainScreen extends Main{
 		tableViewRacun.setItems(getArtikli(naziv));
 		
 		//Mjenja kolicinu
-		promijeniKolicinu(sender, "");
+		promijeniKolicinu(sender);
 		
 		txt_field_Ukupno.setText(ukupno()+valuta); //Postavlja cijenu
 		}
@@ -301,7 +303,7 @@ public class MainScreen extends Main{
 	}
 	
 	//mjenja kolicinu u bazi i deaktivira gumb
-	public void promijeniKolicinu (ActionEvent sender, String maknuti){
+	public void promijeniKolicinu (ActionEvent sender){
 		int baza=0;
 		Button btn=(Button) sender.getSource();
 		String naziv;
@@ -326,11 +328,6 @@ public class MainScreen extends Main{
 				break;
 			}
 			
-			if ((artikli.get(i).getNaziv().equals(naziv) && bazaArtikli.get(baza).getKolicina()>artikli.get(i).getKolicina()))
-			{
-				btn.setDisable(false);
-				break;
-			}
 		}
 		}
 		else
@@ -349,6 +346,15 @@ public class MainScreen extends Main{
 				}
 			}
 		}	
+	}
+	
+	public void enableButton (String naziv){
+		
+		for (int i=0;i<bazaArtikli.size();i++){
+			if (naziv.equals(btns[i].getText()) || naziv.equals("Svi")){
+				btns[i].setDisable(false);
+			}
+		}
 	}
 	
 	//Radi observable list stavlja artikle u nju za prikaz u table view
