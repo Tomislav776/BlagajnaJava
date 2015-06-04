@@ -52,21 +52,19 @@ import javafx.scene.Node;
 import javafx.print.*;
 import javafx.scene.transform.Scale;
 
-public class MainScreen{
+public class MainScreen extends Main{
 	
 	private  ObservableList<Artikli> artikli = FXCollections.observableArrayList();
 	
 	private List<Artikli> artikliBaza = new ArrayList<Artikli>(bazaBlagajna.bazaCitajArtikle());
+	private List<Artikli> bazaArtikli = artikliBaza;
 	
 	private String valuta="Valuta";
 	
 	private int brojRedakaGrida=0;
 	private int brojStupacaGrida=0;
 	
-	/**
-	 * NAZIV lokala napraviti
-	 */
-	protected static String nazivLokala="Nije odabran";
+	protected static String nazivLokala="Lokal";
 	
 	@FXML
 	public Label labelKonobar;
@@ -131,7 +129,8 @@ public class MainScreen{
     	
     	artikliBaza = bazaBlagajna.bazaCitajArtikle();
     	
-    	initBtnsArray();
+    	
+    	initGumboviUGridu(); 
     	initChoiceBox();
     	
     	//inicijalizira broj naplacenih artikala na 1
@@ -162,8 +161,6 @@ public class MainScreen{
     	tableViewRacun.setItems(getArtikli(""));
     	
     	txt_field_Ukupno.setDisable(true);
-    	
-    	initGumboviUGridu(); 
         	
 	        
 	       //Brise sve artikle
@@ -176,6 +173,8 @@ public class MainScreen{
 	       //Brise odabrani artikl u ispisu
 	       btnObrisi.setOnAction (e -> {
 	    	   Artikli podatakNaIspisuRacuna = tableViewRacun.getSelectionModel().getSelectedItem();
+	    	   promijeniKolicinu(e, tableViewRacun.getSelectionModel().getSelectedItem().getNaziv());
+	    	   
 	    	   artikli.remove(podatakNaIspisuRacuna);  
 	    	   
 	    	   txt_field_Ukupno.setText(ukupno()+valuta);
@@ -233,6 +232,10 @@ public class MainScreen{
     	}
     	
     	bazaBlagajna b = new bazaBlagajna();
+    	
+    	//Mjenjanje kolicine artikala u bazi
+    	promijeniKolicinu(sender, "");
+    	
     	if(b.dodaj_Racun(Double.parseDouble(ukupno()), nazivLokala, choiceBoxKonobar.getValue()) == true)
     	{
     		
@@ -259,8 +262,8 @@ public class MainScreen{
  	//Inicjalizira gumbove
     public void initBtnsArray() {
 		
-        for(int i = 0; i < artikliBaza.size(); i++) {
-            btns[i] = new Button(artikliBaza.get(i).getNaziv()); 
+        for(int i = 0; i < bazaArtikli.size(); i++) {
+            btns[i] = new Button(bazaArtikli.get(i).getNaziv()); 
         }
     }
     
@@ -276,10 +279,12 @@ public class MainScreen{
     
     //Funkcija koja se izvodi kad se klikne na neki od gumbova s artiklima
 	public void gumbArtikliKlik(ActionEvent sender){
-		
 		Button btn=(Button) sender.getSource();
 		String naziv=btn.getText();
 		tableViewRacun.setItems(getArtikli(naziv));
+		
+		//Mjenja kolicinu
+		promijeniKolicinu(sender, "");
 		
 		txt_field_Ukupno.setText(ukupno()+valuta); //Postavlja cijenu
 		}
@@ -295,6 +300,56 @@ public class MainScreen{
 		return String.valueOf(ukupno);
 	}
 	
+	//mjenja kolicinu u bazi i deaktivira gumb
+	public void promijeniKolicinu (ActionEvent sender, String maknuti){
+		int baza=0;
+		Button btn=(Button) sender.getSource();
+		String naziv;
+		naziv=btn.getText();
+				
+		bazaBlagajna b = new bazaBlagajna();
+		
+		
+		for (int j=0;j<bazaArtikli.size();j++){
+			if (bazaArtikli.get(j).getNaziv().equals(naziv)){
+				baza=j;		
+				break;
+			}
+		}
+		
+		if(!(btn.getText().equals("Naplati")))
+		{
+		for (int i =0;i<artikli.size();i++){
+			
+			if (artikli.get(i).getNaziv().equals(naziv) && bazaArtikli.get(baza).getKolicina()<=artikli.get(i).getKolicina()){
+				btn.setDisable(true);
+				break;
+			}
+			
+			if ((artikli.get(i).getNaziv().equals(naziv) && bazaArtikli.get(baza).getKolicina()>artikli.get(i).getKolicina()))
+			{
+				btn.setDisable(false);
+				break;
+			}
+		}
+		}
+		else
+		{
+			for (int i=0;i<artikli.size();i++){
+			b.smanjiKolicinuArtikla(artikli.get(i).getId(), artikli.get(i).getKolicina());
+				
+				for (int j=0;j<bazaArtikli.size();j++){
+					if (bazaArtikli.get(j).getNaziv().equals(artikli.get(i).getNaziv()) && bazaArtikli.get(j).getKolicina()<=artikli.get(i).getKolicina()){
+						bazaBlagajna.obrisi_artikl(artikli.get(i).getId());
+						bazaArtikli.remove(j);
+						artikliBaza.remove(j);
+						refreshGrid();
+						break;
+					}		
+				}
+			}
+		}	
+	}
 	
 	//Radi observable list stavlja artikle u nju za prikaz u table view
 	public ObservableList<Artikli> getArtikli(String naziv){
@@ -351,11 +406,15 @@ public class MainScreen{
 	
 	//Inicijalizira gumbove u gridu
 	public void initGumboviUGridu (){
+		initBtnsArray();
+		
 		List<ColumnConstraints> stupci = new ArrayList<ColumnConstraints>();
 		List<RowConstraints> redovi = new ArrayList<RowConstraints>();
 		int k=0,i=0,j=0;
 		
-		grid_GumboviArtikl.getChildren().removeAll(grid_GumboviArtikl.getChildren());
+		//grid_GumboviArtikl = new GridPane();
+		
+		grid_GumboviArtikl.getChildren().removeAll(btns);
 		grid_GumboviArtikl.getChildren().clear();
 		
 		grid_GumboviArtikl.setPrefSize(669, 725);
@@ -374,7 +433,7 @@ public class MainScreen{
 		}
 		grid_GumboviArtikl.getColumnConstraints().addAll(stupci);
 		
-        while (k!=artikliBaza.size()) {    
+        while (k!=bazaArtikli.size()) {    
         	
         		//btns[k].setMinSize(300, 100);	//Poveca gumbove da popune okvir
         		//btns[k].setMaxSize(1000, 1000);
@@ -407,9 +466,54 @@ public class MainScreen{
         		++i;
         	}
         }
+    	
         
 	}
 	
+	public void refreshGrid(){
+		int i=0;
+		int k=0;
+		int j=0;
+		
+		initBtnsArray();
+		
+		grid_GumboviArtikl.getChildren().removeAll(grid_GumboviArtikl.getChildren());
+		
+        while (k!=bazaArtikli.size()) {    
+        	
+    		
+    		
+    	//A nezznam trebalo bi bit responzivnije al kaj ja znam jel je
+    		AnchorPane pane = new AnchorPane();
+    		
+    		grid_GumboviArtikl.add(pane,j ,i);
+    		
+    		pane.getChildren().add(btns[k]);
+    		pane.setBottomAnchor(btns[k], 0.0);
+    		pane.setTopAnchor(btns[k], 0.0);
+    		pane.setLeftAnchor(btns[k], 0.0);
+    		pane.setRightAnchor(btns[k], 0.0);
+    		
+    		grid_GumboviArtikl.setHalignment(btns[k], HPos.CENTER);  //Centrira gumbove
+    		grid_GumboviArtikl.setValignment(btns[k], VPos.CENTER);
+    		
+    		
+    		
+    		//Postavlja Listenere na gumbove
+    		btns[k].setOnAction (e -> {
+    			gumbArtikliKlik(e);
+    		});
+    		
+    	++k;
+    	++j;
+    	if (j%brojStupacaGrida==0){
+    		j=0;
+    		++i;
+    	}
+    }
+		
+		
+	}
 	//incijalizira choice box
 	public void initChoiceBox(){
 		
