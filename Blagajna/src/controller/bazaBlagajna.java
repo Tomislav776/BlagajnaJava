@@ -24,10 +24,22 @@ import com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException;
 
 //import com.mysql.jdbc.Driver;
 
+/**
+ * Razred <code> bazaBlagajna </code> omoguèava rad sa bazom podataka.
+ * Unutar razreda napravljene su metode i funkcionalnosti sa kojima se aplikacija spaja sa bazom podataka te stavlja i uzima potrebne podatke iz tablica unutar baze podataka.
+ * 
+ * @author Tomi
+ */
 public class bazaBlagajna {
 	Connection conn = null;
 	static String connectionUrl = "jdbc:mysql://92.222.18.69:3306/blagajna?characterEncoding=utf8";
 	
+	/**
+	 * Ovom metodom se spajamo na bazu podataka.
+	 * @param connectionUser Prvi parametar korisnièko ime koje se koristi pri konekciji s bazom.
+	 * @param connectionPassword Drugi parametar lozinka koja se koristi za konekciju s bazom.
+	 * @return <code>true</code> ako je konekcija s bazom uspješna, inaèe vraèa <code>false</code>
+	 */
 	public boolean Connect(String connectionUser, String connectionPassword) {
 		
 		try {
@@ -45,6 +57,13 @@ public class bazaBlagajna {
 		return true;
 	}
 	
+	/**
+	 * Metoda prima 3 argumenta, argumente funkcija pohranjuje u bazu podataka unutar tablice artikli.
+	 * @param naziv Ime artikla.
+	 * @param kolicina Koliko artikala ima.
+	 * @param cijena Cijena artikla.
+	 * @return ukoliko je uspješno pohranjen artikl vraèa <code>true</code> inaèe <code>flase</code>.
+	 */
 	public boolean dodaj_artikl(String naziv, int kolicina, double cijena) {
 		PreparedStatement stmt = null;
 		  String SQL = "INSERT INTO artikli (naziv, kolicina, cijena) VALUES(?, ?, ?);";
@@ -75,8 +94,13 @@ public class bazaBlagajna {
 	
 	//Dodavanje racuna u bazu 
 	/**
-	  Popravi datum 
-	 **/
+	 * Metoda prima 3 argumenta, argumente funkcija pohranjuje u bazu podataka unutar tablice racuni.
+	 * Iako tablica racun ima i stupac datum, ne treba ga proslijediti funkciji veæ samo unutar baze postaviti da taj stupac automatski postavlja vrijednost sa CURRENT_TIMESTAMP	
+	 * @param iznos Ukupan iznos raèuna
+	 * @param nazivLokala Naziv vašeg lokala
+	 * @param konobar Ime konobara
+	 * @return ukoliko je uspješno pohranjen raèun vraèa <code>true</code> inaèe <code>flase</code>.
+	 */
 	public boolean dodaj_Racun(double iznos, String nazivLokala, String konobar) {
 		PreparedStatement stmt = null;
 		  String SQL = "INSERT INTO racuni (iznos, nazivLokala, konobar) VALUES(?, ?, ?);";
@@ -106,7 +130,11 @@ public class bazaBlagajna {
 			return true;
 	}
 	
-	
+	/**
+	 * Metoda briše artikl iz baze podataka. Kako bi znala koji atikl treba izbrisati predajemo joj primarni kljuè.
+	 * @param id Primarni kljuè artikla
+	 * @return Ukoliko je uspješno izbrisan artikl vraèa <code>true</code> inaèe <code>flase</code>.
+	 */
 	public static boolean obrisi_artikl(int id) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -257,10 +285,7 @@ public class bazaBlagajna {
 	    return konobari;
 	}
 	
-	
-	/**
-	 * Doradi ako ces radit satnicu
-	 */
+
 	public boolean dodaj_konobar(String imeKonobar) {
 		PreparedStatement stmt = null;
 		  String SQL = "INSERT INTO konobar (naziv, satnica) VALUES(?, ?);";
