@@ -73,14 +73,14 @@ public class DodajKonobar extends Main{
     	tableViewKonobari.getSelectionModel().setCellSelectionEnabled(true);
     	tableViewKonobari.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     	tableViewKonobari.setItems(getKonobari());
-    	
+    	/*
     	filterKonobar.setPromptText(bundle.getString("filter"));
     	
         // wrepamo ObservableList u FilteredList
         FilteredList<Konobar> filtriraniKonobari = new FilteredList<>(konobari);
         // Listener za svaki put kada se filter (textfield) promjeni (upise ili obrise neko slovo)
         filterKonobar.textProperty().addListener((observable, oldValue, newValue) -> {
-        	filtriraniKonobari.setPredicate(konobar -> {
+        	filterKonobar.setPredicate(konobar -> {
                 // Ako je filter prazan, prikaži sve artikle
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
@@ -100,7 +100,7 @@ public class DodajKonobar extends Main{
         
         // Stavi samo sortirane (i filtirane) artikle u tablicu
     	tableViewKonobari.setItems(sortiraniKonobari);
-    	
+    	*/
     	
     	btnDodajKonobar.setText(bundle.getString("btnDodajKonobar"));
     	btnObrisikonobar.setText(bundle.getString("btnObrisikonobar"));
