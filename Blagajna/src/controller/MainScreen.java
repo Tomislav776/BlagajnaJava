@@ -161,6 +161,8 @@ public class MainScreen{
 
     	tableViewRacun.setItems(getArtikli(""));
     	
+    	txt_field_Ukupno.setDisable(true);
+    	
     	initGumboviUGridu(); 
         	
 	        

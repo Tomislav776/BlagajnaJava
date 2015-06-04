@@ -12,22 +12,19 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
-
 import java.util.Optional;
-
 import javafx.scene.control.ButtonBar.ButtonData;
 
 public class Main extends Application {
 
-    private Stage primaryStage;
+    private static Stage primaryStage;
     private BorderPane rootLayout;
     private AnchorPane LoginLayout;
-    protected static AnchorPane MainScreen;
+    private static AnchorPane MainScreen;
     private RootLayout controller;
     String user = null;
     String pass = null;

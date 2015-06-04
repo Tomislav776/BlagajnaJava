@@ -1,0 +1,8 @@
+Naziv lokala:
+Lokal
+Valuta:
+ kn
+Broj redaka:
+7
+Broj stupaca:
+4

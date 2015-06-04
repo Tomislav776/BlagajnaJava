@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="1.0E7" maxWidth="1.0E7" minHeight="768.0" minWidth="1024.0" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainScreen">
+<AnchorPane maxHeight="1.0E7" maxWidth="1.0E7" minHeight="768.0" minWidth="1024.0" prefHeight="768.0" prefWidth="1024.0" stylesheets="@Blagajna.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainScreen">
    <children>
       <HBox layoutX="-97.0" maxHeight="1.0E7" maxWidth="1.0E7" prefHeight="768.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -17,10 +17,10 @@
                <children>
                   <TableView fx:id="tableViewRacun" editable="true" maxHeight="1.0E7" maxWidth="1.0E7" prefHeight="634.0" prefWidth="355.0" VBox.vgrow="ALWAYS">
                     <columns>
-                      <TableColumn fx:id="tableColumnNaziv" minWidth="176.0" prefWidth="191.0" text="Naziv" />
-                        <TableColumn fx:id="tableColumnKolicina" prefWidth="55.0" text="Kolicina" />
-                      <TableColumn fx:id="tableColumnCijena" prefWidth="52.0" text="Cijena" />
-                        <TableColumn fx:id="tableColumnUkupno" prefWidth="56.0" text="Ukupno" />
+                      <TableColumn fx:id="tableColumnNaziv" minWidth="80.0" text="Naziv" />
+                        <TableColumn fx:id="tableColumnKolicina" prefWidth="118.0" text="Kolicina" />
+                      <TableColumn fx:id="tableColumnCijena" prefWidth="71.0" text="Cijena" />
+                        <TableColumn fx:id="tableColumnUkupno" prefWidth="85.0" text="Ukupno" />
                     </columns>
                   </TableView>
                   <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="355.0" spacing="10.0">
