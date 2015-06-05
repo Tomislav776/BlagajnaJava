@@ -20,6 +20,11 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import dataClass.Konobar;
 
+/**
+ * Razred <code>DodajKonobar</code> inicijalizira novi prozor za dodavanje konobara te postavlja sve vizualne elemente. Daje nam moguènosti za
+ * brisanje i dodavanje konobara u bazu podataka.
+ * 
+ */
 public class DodajKonobar extends Main{
 	
 	@FXML
@@ -52,16 +57,16 @@ public class DodajKonobar extends Main{
     private Main main;
 
     /**
-     * The constructor.
-     * The constructor is called before the initialize() method.
+     * Konstruktor.
+     * Konstruktor se poziva prije initialize() metode.
      */
     public DodajKonobar() {
     }
     
 
     /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
+     * Inicijalizira controller klasu. Ova se metoda automatski poziva nakon
+     * što se uèita fxml datoteka.
      */
     @FXML
     private void initialize() {
@@ -108,6 +113,10 @@ public class DodajKonobar extends Main{
 
 }
     
+    /**
+	 * Ova metoda se poziva kada se klikne na gumb za dodati konobara. Ukoliko je prozor za unošenje imena konobara prazan
+	 * iskaèe alert, inaæe se spaja na bazu i u nju dodaje novog konobara.
+	 */
     	@FXML
     	private void handleClickDodaj()
     	{
@@ -143,6 +152,9 @@ public class DodajKonobar extends Main{
         	
     	}
     	
+    	/**
+    	 * Klikom na gumb obriši briše se oznaèeni konobar iz baze.
+    	 */
     	@FXML
     	private void obrisi()
     	{
@@ -160,6 +172,9 @@ public class DodajKonobar extends Main{
     		refreshMainScreen();
     	}
     	
+    	/**
+    	 * Osvježava prikaz konobara u tablici.
+    	 */
     	@FXML
     	private void osvjezi()
     	{
@@ -170,16 +185,19 @@ public class DodajKonobar extends Main{
         	tableViewKonobari.setItems(getKonobari());
     	}
 
-    /**
-     * Is called by the main application to give a reference back to itself.
-     * 
-     * @param mainApp
-     */
+    	/**
+         * Poziva se iz Maina da bi se referencirao na samog sebe.
+         * @param main
+         */
     public void setMainApp(Main main) {
         this.main = main;
 
     }
     
+    /**
+	 * Ovom metodom se spajamo na bazu podataka i išèitavamo konobare u listu.
+	 * @return Vraæa ObservableList konobara koji se nalaze u bazi.
+	 */
     private ObservableList<Konobar> getKonobari(){
 		List<Konobar> konobariIzBaze = new ArrayList<Konobar>();
 		konobariIzBaze = bazaBlagajna.bazaCitajKonobar();

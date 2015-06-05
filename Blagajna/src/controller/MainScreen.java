@@ -36,6 +36,10 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.Node;
 import javafx.print.*;
 
+/**
+ * 
+ * 
+ */
 public class MainScreen extends Main{
 	
 	private  ObservableList<Artikli> artikli = FXCollections.observableArrayList();
@@ -100,13 +104,22 @@ public class MainScreen extends Main{
     private Locale locale = RootLayout.getLocale();
 	private ResourceBundle bundle = RootLayout.getBundle();
 
-   private Main main; 
+   private Main main;
+   
+   /**
+    * Poziva se iz Maina da bi se referencirao na samog sebe.
+    * @param main
+    */
    public void setMainApp(Main main) {
         this.main = main;
 
     }
     
     //inicijalizira Main Screen
+   /**
+    * Inicijalizira controller klasu. Ova se metoda automatski poziva nakon
+    * što se učita fxml datoteka.
+    */
     @FXML
     public void initialize() {
     	ucitajPostavkeKorisnika();
@@ -147,17 +160,19 @@ public class MainScreen extends Main{
     	txt_field_Ukupno.setDisable(true);
         	
 	        
-	       //Brise sve artikle
+    	//Brise sve artikle
 	       btnObrisiSve.setOnAction (e -> {
-	    	  artikli.removeAll(artikli);
+	    	   enableButton("Svi");
+	    	   artikli.removeAll(artikli);
 	    	  txt_field_Ukupno.setText(ukupno());
-    		});
+	    	  
+ 		});
 	       
 	       
 	       //Brise odabrani artikl u ispisu
 	       btnObrisi.setOnAction (e -> {
 	    	   Artikli podatakNaIspisuRacuna = tableViewRacun.getSelectionModel().getSelectedItem();
-	    	   promijeniKolicinu(e, tableViewRacun.getSelectionModel().getSelectedItem().getNaziv());
+	    	   enableButton(tableViewRacun.getSelectionModel().getSelectedItem().getNaziv());
 	    	   
 	    	   artikli.remove(podatakNaIspisuRacuna);  
 	    	   
@@ -201,8 +216,11 @@ public class MainScreen extends Main{
     
     //Izvodi se pritiskom gumba napalti dodaje u bazu racune
     /**
-     * Mozda bi trebo printat racun
-     * 
+     * Metoda se izvršava kada korisnik pritisne gumb Naplati.
+     * Provjerava da li je odabran konobar ukoliko nije upozorava korisnika. Poziva metodu <code>promijeniKolicinu</code> te smanjuje kolicinu proizvoda za sve naplačene artikle.
+     * Mjenja vrijednost ukupnog iznosa, te šalje račun na printanje. Nakon što obavi sve na kraju briše artikle koji su prikazani unutar tablice za naplatu.
+     * @param sender ActionEvent od gumba za naplatu.
+     * @return vrača <code>true</code> ukoliko se sve uspješno izvršilo, inače <code>false</code>.
      */
     public boolean gumbNaplatiKlik(ActionEvent sender){
     Alert alert = new Alert(AlertType.INFORMATION);
@@ -218,7 +236,7 @@ public class MainScreen extends Main{
     	bazaBlagajna b = new bazaBlagajna();
     	
     	//Mjenjanje kolicine artikala u bazi
-    	promijeniKolicinu(sender, "");
+    	promijeniKolicinu(sender);
     	
     	if(b.dodaj_Racun(Double.parseDouble(ukupno()), nazivLokala, choiceBoxKonobar.getValue()) == true)
     	{
@@ -244,6 +262,10 @@ public class MainScreen extends Main{
     }
     
  	//Inicjalizira gumbove
+    /**
+     * Inicijalizira gumbove artikala koji su prikazani na glavnom zaslonu. Vrijednosti gumbova i koliko ih treba uzima iz baze podataka.
+     * Znog optimizacije radi sa  List<Artikli>bazaArtikli koja je static i unutar nje se nalaze svi artikli iz baze podataka.
+     */
     public void initBtnsArray() {
 		
         for(int i = 0; i < bazaArtikli.size(); i++) {
@@ -251,6 +273,11 @@ public class MainScreen extends Main{
         }
     }
     
+    /**
+     * Printa račun kada korisnik pritisne gumb naplati.
+     * @param n Layout koji želimo isprintati
+     * @return vrača <code>true</code> ukoliko se sve uspješno izvršilo, inače <code>false</code>
+     */
     private boolean doPrint(Node n)
     {
     	Printer printer = Printer.getDefaultPrinter();
@@ -262,19 +289,29 @@ public class MainScreen extends Main{
     }
     
     //Funkcija koja se izvodi kad se klikne na neki od gumbova s artiklima
+    /**
+     * Metoda se izvršava kada korisnik pritisne bilo koji gumb koji predstavlja artikl na glavnom zalsonu.
+     * Postavlja pomoču metode <code>getArtikli</code> unutar tablice za naplatu željeni artikl te mjenja prikaz ukupne svote računa.
+     * Mjenja količinu artikala.
+     * @param sender ActionEvent od gumbova koji predstavljaju artikle.
+     */
 	public void gumbArtikliKlik(ActionEvent sender){
 		Button btn=(Button) sender.getSource();
 		String naziv=btn.getText();
 		tableViewRacun.setItems(getArtikli(naziv));
 		
 		//Mjenja kolicinu
-		promijeniKolicinu(sender, "");
+		promijeniKolicinu(sender);
 		
 		txt_field_Ukupno.setText(ukupno()+valuta); //Postavlja cijenu
 		}
 	
 	
 	//Vraæa zbroj artikala
+	/**
+	 * Metoda računa ukupan iznos svih artikala koji se nalaze unutar tablice za naplatu.
+	 * @return Vrača String ukupan iznos za naplatu.
+	 */
 	public String ukupno(){
 		double ukupno=0;
 		
@@ -285,7 +322,14 @@ public class MainScreen extends Main{
 	}
 	
 	//mjenja kolicinu u bazi i deaktivira gumb
-	public void promijeniKolicinu (ActionEvent sender, String maknuti){
+	/**
+	 * Metoda mjenja količinu artikala u bazi samo ako je pozvana pritiskom gumba Naplati.
+	 * Ukoliko je pozvana pritiskom artikl gumbova privremeno mijenja količinu artikala te ako je neki artikl odabran onoliko puta kolika je njegova količina deaktivira taj gumb.
+	 * U slučaju da se iz tablice za naplatu izbriše artikl a njegov gumb je deaktiviran metoda če ponovno aktivirati taj gumb.
+	 * Kada je gumb deeaktiviran i funkcija se pozove sa gumbom naplati taj artikl se briše iz baze podataka i njegov gumb se miče iz prikaza gumbova.
+	 * @param sender ActionEvent od gumbova kojim je pozvana metoda.
+	 */
+	public void promijeniKolicinu (ActionEvent sender){
 		int baza=0;
 		Button btn=(Button) sender.getSource();
 		String naziv;
@@ -303,19 +347,13 @@ public class MainScreen extends Main{
 		
 		if(!(btn.getText().equals("Naplati")))
 		{
-		for (int i =0;i<artikli.size();i++){
-			
-			if (artikli.get(i).getNaziv().equals(naziv) && bazaArtikli.get(baza).getKolicina()<=artikli.get(i).getKolicina()){
-				btn.setDisable(true);
-				break;
+			for (int i =0;i<artikli.size();i++){
+				
+				if (artikli.get(i).getNaziv().equals(naziv) && bazaArtikli.get(baza).getKolicina()<=artikli.get(i).getKolicina()){
+					btn.setDisable(true);
+					break;
+				}
 			}
-			
-			if ((artikli.get(i).getNaziv().equals(naziv) && bazaArtikli.get(baza).getKolicina()>artikli.get(i).getKolicina()))
-			{
-				btn.setDisable(false);
-				break;
-			}
-		}
 		}
 		else
 		{
@@ -333,6 +371,15 @@ public class MainScreen extends Main{
 				}
 			}
 		}	
+	}
+	
+	public void enableButton (String naziv){
+		
+		for (int i=0;i<bazaArtikli.size();i++){
+			if (naziv.equals(btns[i].getText()) || naziv.equals("Svi")){
+				btns[i].setDisable(false);
+			}
+		}
 	}
 	
 	//Radi observable list stavlja artikle u nju za prikaz u table view
@@ -398,7 +445,7 @@ public class MainScreen extends Main{
 		
 		//grid_GumboviArtikl = new GridPane();
 		
-		grid_GumboviArtikl.getChildren().removeAll(btns);
+		grid_GumboviArtikl.getChildren().removeAll(grid_GumboviArtikl.getChildren());
 		grid_GumboviArtikl.getChildren().clear();
 		
 		grid_GumboviArtikl.setPrefSize(669, 725);

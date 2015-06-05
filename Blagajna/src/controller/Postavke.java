@@ -16,6 +16,10 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
+/**
+ * Razred <code>Postavke</code> postavlja i inicijalizira vizualne elemente koji se nalaze unutar prozora Postavke.
+ *
+ */
 public class Postavke extends Main{
 
 	    @FXML
@@ -42,15 +46,15 @@ public class Postavke extends Main{
 	    private Main main;
 
 	    /**
-	     * The constructor.
-	     * The constructor is called before the initialize() method.
+	     * Konstruktor.
+	     * Konstruktor se poziva prije initialize() metode.
 	     */
 	    public Postavke() {
 	    }
 
 	    /**
-	     * Initializes the controller class. This method is automatically called
-	     * after the fxml file has been loaded.
+	     * Inicijalizira controller klasu. Ova se metoda automatski poziva nakon
+	     * što se uèita fxml datoteka.
 	     */
 	    @FXML
 	    private void initialize() {
@@ -104,15 +108,17 @@ public class Postavke extends Main{
 	    }
 
 	    /**
-	     * Is called by the main application to give a reference back to itself.
-	     * 
-	     * @param mainApp
+	     * Poziva se iz Maina da bi se referencirao na samog sebe.
+	     * @param main
 	     */
 	    public void setMainApp(Main main) {
 	        this.main = main;
 
 	    }
 	    
+	    /**
+	     * Metoda èita iz datoteke Postavke.txt opcije korisnika te ih pridružuje vizualnim elementima na zaslonu.
+	     */
 		public void postaviVrijednostiKorisnika(){ 
 		    BufferedReader reader = null;
 

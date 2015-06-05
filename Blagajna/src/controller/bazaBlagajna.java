@@ -17,10 +17,8 @@ import java.sql.SQLException;
 //import com.mysql.jdbc.Driver;
 
 /**
- * Razred <code> bazaBlagajna </code> omoguèava rad sa bazom podataka.
+ * Razred <code>bazaBlagajna</code> omoguèava rad sa bazom podataka.
  * Unutar razreda napravljene su metode i funkcionalnosti sa kojima se aplikacija spaja sa bazom podataka te stavlja i uzima potrebne podatke iz tablica unutar baze podataka.
- * 
- * @author Tomi
  */
 public class bazaBlagajna {
 	Connection conn = null;
@@ -54,7 +52,7 @@ public class bazaBlagajna {
 	 * @param naziv Ime artikla.
 	 * @param kolicina Koliko artikala ima.
 	 * @param cijena Cijena artikla.
-	 * @return ukoliko je uspješno pohranjen artikl vraèa <code>true</code> inaèe <code>flase</code>.
+	 * @return ukoliko je uspješno pohranjen artikl vraèa <code>true</code> inaèe <code>false</code>.
 	 */
 	public boolean dodaj_artikl(String naziv, int kolicina, double cijena) {
 		PreparedStatement stmt = null;
@@ -87,11 +85,11 @@ public class bazaBlagajna {
 	//Dodavanje racuna u bazu 
 	/**
 	 * Metoda prima 3 argumenta, argumente funkcija pohranjuje u bazu podataka unutar tablice racuni.
-	 * Iako tablica racun ima i stupac datum, ne treba ga proslijediti funkciji veæ samo unutar baze postaviti da taj stupac automatski postavlja vrijednost sa CURRENT_TIMESTAMP	
-	 * @param iznos Ukupan iznos raèuna
-	 * @param nazivLokala Naziv vašeg lokala
-	 * @param konobar Ime konobara
-	 * @return ukoliko je uspješno pohranjen raèun vraèa <code>true</code> inaèe <code>flase</code>.
+	 * Iako tablica raèun ima i stupac datum, ne treba ga proslijediti funkciji veæ samo unutar baze postaviti da taj stupac automatski postavlja vrijednost sa CURRENT_TIMESTAMP.
+	 * @param iznos Ukupan iznos raèuna.
+	 * @param nazivLokala Naziv vašeg lokala.
+	 * @param konobar Ime konobara.
+	 * @return ukoliko je uspješno pohranjen raèun vraèa <code>true</code> inaèe <code>false</code>.
 	 */
 	public boolean dodaj_Racun(double iznos, String nazivLokala, String konobar) {
 		PreparedStatement stmt = null;
@@ -124,8 +122,8 @@ public class bazaBlagajna {
 	
 	/**
 	 * Metoda briše artikl iz baze podataka. Kako bi znala koji atikl treba izbrisati predajemo joj primarni kljuè.
-	 * @param id Primarni kljuè artikla
-	 * @return Ukoliko je uspješno izbrisan artikl vraèa <code>true</code> inaèe <code>flase</code>.
+	 * @param id Primarni kljuè artikla.
+	 * @return Ukoliko je uspješno izbrisan artikl vraèa <code>true</code> inaèe <code>false</code>.
 	 */
 	public static boolean obrisi_artikl(int id) {
 		Connection conn = null;
@@ -154,6 +152,10 @@ public class bazaBlagajna {
 	}
 	
 	//Cita artikle iz baze te ih vraca kao listu
+	/**
+	 * Metoda vraèa unutar liste sve artikle iz tablice artikli koja se nalazi u bazi podataka.
+	 * @return <code>List<Artikli></code> Lista sa svim artiklima.
+	 */
 	public static List<Artikli> bazaCitajArtikle() {
 	    List<Artikli> artikli = new ArrayList<Artikli>();
 	    PreparedStatement stmt = null;
@@ -184,6 +186,10 @@ public class bazaBlagajna {
 	
 	
 	//Cita Racune iz baze i vraca ih ko listu
+	/**
+	 * Metoda vraèa unutar liste sve raèune iz tablice racuni koja se nalazi u bazi podataka.
+	 * @return <code>List<Racun></code> Lista sa svim raèunima.
+	 */
 	public static List<Racun> bazaCitajRacune() {
 	    List<Racun> racuni = new ArrayList<Racun>();
 	    PreparedStatement stmt = null;
@@ -213,6 +219,12 @@ public class bazaBlagajna {
 	}
 	
 	//Cita promete iz baze te ih vraca kao listu
+	/**
+	 * Metoda prima poèetak i kraj radoblja kao String te vraèa ukupan promet to jest ukupan iznos svih naplaèenih raèuna u navedenom razdoblju.
+	 * @param pocetakRazdoblja Poèetni datum od kojeg želimo saznati promet.
+	 * @param krajRazdoblja Završni datum do kojeg želimo saznati promet.
+	 * @return List<Promet> vraèa listu koja u sebi sadrži ukupan promet i navedeno razdoblje. 
+	 */
 		public static List<Promet> bazaCitajPromet(String pocetakRazdoblja, String krajRazdoblja) {
 		    List<Promet> promet = new ArrayList<Promet>();
 		    PreparedStatement stmt = null;
@@ -248,6 +260,10 @@ public class bazaBlagajna {
 	
 	
 	//Konobar upis i ispis iz baze
+		/**
+		 * Metoda vraèa unutar liste sve konobare iz tablice konobari koja se nalazi u bazi podataka.
+		 * @return List<Konobar> Lista sa svim konobarima.
+		 */
 	public static List<Konobar> bazaCitajKonobar() {
 	    List<Konobar> konobari = new ArrayList<Konobar>();
 	    PreparedStatement stmt = null;
@@ -277,7 +293,11 @@ public class bazaBlagajna {
 	    return konobari;
 	}
 	
-
+	/**
+	 * Metoda dodaje konobara u tablicu konobari unutar baze podatak.
+	 * @param imeKonobar Ime konobara
+	 * @return Ukoliko je uspješno dodan konobar vraèa <code>true</code>, inaèe <code>false</code>.
+	 */
 	public boolean dodaj_konobar(String imeKonobar) {
 		PreparedStatement stmt = null;
 		  String SQL = "INSERT INTO konobar (naziv, satnica) VALUES(?, ?);";
@@ -306,6 +326,11 @@ public class bazaBlagajna {
 			return true;
 	}
 	
+	/**
+	 * Metoda briše konobara iz baze podataka po primarnom kljuèu.
+	 * @param id Primarni kljuè konobara kojeg želimo izbrisati.
+	 * @return Ukoliko je konobar uspješno izbrisan vraèa <code>true</code>, inaèe <code>false</code>.
+	 */
 	public static boolean obrisi_konobar(int id) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -333,6 +358,12 @@ public class bazaBlagajna {
 	}
 	
 	//Smanjuje kolicinu artikla
+	/**
+	 * Metoda smanjuje kolièinu artikala u tablici artikli iz baze podataka.
+	 * @param id Primarni kljuè artikla kojem želimo smanjiti kolièinu.
+	 * @param kolicina Za koliko želimo smanjiti kolièinu odreðenog artikla.
+	 * @return Ukoliko je kolièina artikla promijenjena vraèa <code>true</code>, inaèe <code>false</code>.
+	 */
 	public boolean smanjiKolicinuArtikla(int id, int kolicina) {
 		PreparedStatement stmt = null;
 		  String SQL = " UPDATE artikli SET kolicina=kolicina-? WHERE id=?";

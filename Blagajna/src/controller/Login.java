@@ -8,6 +8,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+/**
+ * Razred <code>Login</code> postavlja vizualne elemente na prozor Login te stvara datoteku sa poèetnim postavkama korisnika.
+ *
+ */
 public class Login {
 
 	    @FXML
@@ -25,15 +29,15 @@ public class Login {
 	    private Main main;
 
 	    /**
-	     * The constructor.
-	     * The constructor is called before the initialize() method.
+	     * Konstruktor.
+	     * Konstruktor se poziva prije initialize() metode.
 	     */
 	    public Login() {
 	    }
 
 	    /**
-	     * Initializes the controller class. This method is automatically called
-	     * after the fxml file has been loaded.
+	     * Inicijalizira controller klasu. Ova se metoda automatski poziva nakon
+	     * što se uèita fxml datoteka.
 	     */
 	    @FXML
 	    private void initialize() {
@@ -44,15 +48,17 @@ public class Login {
 	    }
 
 	    /**
-	     * Is called by the main application to give a reference back to itself.
-	     * 
-	     * @param mainApp
+	     * Poziva se iz Maina da bi se referencirao na samog sebe.
+	     * @param main
 	     */
 	    public void setMainApp(Main main) {
 	        this.main = main;
 
 	    }
 	    
+	    /**
+	     * Pri prvom pokretanju programa stvara Postvake.txt file te unutar njega postavlja poèetne postavke programa koje korisnik kasnije može mijenjati.
+	     */
 	    	public void postaviDefault(){
 			
 			try (BufferedWriter bw = new BufferedWriter(new PrintWriter("Postavke.txt"))) {
