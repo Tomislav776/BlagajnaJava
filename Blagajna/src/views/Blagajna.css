@@ -7,7 +7,7 @@
     -fx-font-family: "Roboto";
     -fx-text-fill: #F3843E;
     /*-fx-font-weight: bold;*/
-    -fx-opacity: 0.9;
+  /*  -fx-opacity: 0.9;*/
 }
 
 .label-bright {
@@ -18,7 +18,7 @@
 }
 
 .label-header {
-    -fx-font-size: 32pt;
+    -fx-font-size: 24pt;
     -fx-font-family: "Roboto";
     -fx-text-fill: white;
     -fx-opacity: 1;
@@ -66,6 +66,10 @@
     -fx-background-color: derive(#393939,10%);
 }
 
+.menu:default, .menu:focused, .menu:hover, .menu:pressed, .menu-item:hover, .menu-item:focused, .menu-item:pressed {
+	-fx-background-color: #FF5A09;
+}
+
 .menu-bar .label {
     -fx-font-size: 12pt;
     -fx-font-family: "Roboto";
@@ -77,9 +81,10 @@
     -fx-background-color: black;
 }
 
-.text-field {
+.text-field, .text-field:disabled, .text-field:default:disabled {
     -fx-font-size: 12pt;
     -fx-font-family: "Roboto";
+    -fx-background-color: white;
 }
 
 /* 
@@ -93,18 +98,18 @@
     -fx-border-width: 2;
     -fx-background-radius: 0;
     -fx-background-color: #F3843E;
-    -fx-font-family: "Roboto", Helvetica, Arial, sans-serif;
+    -fx-font-family: "Roboto";
     -fx-font-size: 11pt;
     -fx-text-fill: #FFFFFF;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
 .button:hover {
-    -fx-background-color: #FF5A09;
+    -fx-background-color: #FF9900;
 }
 
 .button:pressed, .button:default:hover:pressed {
-  -fx-background-color: #FF5A09;
+  -fx-background-color: #FF9900;
   -fx-text-fill: #FFFFFF;
 }
 

@@ -72,7 +72,7 @@
                   </HBox>
                   <GridPane fx:id="grid_GumboviArtikl" maxHeight="1.0E7" maxWidth="1.0E7" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="669.0" VBox.vgrow="ALWAYS">
                      <padding>
-                        <Insets bottom="30.0" />
+                        <Insets bottom="30.0" top="10.0" />
                      </padding>
                   </GridPane>
                </children>
