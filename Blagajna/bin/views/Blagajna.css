@@ -158,6 +158,16 @@
 	/*-fx-background-color:ff5a09;*/
 }
 
-.menu-item .dot{
-	-fx-background-color:ffffff;
+.gumb-jezik .left-container{
+	-fx-padding: 10;
+	
+}
+
+.gumb-jezik .label{
+	-fx-padding: 0 0 0 5;
+	
+}
+
+.menu-item .left-container:selected{
+	/*-fx-background-color:ffffff;*/
 }

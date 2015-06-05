@@ -22,12 +22,12 @@
                   <MenuItem fx:id="postavke" mnemonicParsing="false" text="Postavke" />
                   <Menu fx:id="jezik" mnemonicParsing="false" text="Jezik">
                     <items>
-                        <RadioMenuItem fx:id="hrvatski" mnemonicParsing="false" selected="true" text="Hrvatski">
+                        <RadioMenuItem fx:id="hrvatski" mnemonicParsing="false" selected="true" styleClass="gumb-jezik" text="Hrvatski">
                            <toggleGroup>
                               <ToggleGroup fx:id="radioGroup1" />
                            </toggleGroup>
                         </RadioMenuItem>
-                        <RadioMenuItem fx:id="engleski" mnemonicParsing="false" text="Engleski" toggleGroup="$radioGroup1" />
+                        <RadioMenuItem fx:id="engleski" mnemonicParsing="false" styleClass="gumb-jezik" text="Engleski" toggleGroup="$radioGroup1" />
                     </items>
                   </Menu>
                   <MenuItem fx:id="izlaz" mnemonicParsing="false" text="Izlaz iz aplikacije" />
