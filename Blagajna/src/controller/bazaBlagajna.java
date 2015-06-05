@@ -14,7 +14,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//import com.mysql.jdbc.Driver; kèlkl
 
 /**
  * Razred <code>bazaBlagajna</code> omoguèava rad sa bazom podataka.
