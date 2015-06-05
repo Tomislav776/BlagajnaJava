@@ -58,6 +58,10 @@
     -fx-background-color: -fx-focus-color;
 }
 
+.table-view .cell{
+	-fx-font-size:11pt;
+}
+
 .menu-bar {
     -fx-background-color: derive(#393939,15%);
 }
@@ -67,6 +71,10 @@
 }
 
 .menu:disabled, .menu:default, .menu:focused, .menu:hover, .menu:pressed, .menu:show-mnemonic,.menu-item:focused,  .menu-item:hover, .menu-item:pressed {
+	-fx-background-color: #FF5A09;
+}
+
+.menu-bar .container .menu-button:pressed{
 	-fx-background-color: #FF5A09;
 }
 
