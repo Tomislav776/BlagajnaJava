@@ -157,3 +157,7 @@
 .choice-box .arrow{
 	/*-fx-background-color:ff5a09;*/
 }
+
+.menu-item-radio {
+	-fx-background-color:ff5a09;
+}
