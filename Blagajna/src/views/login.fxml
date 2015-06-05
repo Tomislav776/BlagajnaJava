@@ -52,7 +52,7 @@
             </VBox>
             <ImageView fitHeight="150.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
                <image>
-                  <Image url="@../resources/images/klk.png" />
+                  <Image url="@../resources/images/slika.png" />
                </image>
             </ImageView>
          </children>
