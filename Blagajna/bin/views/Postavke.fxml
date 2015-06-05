@@ -13,7 +13,7 @@
          <children>
             <HBox alignment="CENTER">
                <children>
-                  <Label text="Naziv lokala: ">
+                  <Label fx:id="labelNaziv" text="Naziv lokala: ">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -23,7 +23,7 @@
             </HBox>
             <HBox alignment="CENTER">
                <children>
-                  <Label text="Valuta: ">
+                  <Label fx:id="labelValuta" text="Valuta: ">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -36,7 +36,7 @@
             </HBox>
             <HBox alignment="CENTER">
                <children>
-                  <Label text="Broj stupaca za gumbove: ">
+                  <Label fx:id="labelBrStupaca" text="Broj stupaca za gumbove: ">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -49,7 +49,7 @@
             </HBox>
             <HBox alignment="CENTER">
                <children>
-                  <Label text="Broj redaka za gumbove: ">
+                  <Label fx:id="labelBrRedaka" text="Broj redaka za gumbove: ">
                      <font>
                         <Font size="14.0" />
                      </font>

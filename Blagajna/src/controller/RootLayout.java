@@ -267,6 +267,7 @@ public class RootLayout implements Initializable{
     	opcije.setText(bundle.getString("opcije"));
     	aplikacija.setText(bundle.getString("aplikacija"));
     	o_nama.setText(bundle.getString("o_nama"));
+    	postavke.setText(bundle.getString("postavke"));
     	izlaz.setText(bundle.getString("izlaz"));
     	jezik.setText(bundle.getString("jezik"));
     	hrvatski.setText(bundle.getString("hrvatski"));

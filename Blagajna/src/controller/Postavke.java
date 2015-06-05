@@ -8,11 +8,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
@@ -23,19 +26,34 @@ import javafx.scene.control.Alert.AlertType;
 public class Postavke extends Main{
 
 	    @FXML
-	    public TextField txtFieldNazivLokala;
+	    private TextField txtFieldNazivLokala;
 	    
 	    @FXML
-	    public ChoiceBox<String> choiceBoxValuta;
+	    private ChoiceBox<String> choiceBoxValuta;
 	    
 	    @FXML
-	    public ChoiceBox<Integer> choiceBoxBrojRedaka;
+	    private ChoiceBox<Integer> choiceBoxBrojRedaka;
 	    
 	    @FXML
-	    public ChoiceBox<Integer> choiceBoxBrojStupaca;
+	    private ChoiceBox<Integer> choiceBoxBrojStupaca;
 	    
 	    @FXML
-	    public Button btnSpremiPostavke;
+	    private Button btnSpremiPostavke;
+	    
+	    @FXML
+	    private Label labelNaziv;
+	    
+	    @FXML
+	    private Label labelValuta;
+	    
+	    @FXML
+	    private Label labelBrStupaca;
+	    
+	    @FXML
+	    private Label labelBrRedaka;
+	    
+	    private Locale locale = RootLayout.getLocale();
+		private ResourceBundle bundle = RootLayout.getBundle();
 	  
 	    
 		private List<String> postavke = new ArrayList<String>();
@@ -58,6 +76,13 @@ public class Postavke extends Main{
 	     */
 	    @FXML
 	    private void initialize() {
+	    	
+	    	labelNaziv.setText(bundle.getString("labelNaziv"));
+	    	labelValuta.setText(bundle.getString("labelValuta"));
+	    	labelBrStupaca.setText(bundle.getString("labelBrStupaca"));
+	    	labelBrRedaka.setText(bundle.getString("labelBrRedaka"));
+	    	btnSpremiPostavke.setText(bundle.getString("btnSpremiPostavke"));
+	    	
 	    	choiceBoxValuta.getItems().add(" kn");
 	    	choiceBoxValuta.getItems().add(" usd");
 	    	choiceBoxValuta.getItems().add(" €");

@@ -53,52 +53,55 @@ public class MainScreen extends Main{
 	private int brojRedakaGrida=0;
 	private int brojStupacaGrida=0;
 	
-	protected static String nazivLokala="Lokal";
+	private static String nazivLokala="Lokal";
 	
 	@FXML
-	public Label labelKonobar;
+	private Label labelKonobar;
 	
 	@FXML
-	public ChoiceBox<String> choiceBoxKonobar;
+	private Label labelUkupno;
 	
 	@FXML
-	public SplitPane splitPaneHorizontalni;
+	private ChoiceBox<String> choiceBoxKonobar;
 	
 	@FXML
-	public SplitPane splitPaneVertikalan;
+	private SplitPane splitPaneHorizontalni;
 	
 	@FXML
-	public Button btnObrisi;
+	private SplitPane splitPaneVertikalan;
 	
 	@FXML
-	public Button btnObrisiSve;
+	private Button btnObrisi;
 	
 	@FXML
-	public Button btnNaplati;
+	private Button btnObrisiSve;
 	
 	@FXML
-	public TextField txt_field_Ukupno;
+	private Button btnNaplati;
 	
 	@FXML
-	public TextField txtFieldUnesiteArtikl;
+	private TextField txt_field_Ukupno;
 	
 	@FXML
-    public GridPane grid_GumboviArtikl;
+	private TextField txtFieldUnesiteArtikl;
 	
 	@FXML
-    public TableView<Artikli> tableViewRacun;
+	private GridPane grid_GumboviArtikl;
 	
 	@FXML
-    public TableColumn<Artikli, Double> tableColumnCijena;
+	private TableView<Artikli> tableViewRacun;
 	
 	@FXML
-    public TableColumn<Artikli, String> tableColumnNaziv;
+	private TableColumn<Artikli, Double> tableColumnCijena;
 	
 	@FXML
-    public TableColumn<Artikli, Integer> tableColumnKolicina;
+	private TableColumn<Artikli, String> tableColumnNaziv;
 	
 	@FXML
-    public TableColumn<Artikli, Double> tableColumnUkupno;
+	private TableColumn<Artikli, Integer> tableColumnKolicina;
+	
+	@FXML
+	private TableColumn<Artikli, Double> tableColumnUkupno;
 
     private Button[] btns = new Button[50];
     
@@ -146,6 +149,7 @@ public class MainScreen extends Main{
     	tableColumnKolicina.setText(bundle.getString("tableColumnKolicina"));
     	tableColumnUkupno.setCellValueFactory(new PropertyValueFactory<Artikli,Double>("ukupno"));
     	tableColumnUkupno.setText(bundle.getString("tableColumnUkupno"));
+
     	
     	//Nezz dal da se povećava ili ne ako da ovo sređuje da svi stupci budu vidljivi, da popune prostor
     	tableViewRacun.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -155,10 +159,13 @@ public class MainScreen extends Main{
     	btnObrisiSve.setText(bundle.getString("btnObrisiSve"));
     	
     	labelKonobar.setText(bundle.getString("labelKonobar"));
+    	labelUkupno.setText(bundle.getString("labelUkupno"));
 
     	tableViewRacun.setItems(getArtikli(""));
     	
     	txt_field_Ukupno.setDisable(true);
+    	
+    	txtFieldUnesiteArtikl.setPromptText(bundle.getString("txtFieldUnesiteArtikl"));
         	
 	        
     	//Brise sve artikle
