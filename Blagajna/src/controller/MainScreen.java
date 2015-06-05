@@ -37,7 +37,8 @@ import javafx.scene.Node;
 import javafx.print.*;
 
 /**
- * 
+ * Razred <code>MainScreen</code> postavlja i inicijalizira sve vizualne elemente na glavni zaslon.
+ * Unutar razreda ostvarene su funkcionalnosti svih vizualnih elemenata.
  * 
  */
 public class MainScreen extends Main{
@@ -325,7 +326,6 @@ public class MainScreen extends Main{
 	/**
 	 * Metoda mjenja količinu artikala u bazi samo ako je pozvana pritiskom gumba Naplati.
 	 * Ukoliko je pozvana pritiskom artikl gumbova privremeno mijenja količinu artikala te ako je neki artikl odabran onoliko puta kolika je njegova količina deaktivira taj gumb.
-	 * U slučaju da se iz tablice za naplatu izbriše artikl a njegov gumb je deaktiviran metoda če ponovno aktivirati taj gumb.
 	 * Kada je gumb deeaktiviran i funkcija se pozove sa gumbom naplati taj artikl se briše iz baze podataka i njegov gumb se miče iz prikaza gumbova.
 	 * @param sender ActionEvent od gumbova kojim je pozvana metoda.
 	 */
@@ -373,6 +373,11 @@ public class MainScreen extends Main{
 		}	
 	}
 	
+	/**
+	 * Metoda aktivira jedan ili sve gumbove artikala koji su deaktivirani.
+	 * Poziva se prilikom pritiska na gumb obriši ili obriši sve koji miču sve artikle iz tablice za naplatu pa je data potrebno ponovno aktivirati gumbove koji su u procesu postali neaktivni.
+	 * @param naziv Prima ime gumba kojeg treba aktivirati ili String "Svi" ukoliko primi Svi aktivirati će sve deaktivirane gumbove.
+	 */
 	public void enableButton (String naziv){
 		
 		for (int i=0;i<bazaArtikli.size();i++){
@@ -383,6 +388,12 @@ public class MainScreen extends Main{
 	}
 	
 	//Radi observable list stavlja artikle u nju za prikaz u table view
+	/**
+	 * Pri dodavanju artikala unutar tablice za naplatu metoda sprema te artikle u Listu te ukoliko ima istoimenih artikala povečava im količinu. Postavlja vrijednosti svih stupaca 
+	 * unutar tablice za naplatu.
+	 * @param naziv Ime artikla kojeg želimo dodati za naplatu.
+	 * @return Vrača kao ObservableList sve artikle koji se nalaze u tablici za naplatu.
+	 */
 	public ObservableList<Artikli> getArtikli(String naziv){
 	int pamti = -1;
 	boolean kolProvjera=true;
@@ -428,6 +439,9 @@ public class MainScreen extends Main{
 	}
 	
 	//refresha table view prikaz za račun
+	/**
+	 * Osvježava Tablicu za napaltu.
+	 */
 	public void osvjezi() { 
 		tableViewRacun.setItems(null); 
 		tableViewRacun.layout(); 
@@ -436,6 +450,9 @@ public class MainScreen extends Main{
 	
 	
 	//Inicijalizira gumbove u gridu
+	/**
+	 * Inicijalizira te postavlja gumbove artikala unutar grida.
+	 */
 	public void initGumboviUGridu (){
 		initBtnsArray();
 		
@@ -501,6 +518,9 @@ public class MainScreen extends Main{
         
 	}
 	
+	/**
+	 * Osvježava Grid sa gumbovima artikala.
+	 */
 	public void refreshGrid(){
 		int i=0;
 		int k=0;
@@ -546,6 +566,9 @@ public class MainScreen extends Main{
 		
 	}
 	//incijalizira choice box
+	/**
+	 * Inicijalizira prozor za odabir konobara te postavlja za moguče opcij sve konobare koji se nalaze u bazi podataka.
+	 */
 	public void initChoiceBox(){
 		
 		List<Konobar> konobarBaza = new ArrayList<Konobar>(bazaBlagajna.bazaCitajKonobar());
@@ -555,7 +578,10 @@ public class MainScreen extends Main{
 		
 	}
 	
-	//inicijalizira varijable po zelji korisnika  
+	//inicijalizira varijable po zelji korisnika
+	/**
+	 * Čita iz datoteke Postavke.txt postake korisnika te te postavke pridružuje varijablama koje se koriste unutar ovog razreda.
+	 */
 	public void ucitajPostavkeKorisnika(){ 
 		List<String> postavke = new ArrayList<String>();
 		BufferedReader reader = null;
