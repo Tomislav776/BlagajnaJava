@@ -6,3 +6,11 @@ Broj redaka:
 7
 Broj stupaca:
 4
+Vlasnik:
+Marko
+Adresa:
+Viroviticka 11
+OIB:
+786786786786
+WiFi:
+lozinka wifia

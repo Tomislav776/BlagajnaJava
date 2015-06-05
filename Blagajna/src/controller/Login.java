@@ -102,6 +102,28 @@ public class Login {
 	                bw.newLine();
            		bw.write("4");
            		bw.newLine();
+           		
+           		bw.write("Vlasnik:");
+                bw.newLine();
+                bw.write("");
+                bw.newLine();
+       		
+                bw.write("Adresa:");
+                bw.newLine();
+                bw.write("");
+       			bw.newLine();
+       		
+       			bw.write("OIB:");
+       			bw.newLine();
+       			bw.write("");
+       			bw.newLine();
+       			
+       			bw.write("WiFi:");
+                bw.newLine();
+                bw.write("");
+                bw.newLine();
+   		
+   		
 	    	    } catch (IOException e) {
 	    	        e.printStackTrace();
 	    	    }  

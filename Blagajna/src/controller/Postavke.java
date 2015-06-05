@@ -29,6 +29,18 @@ public class Postavke extends Main{
 	    private TextField txtFieldNazivLokala;
 	    
 	    @FXML
+	    private TextField txtFieldVlasnik;
+	    
+	    @FXML
+	    private TextField txtFieldAdresa;
+	    
+	    @FXML
+	    private TextField txtFieldOIB;
+	    
+	    @FXML
+	    private TextField txtFieldWiFi;
+	    
+	    @FXML
 	    private ChoiceBox<String> choiceBoxValuta;
 	    
 	    @FXML
@@ -116,6 +128,28 @@ public class Postavke extends Main{
           	                bw.newLine();
        	            		bw.write(String.valueOf(choiceBoxBrojStupaca.getValue()));
        	            		bw.newLine();
+       	            		
+       	            		bw.write("Vlasnik:");
+       	            		bw.newLine();
+       	            		bw.write(txtFieldVlasnik.getText());
+       	            		bw.newLine();
+       	        		
+       	            		bw.write("Adresa:");
+       	            		bw.newLine();
+       	            		bw.write(txtFieldAdresa.getText());
+       	        			bw.newLine();
+       	        		
+       	        			bw.write("OIB:");
+       	        			bw.newLine();
+       	        			bw.write(txtFieldOIB.getText());
+       	        			bw.newLine();
+       	        			
+       	        			bw.write("WiFi:");
+       	        			bw.newLine();
+       	        			bw.write(txtFieldWiFi.getText());
+       	        			bw.newLine();
+
+
        		    	    } catch (IOException k) {
        		    	        k.printStackTrace();
        		    	    }  
@@ -179,6 +213,20 @@ public class Postavke extends Main{
 			    	
 			    	if (postavke.get(i).equals("Broj stupaca:"))
 			    		choiceBoxBrojStupaca.setValue(Integer.parseInt(postavke.get(i+1)));
+			    	
+			    	if (postavke.get(i).equals("Vlasnik:"))
+			    		txtFieldVlasnik.setText(postavke.get(i+1));
+			    	
+			    	if (postavke.get(i).equals("Adresa:"))
+			    		txtFieldAdresa.setText(postavke.get(i+1));
+			    	
+			    	if (postavke.get(i).equals("OIB:"))
+			    		txtFieldOIB.setText(postavke.get(i+1));
+			    	
+			    	if (postavke.get(i).equals("WiFi:"))
+			    		txtFieldWiFi.setText(postavke.get(i+1));
+			    	
+			    	
 			    }
 			}
 		

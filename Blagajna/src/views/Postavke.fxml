@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="406.0" prefWidth="408.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Postavke">
+<AnchorPane prefHeight="703.0" prefWidth="492.0" styleClass="background" stylesheets="@Blagajna.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Postavke">
    <children>
       <VBox alignment="CENTER" layoutX="144.0" layoutY="224.0" prefHeight="524.0" prefWidth="408.0" spacing="35.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER_RIGHT" centerShape="false" VBox.vgrow="NEVER">
                <children>
                   <Label fx:id="labelNaziv" text="Naziv lokala: ">
                      <font>
@@ -20,8 +20,72 @@
                   </Label>
                   <TextField fx:id="txtFieldNazivLokala" promptText="Unesite naziv lokala" />
                </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets right="70.0" />
+               </padding>
             </HBox>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER_RIGHT" VBox.vgrow="NEVER">
+               <children>
+                  <Label fx:id="labelNaziv12" text="Vlasnik: ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtFieldVlasnik" promptText="Unesite vlasnika lokala" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets right="70.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" VBox.vgrow="NEVER">
+               <children>
+                  <Label fx:id="labelNaziv1" text="Adresa: ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtFieldAdresa" promptText="Unesite adresu lokala" />
+               </children>
+               <padding>
+                  <Insets right="70.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" VBox.vgrow="NEVER">
+               <children>
+                  <Label fx:id="labelNaziv13" text="OIB: ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtFieldOIB" promptText="Unesite OIB lokala" />
+               </children>
+               <padding>
+                  <Insets right="70.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" VBox.vgrow="NEVER">
+               <children>
+                  <Label fx:id="labelNaziv11" text="WiFi: ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtFieldWiFi" promptText="Unesite WiFi lozinku" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets right="70.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" centerShape="false" VBox.vgrow="NEVER">
                <children>
                   <Label fx:id="labelValuta" text="Valuta: ">
                      <font>
@@ -31,10 +95,13 @@
                   <ChoiceBox fx:id="choiceBoxValuta" prefWidth="150.0" />
                </children>
                <VBox.margin>
-                  <Insets left="35.0" />
+                  <Insets />
                </VBox.margin>
+               <padding>
+                  <Insets right="120.0" />
+               </padding>
             </HBox>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER_RIGHT" VBox.vgrow="NEVER">
                <children>
                   <Label fx:id="labelBrStupaca" text="Broj stupaca za gumbove: ">
                      <font>
@@ -44,10 +111,13 @@
                   <ChoiceBox fx:id="choiceBoxBrojStupaca" prefWidth="150.0" />
                </children>
                <VBox.margin>
-                  <Insets right="80.0" />
+                  <Insets />
                </VBox.margin>
+               <padding>
+                  <Insets right="120.0" />
+               </padding>
             </HBox>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER_RIGHT" VBox.vgrow="NEVER">
                <children>
                   <Label fx:id="labelBrRedaka" text="Broj redaka za gumbove: ">
                      <font>
@@ -57,15 +127,18 @@
                   <ChoiceBox fx:id="choiceBoxBrojRedaka" prefWidth="150.0" />
                </children>
                <VBox.margin>
-                  <Insets right="72.0" />
+                  <Insets />
                </VBox.margin>
+               <padding>
+                  <Insets right="120.0" />
+               </padding>
             </HBox>
-            <HBox alignment="CENTER">
+            <HBox alignment="CENTER" VBox.vgrow="NEVER">
                <children>
                   <Button fx:id="btnSpremiPostavke" mnemonicParsing="false" text="Promijeni" />
                </children>
                <padding>
-                  <Insets left="30.0" />
+                  <Insets top="20.0" />
                </padding>
             </HBox>
          </children>
