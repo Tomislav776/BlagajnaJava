@@ -141,13 +141,13 @@ public class Main extends Application {
             controller = loader.getController();
             controller.setMainApp(this);
             
-            controller.hrvatski.setOnAction(e->
+            controller.hrvatski().setOnAction(e->
             {
             	controller.loadLang("hr");
             	refreshMainScreen1();
             });
             
-            controller.engleski.setOnAction(e->
+            controller.engleski().setOnAction(e->
             {
             	controller.loadLang("en");
             	refreshMainScreen1();

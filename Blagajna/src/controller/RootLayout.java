@@ -283,5 +283,15 @@ public class RootLayout implements Initializable{
         this.main = main;
 
     }
+    public RadioMenuItem hrvatski()
+    {
+    	return hrvatski;
+    }
+    
+    public RadioMenuItem engleski()
+    {
+    	return engleski;
+    }
+    
 
 }
