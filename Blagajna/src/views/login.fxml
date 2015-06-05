@@ -50,9 +50,9 @@
                   </HBox>
                </children>
             </VBox>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
+            <ImageView fitHeight="150.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
                <image>
-                  <Image url="@../resources/images/login_lock.gif" />
+                  <Image url="@../resources/images/klk.png" />
                </image>
             </ImageView>
          </children>
