@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="1.0E7" maxWidth="1.0E7" minHeight="768.0" minWidth="1024.0" prefHeight="768.0" prefWidth="1024.0" stylesheets="@Blagajna.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainScreen">
+<AnchorPane maxHeight="1.0E7" maxWidth="1.0E7" minHeight="768.0" minWidth="1024.0" prefHeight="768.0" prefWidth="1024.0" styleClass="background" stylesheets="@Blagajna.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainScreen">
    <children>
       <HBox layoutX="-97.0" maxHeight="1.0E7" maxWidth="1.0E7" prefHeight="768.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -64,10 +64,13 @@
                         <ChoiceBox fx:id="choiceBoxKonobar" prefWidth="150.0" />
                      </children>
                      <padding>
-                        <Insets right="15.0" />
+                        <Insets bottom="10.0" right="15.0" top="10.0" />
                      </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </HBox>
-                  <GridPane fx:id="grid_GumboviArtikl" maxHeight="1.0E7" maxWidth="1.0E7" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="669.0" VBox.vgrow="ALWAYS">
+                  <GridPane fx:id="grid_GumboviArtikl" maxHeight="1.0E7" maxWidth="1.0E7" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="669.0" VBox.vgrow="ALWAYS">
                      <padding>
                         <Insets bottom="30.0" />
                      </padding>

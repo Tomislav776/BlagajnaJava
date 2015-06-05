@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="352.0" prefWidth="624.0" stylesheets="@Blagajna.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Login">
+<AnchorPane prefHeight="352.0" prefWidth="624.0" styleClass="background" stylesheets="@Blagajna.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Login">
    <children>
-      <GridPane layoutX="204.0" layoutY="78.0" prefHeight="352.0" prefWidth="624.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <GridPane alignment="CENTER" layoutX="204.0" layoutY="78.0" prefHeight="352.0" prefWidth="624.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -19,30 +19,33 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <HBox spacing="10.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <HBox alignment="CENTER" maxHeight="1000000.0" maxWidth="1000000.0" prefHeight="35.0" prefWidth="420.0" spacing="10.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <children>
                   <Button fx:id="btn_prijava" mnemonicParsing="false" text="Prijava" />
                   <Button fx:id="btn_izlaz" mnemonicParsing="false" text="Izlaz" />
                </children>
                <GridPane.margin>
-                  <Insets left="260.0" top="40.0" />
+                  <Insets />
                </GridPane.margin>
             </HBox>
-            <VBox prefHeight="200.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <children>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label text="Korisničko ime: " />
                         <TextField fx:id="txt_user" />
                      </children>
+                     <padding>
+                        <Insets right="87.0" />
+                     </padding>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="605.0">
                      <children>
                         <Label text="Lozinka: " />
                         <TextField fx:id="txt_pass" />
                      </children>
                      <VBox.margin>
-                        <Insets left="45.0" />
+                        <Insets right="40.0" />
                      </VBox.margin>
                   </HBox>
                </children>
