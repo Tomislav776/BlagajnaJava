@@ -158,6 +158,16 @@ public class DodajKonobar extends Main{
     	@FXML
     	private void obrisi()
     	{
+    		if(txt_nazivKonobar.getText().isEmpty())
+    		{
+    			Alert alert = new Alert(AlertType.WARNING);
+        		alert.setTitle("Pripazite");
+        		alert.setHeaderText(null);
+        		alert.setContentText("Niste oznaèili konobara za brisanje.");
+
+        		alert.showAndWait();
+    		}
+    		else{
     		ObservableList<Konobar> konobarii = FXCollections.observableArrayList();
     		konobarii.add(tableViewKonobari.getSelectionModel().getSelectedItem());
     		
@@ -170,6 +180,7 @@ public class DodajKonobar extends Main{
     		osvjezi();
     		
     		refreshMainScreen();
+    		}
     	}
     	
     	/**

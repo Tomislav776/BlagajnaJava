@@ -18,43 +18,47 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.layout.VBox;
 
+/**
+ * Razred <code>RootLayout</code> postavlja i inicijalizira glavni layout (BorderPane) na glavni zaslon u kojega je onda kasnije u njegovu
+ * sredinu dodan MainScreen layout. Na vrh je dodan Menu.
+ */
 public class RootLayout implements Initializable{
 	
 	@FXML
-	public MenuItem dodaj_artikl;
+	private MenuItem dodaj_artikl;
 	
 	@FXML
-	public MenuItem dodaj_konobar;
+	private MenuItem dodaj_konobar;
 	
 	@FXML
-	public MenuItem obracun;
+	private MenuItem obracun;
 	
 	@FXML
-	public MenuItem postavke;
+	private MenuItem postavke;
 	
 	@FXML
-	public MenuItem o_nama;
+	private MenuItem o_nama;
 	
 	@FXML
-	public MenuItem izlaz;
+	private MenuItem izlaz;
 	
 	@FXML
-	public Menu jezik;
+	private Menu jezik;
 	
 	@FXML
-	public ToggleGroup radioGroup1;
+	private ToggleGroup radioGroup1;
 	
 	@FXML
-	public RadioMenuItem hrvatski;
+	private RadioMenuItem hrvatski;
 	
 	@FXML
-	public RadioMenuItem engleski;
+	private RadioMenuItem engleski;
 	
 	@FXML
-	public Menu opcije;
+	private Menu opcije;
 	
 	@FXML
-	public Menu aplikacija;
+	private Menu aplikacija;
 	
 	private String naziv;
 	private String kolicina;

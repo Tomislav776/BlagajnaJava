@@ -15,14 +15,14 @@ import javafx.scene.control.TextField;
 public class Login {
 
 	    @FXML
-	    public TextField txt_user;
+	    private TextField txt_user;
 	    @FXML
-	    public TextField txt_pass;
+	    private TextField txt_pass;
 	    
 	    @FXML
-	    public Button btn_prijava;
+	    private Button btn_prijava;
 	    @FXML
-	    public Button btn_izlaz;
+	    private Button btn_izlaz;
 	    
 
 	    // Reference to the main application.
@@ -56,6 +56,26 @@ public class Login {
 
 	    }
 	    
+	    public TextField user()
+	    {
+	    	return txt_user;
+	    }
+	    
+	    public TextField pass()
+	    {
+	    	return txt_pass;
+	    }
+	    
+	    public Button prijava()
+	    {
+	    	return btn_prijava;
+	    }
+	    
+	    public Button izlaz()
+	    {
+	    	return btn_izlaz;
+	    }
+	    
 	    /**
 	     * Pri prvom pokretanju programa stvara Postvake.txt file te unutar njega postavlja poèetne postavke programa koje korisnik kasnije može mijenjati.
 	     */
@@ -82,8 +102,8 @@ public class Login {
 	                bw.newLine();
            		bw.write("4");
            		bw.newLine();
-	    	    } catch (IOException k) {
-	    	        k.printStackTrace();
+	    	    } catch (IOException e) {
+	    	        e.printStackTrace();
 	    	    }  
            	
 		}

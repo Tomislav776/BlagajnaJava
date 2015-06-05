@@ -10,7 +10,7 @@
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <TextField fx:id="filterKonobar" alignment="CENTER" prefHeight="25.0" prefWidth="325.0" promptText="Unesite naziv konobara da li vidite postoji">
+            <TextField fx:id="filterKonobar" alignment="CENTER" prefHeight="25.0" prefWidth="350.0" promptText="Unesite naziv konobara da vidite postoji li">
                <HBox.margin>
                   <Insets />
                </HBox.margin></TextField>

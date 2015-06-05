@@ -25,37 +25,41 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-
+/**
+ * Razred <code>Obracun</code> inicijalizira novi prozor za stvaranje obraèuna te postavlja sve vizualne elemente. Daje nam moguènosti za
+ * biranje perioda za koji želimo napraviti obraèun prometa.
+ * 
+ */
 public class Obracun {
 	
 	@FXML
-	public Label Label_pocetakRazdoblja;
+	private Label Label_pocetakRazdoblja;
 	
 	@FXML
-	public Label Label_krajRazdoblja;
+	private Label Label_krajRazdoblja;
 	
 	@FXML
-	public DatePicker pocetakRazdoblja;
+	private DatePicker pocetakRazdoblja;
 	
 	@FXML
-	public DatePicker krajRazdoblja;
+	private DatePicker krajRazdoblja;
 	
 	@FXML
-	public Button btn_napravi_obracun;
+	private Button btn_napravi_obracun;
 	
 	@FXML
-	public Button btn_graficki_prikaz;
+	private Button btn_graficki_prikaz;
 	
 	@FXML
-	public TableView tableViewObracun;
+	private TableView tableViewObracun;
 	
 	@FXML
-	public TableColumn tableColumnRazdoblje;
+	private TableColumn tableColumnRazdoblje;
 	
 	@FXML
-	public TableColumn tableColumnPromet;
+	private TableColumn tableColumnPromet;
 	
-	ObservableList<Promet> obracun = FXCollections.observableArrayList();
+	private ObservableList<Promet> obracun = FXCollections.observableArrayList();
 
 	private String naziv;
 	private String kolicina;

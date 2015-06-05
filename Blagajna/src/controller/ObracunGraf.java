@@ -10,6 +10,10 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.XYChart;
 
+/**
+ * Razred <code>ObracunGraf</code> inicijalizira novi prozor za stvaranje grafa obraèuna prometa te postavlja sve vizualne elemente. 
+ * 
+ */
 public class ObracunGraf {
 	@FXML
     private BarChart<String, Integer> barChart;

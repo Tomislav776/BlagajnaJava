@@ -19,6 +19,10 @@ import javafx.scene.control.ButtonType;
 import java.util.Optional;
 import javafx.scene.control.ButtonBar.ButtonData;
 
+/**
+ * Razred <code>Main</code> je glavni razred ove aplikacije te sadržava glavni Stage koji se prikazuje na ekranu.
+ * 
+ */
 public class Main extends Application {
 
     private static Stage primaryStage;
@@ -64,15 +68,15 @@ public class Main extends Application {
             controller.setMainApp(this);
             
             //Pritiskom entera se unosi šifra
-            controller.txt_user.setOnKeyPressed(new EventHandler<KeyEvent>()
+            controller.user().setOnKeyPressed(new EventHandler<KeyEvent>()
             	    {
             	        @Override
             	        public void handle(KeyEvent ke)
             	        {
             	            if (ke.getCode().equals(KeyCode.ENTER))
             	            {
-            	            	user = controller.txt_user.getText();
-            	                   pass = controller.txt_pass.getText();
+            	            	user = controller.user().getText();
+            	                   pass = controller.pass().getText();
             	                   bazaBlagajna blagajna = new bazaBlagajna();
             	                   if(blagajna.Connect(user, pass) == true){
             	                   initRootLayout();
@@ -83,12 +87,12 @@ public class Main extends Application {
             	    });
             
             //Pritiskom gumba se unosi šifra
-            controller.btn_prijava.setOnAction(new EventHandler<ActionEvent>() {
+            controller.prijava().setOnAction(new EventHandler<ActionEvent>() {
 
                 @Override
                 public void handle(ActionEvent arg0) {
-                   user = controller.txt_user.getText();
-                   pass = controller.txt_pass.getText();
+                   user = controller.user().getText();
+                   pass = controller.pass().getText();
                    bazaBlagajna blagajna = new bazaBlagajna();
                    if(blagajna.Connect(user, pass) == true){
                    	initRootLayout();
@@ -101,7 +105,7 @@ public class Main extends Application {
             
             
             //Pritiskom na gumb izlaz poziva se funkcija zatvori koja otvara dijalog gdje vas pita da li ste sigurni da želite izaæi van iz aplikacije, ukoliko kliknete da jeste, aplikacija se gasi
-            controller.btn_izlaz.setOnAction(new EventHandler<ActionEvent>() {
+            controller.izlaz().setOnAction(new EventHandler<ActionEvent>() {
 
                 @Override
                 public void handle(ActionEvent arg0) {
@@ -117,7 +121,7 @@ public class Main extends Application {
             primaryStage.show();
             
             //Fokusira se na text field
-            controller.txt_user.requestFocus();
+            controller.user().requestFocus();
             
         } catch (IOException e) {
             e.printStackTrace();

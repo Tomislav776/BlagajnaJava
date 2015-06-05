@@ -20,7 +20,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 
-
+/**
+ * Razred <code>Dodaj_artikl</code> inicijalizira novi prozor za dodavanje artikla te postavlja sve vizualne elemente. Daje nam moguènosti za
+ * dodavanje i brisanje artikala u bazu podataka.
+ * 
+ */
 public class Dodaj_artikl extends Main{
 	
 	@FXML
@@ -53,7 +57,7 @@ public class Dodaj_artikl extends Main{
 	@FXML
     private TextField filter;
 	
-	ObservableList<Artikli> artikli = FXCollections.observableArrayList();
+	private ObservableList<Artikli> artikli = FXCollections.observableArrayList();
 
 	private String naziv;
 	private String kolicina;
@@ -166,12 +170,6 @@ public class Dodaj_artikl extends Main{
 
             		alert.showAndWait();
             		
-            		//Refresh Main screna
-            	    //primaryStage.close();
-            	    //initRootLayout();
-	                //initSredisnjiLayout();
-
-            		//RADI al sam preumoran da razumijem kolko sam genijalan i zasto radi
             		refreshMainScreen();
             		
             	}
@@ -185,6 +183,16 @@ public class Dodaj_artikl extends Main{
     	@FXML
     	private void obrisi()
     	{
+    		if(txt_naziv.getText().isEmpty() || txt_kolicina.getText().isEmpty() || txt_cijena.getText().isEmpty())
+    		{
+    			Alert alert = new Alert(AlertType.WARNING);
+        		alert.setTitle("Pripazite");
+        		alert.setHeaderText(null);
+        		alert.setContentText("Niste oznaèili artikl za brisanje.");
+
+        		alert.showAndWait();
+    		}
+    		else{
     		ObservableList<Artikli> artikli1 = FXCollections.observableArrayList();
     		artikli1.add(tableViewArtikli.getSelectionModel().getSelectedItem());
     		
@@ -199,6 +207,7 @@ public class Dodaj_artikl extends Main{
     		
     		//Refresh i tu dodan Main Screena
     		refreshMainScreen();
+    		}
     	}
     	
     	/**
