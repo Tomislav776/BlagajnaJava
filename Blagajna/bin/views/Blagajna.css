@@ -158,6 +158,6 @@
 	/*-fx-background-color:ff5a09;*/
 }
 
-.menu-item-radio {
-	-fx-background-color:ff5a09;
+.menu-item .dot{
+	-fx-background-color:ffffff;
 }
