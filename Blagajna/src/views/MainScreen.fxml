@@ -22,6 +22,9 @@
                       <TableColumn fx:id="tableColumnCijena" prefWidth="71.0" text="Cijena" />
                         <TableColumn fx:id="tableColumnUkupno" prefWidth="85.0" text="Ukupno" />
                     </columns>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
                   </TableView>
                   <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="355.0" spacing="10.0">
                      <children>
@@ -64,7 +67,7 @@
                         <ChoiceBox fx:id="choiceBoxKonobar" prefWidth="150.0" />
                      </children>
                      <padding>
-                        <Insets right="15.0" top="10.0" />
+                        <Insets right="15.0" />
                      </padding>
                      <VBox.margin>
                         <Insets />
@@ -74,11 +77,17 @@
                      <padding>
                         <Insets bottom="30.0" top="10.0" />
                      </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </GridPane>
                </children>
                <HBox.margin>
                   <Insets />
                </HBox.margin>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
             </VBox>
          </children>
       </HBox>
