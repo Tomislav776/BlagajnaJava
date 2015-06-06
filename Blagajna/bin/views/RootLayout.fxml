@@ -30,7 +30,15 @@
                         <RadioMenuItem fx:id="engleski" mnemonicParsing="false" styleClass="gumb-jezik" text="Engleski" toggleGroup="$radioGroup1" />
                     </items>
                   </Menu>
-                  <MenuItem fx:id="izlaz" mnemonicParsing="false" text="Izlaz iz aplikacije" />
+                  <MenuItem fx:id="izlaz1" mnemonicParsing="false" text="Help">
+                     <graphic>
+                        <Hyperlink />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem fx:id="izlaz" mnemonicParsing="false" text="Izlaz iz aplikacije">
+                     <graphic>
+                        <Hyperlink />
+                     </graphic></MenuItem>
             </items>
           </Menu>
         </menus>

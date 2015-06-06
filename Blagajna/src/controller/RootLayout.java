@@ -5,10 +5,13 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioMenuItem;
@@ -38,6 +41,9 @@ public class RootLayout implements Initializable{
 	
 	@FXML
 	private MenuItem o_nama;
+	
+	@FXML
+	private Hyperlink help;
 	
 	@FXML
 	private MenuItem izlaz;
@@ -218,6 +224,15 @@ public class RootLayout implements Initializable{
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+    	
+    	help.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent t) {
+                getHostServices().showDocument(help.getText());
+            }
+        });
+    	
        dodaj_artikl.setOnAction(e -> {
     	   display();
     	   });

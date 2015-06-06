@@ -10,7 +10,7 @@
    <children>
       <HBox alignment="CENTER" prefHeight="61.0" prefWidth="600.0">
          <children>
-            <Label fx:id="Label_pocetakRazdoblja" text="Odaberite početak razdoblja za obračun: ">
+            <Label fx:id="Label_pocetakRazdoblja" prefHeight="25.0" prefWidth="322.0" text="Odaberite početak razdoblja za obračun: ">
                <HBox.margin>
                   <Insets left="80.0" />
                </HBox.margin>
@@ -24,7 +24,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="69.0" prefWidth="600.0">
          <children>
-            <Label fx:id="Label_krajRazdoblja" text="Odaberite završetak razdoblja za obračun: ">
+            <Label fx:id="Label_krajRazdoblja" prefHeight="25.0" prefWidth="330.0" text="Odaberite završetak razdoblja za obračun: ">
                <HBox.margin>
                   <Insets left="80.0" />
                </HBox.margin>
@@ -47,8 +47,8 @@
       </HBox>
       <TableView fx:id="tableViewObracun" prefHeight="506.0" prefWidth="600.0">
         <columns>
-            <TableColumn fx:id="tableColumnRazdoblje" editable="false" prefWidth="219.0" text="Razdoblje" />
-          <TableColumn fx:id="tableColumnPromet" editable="false" prefWidth="219.0" text="Promet" />
+            <TableColumn fx:id="tableColumnRazdoblje" editable="false" prefWidth="313.0" text="Razdoblje" />
+          <TableColumn fx:id="tableColumnPromet" editable="false" prefWidth="276.0" text="Promet" />
         </columns>
       </TableView>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
