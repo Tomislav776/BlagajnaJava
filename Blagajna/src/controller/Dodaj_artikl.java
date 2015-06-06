@@ -183,7 +183,7 @@ public class Dodaj_artikl extends Main{
     	@FXML
     	private void obrisi()
     	{
-    		if(txt_naziv.getText().isEmpty() || txt_kolicina.getText().isEmpty() || txt_cijena.getText().isEmpty())
+    		if(tableViewArtikli.getSelectionModel().getSelectedItem().getNaziv() == null || tableViewArtikli.getSelectionModel().getSelectedItem().getNaziv() == "")
     		{
     			Alert alert = new Alert(AlertType.WARNING);
         		alert.setTitle("Pripazite");
@@ -207,6 +207,14 @@ public class Dodaj_artikl extends Main{
     		
     		//Refresh i tu dodan Main Screena
     		refreshMainScreen();
+    		
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Artikl obrisan");
+    		alert.setHeaderText(null);
+    		alert.setContentText("Oznaèeni artikl je obrisan.");
+
+    		alert.showAndWait();
+    		
     		}
     	}
     	

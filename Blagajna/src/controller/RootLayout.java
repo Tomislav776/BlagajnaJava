@@ -31,6 +31,9 @@ public class RootLayout implements Initializable{
 	private MenuItem dodaj_artikl;
 	
 	@FXML
+	private MenuItem promijeni_artikl;
+	
+	@FXML
 	private MenuItem dodaj_konobar;
 	
 	@FXML
@@ -107,6 +110,28 @@ public class RootLayout implements Initializable{
             Stage window = new Stage();
             window.initModality(Modality.APPLICATION_MODAL);
             window.setTitle(bundle.getString("dodaj_artikl"));
+
+            
+            Scene scene = new Scene(vbox);
+            window.setScene(scene);
+            window.showAndWait();
+      
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void displayPromijeniartikl()
+    {
+    	try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("../views/Promijeni_artikl.fxml"));
+            VBox vbox = (VBox) loader.load();
+
+            Stage window = new Stage();
+            window.initModality(Modality.APPLICATION_MODAL);
+            //window.setTitle(bundle.getString("dodaj_artikl"));
 
             
             Scene scene = new Scene(vbox);
@@ -236,6 +261,11 @@ public class RootLayout implements Initializable{
        dodaj_artikl.setOnAction(e -> {
     	   display();
     	   });
+       
+       promijeni_artikl.setOnAction(e->
+       {
+    	   displayPromijeniartikl();
+       });
        
        dodaj_konobar.setOnAction(e -> {
     	   displayKonobar();

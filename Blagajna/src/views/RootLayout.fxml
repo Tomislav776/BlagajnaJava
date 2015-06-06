@@ -13,6 +13,7 @@
             <items>
                   <MenuItem fx:id="dodaj_konobar" mnemonicParsing="false" text="Dodaj konobar" />
                   <MenuItem fx:id="dodaj_artikl" mnemonicParsing="false" text="Dodaj artikl" />
+                  <MenuItem fx:id="promijeni_artikl" mnemonicParsing="false" text="Promijeni artikl" />
                   <MenuItem fx:id="obracun" mnemonicParsing="false" text="Napravi obračun" />
             </items>
           </Menu>
