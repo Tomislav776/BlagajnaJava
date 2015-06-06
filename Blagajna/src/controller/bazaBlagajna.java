@@ -81,6 +81,34 @@ public class bazaBlagajna {
 			return true;
 	}
 	
+	public boolean promijeni_artikl(int id, String naziv, int kolicina, double cijena) {
+		PreparedStatement stmt = null;
+		  String SQL = "UPDATE artikli SET naziv = ?, kolicina = ?, cijena = ? WHERE id = ?;";
+		 
+	
+			try{
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
+				//Vezanje na bazu
+				conn = DriverManager.getConnection(connectionUrl, "root", "");
+			 stmt = conn.prepareStatement(SQL);
+			stmt.setString(1, naziv);
+			stmt.setInt(2, kolicina);
+			stmt.setDouble(3, cijena);
+			stmt.setInt(4, id);
+ 
+			stmt.executeUpdate();
+			
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			try { if (stmt != null) stmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+			try { if (conn != null) conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+		}
+			return true;
+	}
+	
 	//Dodavanje racuna u bazu 
 	/**
 	 * Metoda prima 3 argumenta, argumente funkcija pohranjuje u bazu podataka unutar tablice racuni.
