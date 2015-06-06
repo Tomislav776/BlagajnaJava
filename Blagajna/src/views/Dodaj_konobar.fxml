@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@Blagajna.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DodajKonobar">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="780.0" styleClass="background" stylesheets="@Blagajna.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DodajKonobar">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -18,15 +18,19 @@
       </HBox>
       <TableView fx:id="tableViewKonobari" prefHeight="341.0" prefWidth="600.0">
         <columns>
-          <TableColumn fx:id="tableColumnNazivKonobar" editable="false" prefWidth="590.0" text="Ime konobara" />
+          <TableColumn fx:id="tableColumnNazivKonobar" editable="false" prefWidth="290.0" text="Ime" />
+            <TableColumn fx:id="tableColumnPrezimeKonobar" editable="false" prefWidth="290.0" text="Prezime" />
+            <TableColumn fx:id="tableColumnOIBKonobar" editable="false" prefWidth="200.0" text="OIB" />
         </columns>
       </TableView>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
          <children>
-            <TextField fx:id="txt_nazivKonobar" promptText="Naziv konobar">
+            <TextField fx:id="txt_nazivKonobar" prefWidth="180.0" promptText="Ime">
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets />
                </HBox.margin></TextField>
+            <TextField fx:id="txt_prezimeKonobar" prefWidth="180.0" promptText="Prezime" />
+            <TextField fx:id="txt_OIBKonobar" prefWidth="180.0" promptText="OIB" />
             <Button fx:id="btnDodajKonobar" mnemonicParsing="false" onAction="#handleClickDodaj" text="Dodaj">
                <HBox.margin>
                   <Insets left="10.0" right="10.0" />

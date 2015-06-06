@@ -34,6 +34,12 @@ public class DodajKonobar extends Main{
 	private TextField txt_nazivKonobar;
 	
 	@FXML
+	private TextField txt_prezimeKonobar;
+	
+	@FXML
+	private TextField txt_OIBKonobar;
+	
+	@FXML
 	private Button btnDodajKonobar;
 	
 	@FXML
@@ -45,9 +51,17 @@ public class DodajKonobar extends Main{
 	@FXML
 	private TableColumn<Konobar, String> tableColumnNazivKonobar;
 	
+	@FXML
+	private TableColumn<Konobar, String> tableColumnPrezimeKonobar;
+	
+	@FXML
+	private TableColumn<Konobar, String> tableColumnOIBKonobar;
+	
 	private ObservableList<Konobar> konobari = FXCollections.observableArrayList();
 
 	private String naziv;
+	private String prezime;
+	private String oib;
 	
 	private Locale locale = RootLayout.getLocale();
 	private ResourceBundle bundle = RootLayout.getBundle();
@@ -74,6 +88,10 @@ public class DodajKonobar extends Main{
     	// inicijalizacija stupaca i prikaz
     	tableColumnNazivKonobar.setCellValueFactory(new PropertyValueFactory<Konobar,String>("naziv"));
     	tableColumnNazivKonobar.setText(bundle.getString("tableColumnNazivKonobar"));
+    	tableColumnPrezimeKonobar.setCellValueFactory(new PropertyValueFactory<Konobar,String>("prezime"));
+    	tableColumnPrezimeKonobar.setText(bundle.getString("tableColumnPrezimeKonobar"));
+    	tableColumnOIBKonobar.setCellValueFactory(new PropertyValueFactory<Konobar,String>("oib"));
+    	tableColumnOIBKonobar.setText(bundle.getString("tableColumnOIBKonobar"));
     	tableViewKonobari.getSelectionModel().setCellSelectionEnabled(true);
     	tableViewKonobari.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     	tableViewKonobari.setItems(getKonobari());
@@ -120,22 +138,26 @@ public class DodajKonobar extends Main{
     	@FXML
     	private void handleClickDodaj()
     	{
-    		if(txt_nazivKonobar.getText().isEmpty())
+    		if(txt_nazivKonobar.getText().isEmpty() || txt_prezimeKonobar.getText().isEmpty() || txt_OIBKonobar.getText().isEmpty())
     		{
     			Alert alert = new Alert(AlertType.WARNING);
         		alert.setTitle("Pripazite");
         		alert.setHeaderText(null);
-        		alert.setContentText("Niste unijeli ime konobara.");
+        		alert.setContentText("Niste unijeli sve potrebne informacije za unos konobara.");
 
         		alert.showAndWait();
     		}
     		else{
     			naziv = txt_nazivKonobar.getText();
+    			prezime = txt_prezimeKonobar.getText();
+    			oib = txt_OIBKonobar.getText();
 
             	bazaBlagajna b = new bazaBlagajna();
-            	if(b.dodaj_konobar(naziv) == true)
+            	if(b.dodaj_konobar(naziv, prezime, oib) == true)
             	{
             		txt_nazivKonobar.clear();
+            		txt_prezimeKonobar.clear();
+            		txt_OIBKonobar.clear();
 
             		osvjezi();
             		Alert alert = new Alert(AlertType.INFORMATION);
@@ -158,9 +180,10 @@ public class DodajKonobar extends Main{
     	@FXML
     	private void obrisi()
     	{
-    		if(tableViewKonobari.getSelectionModel().getSelectedItem().getNaziv() == null || tableViewKonobari.getSelectionModel().getSelectedItem().getNaziv() == "")
+    		if(txt_nazivKonobar.getText().isEmpty() || txt_prezimeKonobar.getText().isEmpty() || txt_OIBKonobar.getText().isEmpty())
     		{
-    			Alert alert = new Alert(AlertType.WARNING);
+    			Alert alert = new 
+    					Alert(AlertType.WARNING);
         		alert.setTitle("Pripazite");
         		alert.setHeaderText(null);
         		alert.setContentText("Niste oznaèili konobara za brisanje.");

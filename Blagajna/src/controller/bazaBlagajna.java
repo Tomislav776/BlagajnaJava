@@ -279,7 +279,7 @@ public class bazaBlagajna {
 				ResultSet resultSet = stmt.executeQuery();
 	    
 	        while (resultSet.next()) {
-	        	Konobar konobar = new Konobar(resultSet.getInt("id"),resultSet.getString("naziv"),resultSet.getInt("satnica"));
+	        	Konobar konobar = new Konobar(resultSet.getInt("id"),resultSet.getString("naziv"),resultSet.getInt("satnica"),resultSet.getString("prezime"),resultSet.getString("oib"));
 	        	konobari.add(konobar);
 	        }
 	    
@@ -295,11 +295,13 @@ public class bazaBlagajna {
 	/**
 	 * Metoda dodaje konobara u tablicu konobari unutar baze podatak.
 	 * @param imeKonobar Ime konobara
+	 * @param prezimeKonobar Prezime konobara
+	 * @param OIBKonobar OIB konobara
 	 * @return Ako je uspješno dodan konobar vraèa <code>true</code>, inaèe <code>false</code>.
 	 */
-	public boolean dodaj_konobar(String imeKonobar) {
+	public boolean dodaj_konobar(String imeKonobar, String prezimeKonobar, String OIBKonobar) {
 		PreparedStatement stmt = null;
-		  String SQL = "INSERT INTO konobar (naziv, satnica) VALUES(?, ?);";
+		  String SQL = "INSERT INTO konobar (naziv, satnica, prezime, oib) VALUES(?, ?, ?, ?);";
 		 
 	
 			try{
@@ -310,7 +312,8 @@ public class bazaBlagajna {
 			
 				stmt.setString(1, imeKonobar);
 				stmt.setInt(2, 3);
-				
+				stmt.setString(3, prezimeKonobar);
+				stmt.setString(4, OIBKonobar);
 			
 			stmt.executeUpdate();
 			

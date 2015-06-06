@@ -4,11 +4,15 @@ public class Konobar {
 	private int id;
 	private String naziv;
 	private int satnica;
+	private String prezime;
+	private String oib;
 	
-	public Konobar(int id, String naziv, int satnica){
+	public Konobar(int id, String naziv, int satnica, String prezime, String OIB){
 		this.id=id;
 		this.naziv=naziv;
 		this.satnica=satnica;
+		this.setPrezime(prezime);
+		this.setOib(OIB);
 	}
 	
 	
@@ -29,6 +33,26 @@ public class Konobar {
 	}
 	public void setSatnica(int satnica) {
 		this.satnica = satnica;
+	}
+
+
+	public String getPrezime() {
+		return prezime;
+	}
+
+
+	public void setPrezime(String prezime) {
+		this.prezime = prezime;
+	}
+
+
+	public String getOib() {
+		return oib;
+	}
+
+
+	public void setOib(String oib) {
+		this.oib = oib;
 	}
 
 }
