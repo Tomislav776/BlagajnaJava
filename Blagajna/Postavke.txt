@@ -1,5 +1,5 @@
 Naziv lokala:
-Lokal
+TVZ
 Valuta:
  kn
 Broj redaka:
@@ -7,10 +7,10 @@ Broj redaka:
 Broj stupaca:
 4
 Vlasnik:
-Marko
+JavaFX
 Adresa:
-Viroviticka 11
+Zagrebačka 5
 OIB:
 786786786786
 WiFi:
-lozinka wifia
+JavaFX8

@@ -83,6 +83,14 @@ public class Main extends Application {
             	                   initSredisnjiLayout();
             	                	
             	            }
+            	                   else
+            	                   {
+            	                	Alert alert = new Alert(AlertType.WARNING);
+            	                   	alert.setTitle("Krivi podaci");
+            	                   	alert.setHeaderText(null);
+            	                   	alert.setContentText("Unijeli ste krive podatke za pristup bazi podataka.");
+            	                   	alert.showAndWait();
+            	                   }
             	        } }
             	    });
             
@@ -98,6 +106,15 @@ public class Main extends Application {
                    	initRootLayout();
                    	initSredisnjiLayout();
                 
+                   }
+                   
+                   else
+                   {
+                	Alert alert = new Alert(AlertType.WARNING);
+                   	alert.setTitle("Krivi podaci");
+                   	alert.setHeaderText(null);
+                   	alert.setContentText("Unijeli ste krive podatke za pristup bazi podataka.");
+                   	alert.showAndWait();
                    }
 
                 }
