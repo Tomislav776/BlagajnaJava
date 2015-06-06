@@ -32,7 +32,7 @@
                   </Menu>
                   <MenuItem fx:id="izlaz1" mnemonicParsing="false" text="Help">
                      <graphic>
-                        <Hyperlink />
+                        <Hyperlink fx:id="help" />
                      </graphic>
                   </MenuItem>
                   <MenuItem fx:id="izlaz" mnemonicParsing="false" text="Izlaz iz aplikacije">
