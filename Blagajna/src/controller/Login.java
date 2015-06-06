@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 /**
- * Razred <code>Login</code> postavlja vizualne elemente na prozor Login te stvara datoteku sa poèetnim postavkama korisnika.
+ * Razred <code>Login</code> postavlja vizualne elemente na prozor Login te stvara datoteku s poèetnim postavkama korisnika.
  *
  */
 public class Login {

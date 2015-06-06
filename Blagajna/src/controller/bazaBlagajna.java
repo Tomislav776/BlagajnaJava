@@ -16,8 +16,8 @@ import java.sql.SQLException;
 
 
 /**
- * Razred <code>bazaBlagajna</code> omoguèava rad sa bazom podataka.
- * Unutar razreda napravljene su metode i funkcionalnosti sa kojima se aplikacija spaja sa bazom podataka te stavlja i uzima potrebne podatke iz tablica unutar baze podataka.
+ * Razred <code>bazaBlagajna</code> omoguæava rad s bazom podataka.
+ * Unutar razreda napravljene su metode i funkcionalnosti s kojima se aplikacija spaja s bazom podataka te stavlja i uzima potrebne podatke iz tablica unutar baze podataka.
  */
 public class bazaBlagajna {
 	Connection conn = null;
@@ -51,7 +51,7 @@ public class bazaBlagajna {
 	 * @param naziv Ime artikla.
 	 * @param kolicina Koliko artikala ima.
 	 * @param cijena Cijena artikla.
-	 * @return ukoliko je uspješno pohranjen artikl vraèa <code>true</code> inaèe <code>false</code>.
+	 * @return ako je uspješno pohranjen artikl vraèa <code>true</code> inaèe <code>false</code>.
 	 */
 	public boolean dodaj_artikl(String naziv, int kolicina, double cijena) {
 		PreparedStatement stmt = null;
@@ -88,7 +88,7 @@ public class bazaBlagajna {
 	 * @param iznos Ukupan iznos raèuna.
 	 * @param nazivLokala Naziv vašeg lokala.
 	 * @param konobar Ime konobara.
-	 * @return ukoliko je uspješno pohranjen raèun vraèa <code>true</code> inaèe <code>false</code>.
+	 * @return ako je uspješno pohranjen raèun vraèa <code>true</code> inaèe <code>false</code>.
 	 */
 	public boolean dodaj_Racun(double iznos, String nazivLokala, String konobar) {
 		PreparedStatement stmt = null;
@@ -120,9 +120,9 @@ public class bazaBlagajna {
 	}
 	
 	/**
-	 * Metoda briše artikl iz baze podataka. Kako bi znala koji atikl treba izbrisati predajemo joj primarni kljuè.
+	 * Metoda briše artikl iz baze podataka. Kako bi znala koji artikl treba izbrisati predajemo joj primarni kljuè.
 	 * @param id Primarni kljuè artikla.
-	 * @return Ukoliko je uspješno izbrisan artikl vraèa <code>true</code> inaèe <code>false</code>.
+	 * @return Ako je uspješno izbrisan artikl vraèa <code>true</code> inaèe <code>false</code>.
 	 */
 	public static boolean obrisi_artikl(int id) {
 		Connection conn = null;
@@ -219,7 +219,7 @@ public class bazaBlagajna {
 	
 	//Cita promete iz baze te ih vraca kao listu
 	/**
-	 * Metoda prima poèetak i kraj radoblja kao String te vraèa ukupan promet to jest ukupan iznos svih naplaèenih raèuna u navedenom razdoblju.
+	 * Metoda prima poèetak i kraj razdoblja kao String te vraèa ukupan promet to jest ukupan iznos svih naplaæenih raèuna u navedenom razdoblju.
 	 * @param pocetakRazdoblja Poèetni datum od kojeg želimo saznati promet.
 	 * @param krajRazdoblja Završni datum do kojeg želimo saznati promet.
 	 * @return List<Promet> vraèa listu koja u sebi sadrži ukupan promet i navedeno razdoblje. 
@@ -295,7 +295,7 @@ public class bazaBlagajna {
 	/**
 	 * Metoda dodaje konobara u tablicu konobari unutar baze podatak.
 	 * @param imeKonobar Ime konobara
-	 * @return Ukoliko je uspješno dodan konobar vraèa <code>true</code>, inaèe <code>false</code>.
+	 * @return Ako je uspješno dodan konobar vraèa <code>true</code>, inaèe <code>false</code>.
 	 */
 	public boolean dodaj_konobar(String imeKonobar) {
 		PreparedStatement stmt = null;
@@ -328,7 +328,7 @@ public class bazaBlagajna {
 	/**
 	 * Metoda briše konobara iz baze podataka po primarnom kljuèu.
 	 * @param id Primarni kljuè konobara kojeg želimo izbrisati.
-	 * @return Ukoliko je konobar uspješno izbrisan vraèa <code>true</code>, inaèe <code>false</code>.
+	 * @return Ako je konobar uspješno izbrisan vraèa <code>true</code>, inaèe <code>false</code>.
 	 */
 	public static boolean obrisi_konobar(int id) {
 		Connection conn = null;
@@ -361,7 +361,7 @@ public class bazaBlagajna {
 	 * Metoda smanjuje kolièinu artikala u tablici artikli iz baze podataka.
 	 * @param id Primarni kljuè artikla kojem želimo smanjiti kolièinu.
 	 * @param kolicina Za koliko želimo smanjiti kolièinu odreðenog artikla.
-	 * @return Ukoliko je kolièina artikla promijenjena vraèa <code>true</code>, inaèe <code>false</code>.
+	 * @return Ako je kolièina artikla promijenjena vraèa <code>true</code>, inaèe <code>false</code>.
 	 */
 	public boolean smanjiKolicinuArtikla(int id, int kolicina) {
 		PreparedStatement stmt = null;

@@ -21,7 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import dataClass.Konobar;
 
 /**
- * Razred <code>DodajKonobar</code> inicijalizira novi prozor za dodavanje konobara te postavlja sve vizualne elemente. Daje nam moguènosti za
+ * Razred <code>DodajKonobar</code> inicijalizira novi prozor za dodavanje konobara te postavlja sve vizualne elemente. Daje nam moguænosti za
  * brisanje i dodavanje konobara u bazu podataka.
  * 
  */
@@ -114,8 +114,8 @@ public class DodajKonobar extends Main{
 }
     
     /**
-	 * Ova metoda se poziva kada se klikne na gumb za dodati konobara. Ukoliko je prozor za unošenje imena konobara prazan
-	 * iskaèe alert, inaæe se spaja na bazu i u nju dodaje novog konobara.
+	 * Ova metoda se poziva kada se klikne na gumb za dodati konobara. Ako je prozor za unošenje imena konobara prazan
+	 * iskaèe alert, inaèe se spaja na bazu i u nju dodaje novog konobara.
 	 */
     	@FXML
     	private void handleClickDodaj()

@@ -225,10 +225,10 @@ public class MainScreen extends Main{
     //Izvodi se pritiskom gumba napalti dodaje u bazu racune
     /**
      * Metoda se izvršava kada korisnik pritisne gumb Naplati.
-     * Provjerava da li je odabran konobar ukoliko nije upozorava korisnika. Poziva metodu <code>promijeniKolicinu</code> te smanjuje kolicinu proizvoda za sve naplačene artikle.
-     * Mjenja vrijednost ukupnog iznosa, te šalje račun na printanje. Nakon što obavi sve na kraju briše artikle koji su prikazani unutar tablice za naplatu.
+     * Provjerava da li je odabran konobar ako nije upozorava korisnika. Poziva metodu <code>promijeniKolicinu</code> te smanjuje količinu proizvoda za sve naplaćene artikle.
+     * Mijenja vrijednost ukupnog iznosa, te šalje račun na printanje. Nakon što obavi sve na kraju briše artikle koji su prikazani unutar tablice za naplatu.
      * @param sender ActionEvent od gumba za naplatu.
-     * @return vrača <code>true</code> ukoliko se sve uspješno izvršilo, inače <code>false</code>.
+     * @return vrača <code>true</code> ako se sve uspješno izvršilo, inače <code>false</code>.
      */
     public boolean gumbNaplatiKlik(ActionEvent sender){
     Alert alert = new Alert(AlertType.INFORMATION);
@@ -272,7 +272,7 @@ public class MainScreen extends Main{
  	//Inicjalizira gumbove
     /**
      * Inicijalizira gumbove artikala koji su prikazani na glavnom zaslonu. Vrijednosti gumbova i koliko ih treba uzima iz baze podataka.
-     * Znog optimizacije radi sa  List<Artikli>bazaArtikli koja je static i unutar nje se nalaze svi artikli iz baze podataka.
+     * Zbog optimizacije radi sa  List<Artikli>bazaArtikli koja je static i unutar nje se nalaze svi artikli iz baze podataka.
      */
     public void initBtnsArray() {
 		
@@ -284,7 +284,7 @@ public class MainScreen extends Main{
     /**
      * Printa račun kada korisnik pritisne gumb naplati.
      * @param n Layout koji želimo isprintati
-     * @return vrača <code>true</code> ukoliko se sve uspješno izvršilo, inače <code>false</code>
+     * @return vrača <code>true</code> ako se sve uspješno izvršilo, inače <code>false</code>
      */
     private boolean doPrint(Node n)
     {
@@ -298,9 +298,9 @@ public class MainScreen extends Main{
     
     //Funkcija koja se izvodi kad se klikne na neki od gumbova s artiklima
     /**
-     * Metoda se izvršava kada korisnik pritisne bilo koji gumb koji predstavlja artikl na glavnom zalsonu.
-     * Postavlja pomoču metode <code>getArtikli</code> unutar tablice za naplatu željeni artikl te mjenja prikaz ukupne svote računa.
-     * Mjenja količinu artikala.
+     * Metoda se izvršava kada korisnik pritisne bilo koji gumb koji predstavlja artikl na glavnom zaslonu.
+     * Postavlja pomoću metode <code>getArtikli</code> unutar tablice za naplatu željeni artikl te mijenja prikaz ukupne svote računa.
+     * Mijenja količinu artikala.
      * @param sender ActionEvent od gumbova koji predstavljaju artikle.
      */
 	public void gumbArtikliKlik(ActionEvent sender){
@@ -331,9 +331,9 @@ public class MainScreen extends Main{
 	
 	//mjenja kolicinu u bazi i deaktivira gumb
 	/**
-	 * Metoda mjenja količinu artikala u bazi samo ako je pozvana pritiskom gumba Naplati.
-	 * Ukoliko je pozvana pritiskom artikl gumbova privremeno mijenja količinu artikala te ako je neki artikl odabran onoliko puta kolika je njegova količina deaktivira taj gumb.
-	 * Kada je gumb deeaktiviran i funkcija se pozove sa gumbom naplati taj artikl se briše iz baze podataka i njegov gumb se miče iz prikaza gumbova.
+	 * Metoda mijenja količinu artikala u bazi samo ako je pozvana pritiskom gumba Naplati.
+	 * Ako je pozvana pritiskom artikl gumbova privremeno mijenja količinu artikala te ako je neki artikl odabran onoliko puta kolika je njegova količina deaktivira taj gumb.
+	 * Kada je gumb deaktiviran i funkcija se pozove s gumbom naplati taj artikl se briše iz baze podataka i njegov gumb se miče iz prikaza gumbova.
 	 * @param sender ActionEvent od gumbova kojim je pozvana metoda.
 	 */
 	public void promijeniKolicinu (ActionEvent sender){
@@ -383,7 +383,7 @@ public class MainScreen extends Main{
 	/**
 	 * Metoda aktivira jedan ili sve gumbove artikala koji su deaktivirani.
 	 * Poziva se prilikom pritiska na gumb obriši ili obriši sve koji miču sve artikle iz tablice za naplatu pa je data potrebno ponovno aktivirati gumbove koji su u procesu postali neaktivni.
-	 * @param naziv Prima ime gumba kojeg treba aktivirati ili String "Svi" ukoliko primi Svi aktivirati će sve deaktivirane gumbove.
+	 * @param naziv Prima ime gumba kojeg treba aktivirati ili String "Svi" ako primi Svi aktivirat će sve deaktivirane gumbove.
 	 */
 	public void enableButton (String naziv){
 		
@@ -396,7 +396,7 @@ public class MainScreen extends Main{
 	
 	//Radi observable list stavlja artikle u nju za prikaz u table view
 	/**
-	 * Pri dodavanju artikala unutar tablice za naplatu metoda sprema te artikle u Listu te ukoliko ima istoimenih artikala povečava im količinu. Postavlja vrijednosti svih stupaca 
+	 * Pri dodavanju artikala unutar tablice za naplatu metoda sprema te artikle u Listu te ako ima istoimenih artikala povećava im količinu. Postavlja vrijednosti svih stupaca 
 	 * unutar tablice za naplatu.
 	 * @param naziv Ime artikla kojeg želimo dodati za naplatu.
 	 * @return Vrača kao ObservableList sve artikle koji se nalaze u tablici za naplatu.
@@ -458,7 +458,7 @@ public class MainScreen extends Main{
 	
 	//Inicijalizira gumbove u gridu
 	/**
-	 * Inicijalizira te postavlja gumbove artikala unutar grida.
+	 * Inicijalizira i postavlja gumbove artikala unutar grida.
 	 */
 	public void initGumboviUGridu (){
 		initBtnsArray();
@@ -574,7 +574,7 @@ public class MainScreen extends Main{
 	}
 	//incijalizira choice box
 	/**
-	 * Inicijalizira prozor za odabir konobara te postavlja za moguče opcij sve konobare koji se nalaze u bazi podataka.
+	 * Inicijalizira prozor za odabir konobara te postavlja za moguće opcije sve konobare koji se nalaze u bazi podataka.
 	 */
 	public void initChoiceBox(){
 		
@@ -587,7 +587,7 @@ public class MainScreen extends Main{
 	
 	//inicijalizira varijable po zelji korisnika
 	/**
-	 * Čita iz datoteke Postavke.txt postake korisnika te te postavke pridružuje varijablama koje se koriste unutar ovog razreda.
+	 * Čita iz datoteke Postavke.txt postavke korisnika te ih pridružuje varijablama koje se koriste unutar ovog razreda.
 	 */
 	public void ucitajPostavkeKorisnika(){ 
 		List<String> postavke = new ArrayList<String>();
