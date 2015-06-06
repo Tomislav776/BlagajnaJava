@@ -229,7 +229,7 @@ public class RootLayout implements Initializable{
 
             @Override
             public void handle(ActionEvent t) {
-                getHostServices().showDocument(help.getText());
+                //napisat kod
             }
         });
     	
