@@ -581,7 +581,7 @@ public class MainScreen extends Main{
 		List<Konobar> konobarBaza = new ArrayList<Konobar>(bazaBlagajna.bazaCitajKonobar());
 	
 		for (int i=0;i<konobarBaza.size();i++)
-		choiceBoxKonobar.getItems().add(konobarBaza.get(i).getNaziv());
+		choiceBoxKonobar.getItems().add(konobarBaza.get(i).getNaziv()+" "+konobarBaza.get(i).getPrezime());
 		
 	}
 	
