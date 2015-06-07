@@ -180,7 +180,7 @@ public class DodajKonobar extends Main{
     	@FXML
     	private void obrisi()
     	{
-    		if(txt_nazivKonobar.getText().isEmpty() || txt_prezimeKonobar.getText().isEmpty() || txt_OIBKonobar.getText().isEmpty())
+    		if(tableViewKonobari.getSelectionModel().getSelectedItem().getNaziv() == null || tableViewKonobari.getSelectionModel().getSelectedItem().getNaziv() == "")
     		{
     			Alert alert = new 
     					Alert(AlertType.WARNING);
