@@ -132,7 +132,6 @@ public class bazaBlagajna {
 				stmt.setDouble(1, iznos);
 				stmt.setString(2, nazivLokala);
 				stmt.setString(3, konobar);
-				//ipak netreba noobe
 			
 			stmt.executeUpdate();
 			

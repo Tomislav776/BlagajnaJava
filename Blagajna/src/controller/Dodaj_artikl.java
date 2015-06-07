@@ -95,7 +95,10 @@ public class Dodaj_artikl extends Main{
     	tableColumnKolicina.setText(bundle.getString("tableColumnKolicina"));
     	tableViewArtikli.getSelectionModel().setCellSelectionEnabled(true);
 		tableViewArtikli.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		
     	tableViewArtikli.setItems(getArtikli());
+    	
+    	tableViewArtikli.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         // wrepamo ObservableList u FilteredList
         FilteredList<Artikli> filtriraniArtikli = new FilteredList<>(artikli);

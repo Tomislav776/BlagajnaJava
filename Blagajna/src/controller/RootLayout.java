@@ -131,7 +131,7 @@ public class RootLayout implements Initializable{
 
             Stage window = new Stage();
             window.initModality(Modality.APPLICATION_MODAL);
-            //window.setTitle(bundle.getString("dodaj_artikl"));
+            window.setTitle("Promijeni artikl");
 
             
             Scene scene = new Scene(vbox);
