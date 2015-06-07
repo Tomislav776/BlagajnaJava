@@ -96,6 +96,9 @@ public class DodajKonobar extends Main{
     	tableViewKonobari.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     	tableViewKonobari.setItems(getKonobari());
     	
+    	tableViewKonobari.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    	
+    	
     	filterKonobar.setPromptText(bundle.getString("filter"));
     	
         // wrepamo ObservableList u FilteredList

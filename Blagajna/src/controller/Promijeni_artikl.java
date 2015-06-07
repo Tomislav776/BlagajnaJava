@@ -36,21 +36,23 @@ public class Promijeni_artikl {
 	private TableView<Artikli> tableViewArtikli;
 	
 	@FXML
-	private TableColumn tableColumnCijena;
+	private TableColumn<Artikli, Double> tableColumnCijena;
 	
 	@FXML
 	private TableColumn<Artikli, String> tableColumnNaziv;
 	
 	@FXML
-	private TableColumn<Artikli, String> tableColumnKolicina;
+	private TableColumn<Artikli, Integer> tableColumnKolicina;
+	
+	List<Artikli> artikliIzBaze = new ArrayList<Artikli>(bazaBlagajna.bazaCitajArtikle());
 	
 	
-	private ObservableList<Artikli> artikli = FXCollections.observableArrayList();
+	private ObservableList<Artikli> artikli2 = FXCollections.observableArrayList();
 
 	private int id;
 	private String naziv;
-	private String kolicina;
-	private String cijena;
+	private int kolicina;
+	private Double cijena;
 	
 	private Locale locale = RootLayout.getLocale();
 	private ResourceBundle bundle = RootLayout.getBundle();
@@ -77,22 +79,24 @@ public class Promijeni_artikl {
     	// inicijalizacija stupaca i prikaz
     	tableColumnNaziv.setCellValueFactory(new PropertyValueFactory<Artikli,String>("naziv"));
     	tableColumnNaziv.setText(bundle.getString("tableColumnNaziv"));
-    	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,String>("cijena"));
+    	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,Double>("cijena"));
     	tableColumnCijena.setText(bundle.getString("tableColumnCijena"));
-    	tableColumnKolicina.setCellValueFactory(new PropertyValueFactory<Artikli,String>("kolicina"));
+    	tableColumnKolicina.setCellValueFactory(new PropertyValueFactory<Artikli,Integer>("kolicina"));
     	tableColumnKolicina.setText(bundle.getString("tableColumnKolicina"));
     	tableViewArtikli.getSelectionModel().setCellSelectionEnabled(true);
 		tableViewArtikli.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     	tableViewArtikli.setItems(getArtikli());
+    	
+    	tableViewArtikli.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     	
     	tableViewArtikli.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
                 	txt_naziv.setText(tableViewArtikli.getSelectionModel().getSelectedItem().getNaziv());
                 	txt_kolicina.setText(String.valueOf(tableViewArtikli.getSelectionModel().getSelectedItem().getKolicina()));
                 	txt_cijena.setText(String.valueOf(tableViewArtikli.getSelectionModel().getSelectedItem().getCijena()));
-                	id = tableViewArtikli.getSelectionModel().getSelectedItem().getId();
+                	id = new Integer(tableViewArtikli.getSelectionModel().getSelectedItem().getId());
                 });
-
+    	
 
 }
     /**
@@ -112,13 +116,11 @@ public class Promijeni_artikl {
     		}
     		else{
     			naziv = txt_naziv.getText();
-            	kolicina = txt_kolicina.getText();
-            	cijena = txt_cijena.getText();
-            	int kolicina_INT = Integer.parseInt(kolicina);
-            	double cijena_Double = Double.parseDouble(cijena);
+            	kolicina = Integer.parseInt(txt_kolicina.getText());
+            	cijena = Double.parseDouble(txt_cijena.getText());
             	bazaBlagajna b = new bazaBlagajna();
-            	if(b.promijeni_artikl(id, naziv, kolicina_INT, cijena_Double) == true)
-            	{
+            	b.promijeni_artikl(id, naziv, kolicina, cijena);
+            	
             		txt_naziv.clear();
             		txt_kolicina.clear();
             		txt_cijena.clear();
@@ -132,7 +134,7 @@ public class Promijeni_artikl {
             		
             		//refreshMainScreen();
             		
-            	}
+            	
     		}
         	
     	}
@@ -142,13 +144,26 @@ public class Promijeni_artikl {
     	/**
     	 * Osvježava prikaz artikla u tablici.
     	 */
+    	@FXML
     	private void Osvjezi()
     	{
-    		artikli.removeAll(artikli); //ova linija iz nekog jebeno nepoznatog razloga bezveze baca exception
+    		int b=id;
+    		for (int i=0;i<artikli2.size();i++)
+    		if (artikli2.get(i).getId()==b){
+    			artikli2.remove(i); //ova linija iz nekog jebeno nepoznatog razloga bezveze baca exception
+    			break;
+    		}
     		tableColumnNaziv.setCellValueFactory(new PropertyValueFactory<Artikli,String>("naziv"));
-        	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,String>("cijena"));
-        	tableColumnKolicina.setCellValueFactory(new PropertyValueFactory<Artikli,String>("kolicina"));
-        	tableViewArtikli.setItems(getArtikli());
+        	tableColumnCijena.setCellValueFactory(new PropertyValueFactory<Artikli,Double>("cijena"));
+        	tableColumnKolicina.setCellValueFactory(new PropertyValueFactory<Artikli,Integer>("kolicina"));
+        	
+        	artikliIzBaze=bazaBlagajna.bazaCitajArtikle();
+        	for (int i =0;i < artikliIzBaze.size();i++){
+        		if (artikliIzBaze.get(i).getId()==b){
+    			artikli2.add(artikliIzBaze.get(i));
+        		break;
+        		}
+    		}
 
     	}
 
@@ -166,13 +181,12 @@ public class Promijeni_artikl {
 	 * @return Vraæa ObservableList artikla koji se nalaze u bazi.
 	 */
     private ObservableList<Artikli> getArtikli(){
-		List<Artikli> artikliIzBaze = new ArrayList<Artikli>();
-		artikliIzBaze = bazaBlagajna.bazaCitajArtikle();
+		
 				
 		for (int i =0;i < artikliIzBaze.size();i++){
-			artikli.add(artikliIzBaze.get(i));
+			artikli2.add(artikliIzBaze.get(i));
 		}
 
-		return artikli;
+		return artikli2;
 	}
 }
